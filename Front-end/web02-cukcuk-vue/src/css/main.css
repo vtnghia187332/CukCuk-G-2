@@ -1,0 +1,87 @@
+@import url("@/css/components/base-button.css");
+@import url("@/css/components/combobox.css");
+@import url("@/css/components/navbar-item.css");
+@import url("@/css/components/check-box.css");
+@import url("@/css/components/base-input.css");
+@import url("@/css/components/pagination.css");
+@import url("@/css/components/form-header-controls.css");
+@import url("@/css/components/dialog/dialog.css");
+@import url("@/css/components/dialog/dialog-show.css");
+@import url("@/css/components/dialog/dialog-detail.css");
+@import url("@/assets/resource/icon/icon.css");
+@import url("@/css/components/table.css");
+@import url("@/css/components/loadingPage.css");
+
+
+@import url("@/css/layout/content.css");
+@import url("@/css/layout/header.css");
+@import url("@/css/layout/navbar.css");
+
+@import url("@/assets/font-awesome/css/all.min.css");
+
+
+
+body {
+    margin     : 0;
+    font-family: MISA GoogleSans;
+    font-size  : 13px;
+    font-weight: 500;
+}
+
+.m-row {
+    padding: 30px;
+}
+
+
+@font-face {
+    font-family: MISA Tahoma;
+    src        : url(../assets/font/Tahoma/@font-face/cd0381aa3322dff4babd137f03829c8c.eot);
+}
+
+.m-input-error {
+    border-color: #FF4747 !important;
+}
+
+.fit-center {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.m-150 {
+    width     : 200px;
+    max-width : 200px;
+    box-sizing: border-box;
+}
+
+.m-row-list {
+    min-width : 200px;
+    max-width : 200px;
+    box-sizing: border-box;
+}
+
+.m-250 {
+    width     : 250px;
+    max-width : 250px;
+    box-sizing: border-box;
+}
+
+.m-500 {
+    width        : 500px;
+    /* min-width : 500px; */
+    max-width    : 500px;
+    box-sizing   : border-box;
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+}
+
+.m-error-input {
+    border : none;
+    outline: none;
+    border : 1px solid red !important;
+}
+
+.outline-error-input:focus {
+    border: 1px solid red !important;
+}

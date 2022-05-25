@@ -1,0 +1,89 @@
+.m-combobox-selection {
+    box-sizing    : border-box;
+    display       : flex;
+    align-items   : center;
+    position      : relative;
+    /* width      : 200px; */
+}
+
+.m-combobox-selection input.m-input-selection {
+   
+    height          : 25px;
+    box-sizing      : border-box;
+    width           : 210px;
+    border          : none;
+    outline         : none;
+    border          : 1px solid rgba(128, 128, 128, 0.466);
+    padding-left    : 15px;
+    padding-right   : 48px;
+    background-color: #004F82;
+    color           : black;
+    box-sizing      : border-box;
+}
+
+/* .m-combobox-selection input.m-input-selection:focus {
+    border: 1px solid #019160;
+} */
+.m-combobox-selection input.m-input-selection::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.m-combobox-selection button.m-combobox-btn-selection {
+    height          : 23px;
+    width           : 23px;
+    cursor          : pointer;
+    background-color: black;
+    border          : unset;
+    box-sizing      : border-box;
+    flex-shrink     : 0;
+    position        : absolute;
+    right           : 1px;
+    background-color: #004F82;
+
+}
+
+
+.m-combobox-selection button.m-combobox-btn-selection .drp-btn {
+    justify-self: center;
+    color       : #fff;
+    margin      : 0 auto;
+    margin-top  : -4px;
+}
+
+.m-combobox-selection input.m-input-selection:focus~button.m-combobox-btn-selection {
+    border             : 1px solid transparent !important;
+    /* background-color: #bebebe; */
+}
+
+.m-combobox-selection .m-combobox-data-selection {
+    background-color      : #fff;
+    position              : absolute;
+    top                   : 35px;
+    width                 : 100%;
+    /* min-width          : 100px; */
+    padding               : 4px 0;
+    /* display            : block !important; */
+    z-index               : 999;
+    display               : none;
+}
+
+.m-combobox-selection .m-combobox-data-selection .m-combobox-item-selection {
+    height     : 30px;
+    display    : flex;
+    align-items: center;
+    cursor     : pointer;
+    padding    : 0 14px 0 10px;
+}
+
+.m-combobox-selection .m-combobox-data-selection .m-combobox-item-selection:hover {
+    background-color: #bebebe;
+    color           : #2bc516;
+    background-color: #EBEDF0;
+    ;
+}
+
+.m-combobox-selection .m-combobox-data-selection .m-combobox-item-selection.m-combobox-selection-selected {
+    background-color: #2CA01C;
+    color           : #fff;
+    font-weight     : bold;
+}

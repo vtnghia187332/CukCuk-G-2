@@ -1,0 +1,18 @@
+.m-loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #444444;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,25 @@
+.dp__theme_light {
+    --dp-border-color: #babec5 !important;
+    width            : 242px;
+}
+
+.dp__input_icon_pad {
+    padding-left: 10px !important;
+}
+
+.dp__input_icon {
+    right: 0 !important;
+    left : auto !important;
+}
+
+.dp__clear_icon {
+    display: none !important;
+}
+
+.dp-custom-input {
+    border-radius: 2px !important;
+}
+
+.dp-custom-input:focus {
+    border-color: #0072BB !important;
+}

@@ -1,0 +1,35 @@
+.m-header-form-controls {
+    padding-left    : 5px;
+    display         : flex;
+    height          : 30px;
+    align-items     : center;
+    justify-content : flex-start;
+    background-color: #F2F2F2;
+    box-sizing      : border-box;
+}
+
+.m-title-form-control {
+    height     : 30px;
+    line-height: 20px;
+    box-sizing : border-box;
+    padding    : 5px 15px;
+    cursor     : pointer;
+}
+
+.m-title-form-control:active {
+    box-sizing      : border-box;
+    height          : 30px;
+    line-height     : 18px;
+    background-color: #fff;
+    color           : #0072BB;
+    border-top      : 1px solid #0072BB;
+}
+
+.m-title-form-control-active {
+    box-sizing      : border-box;
+    height          : 30px;
+    line-height     : 18px;
+    background-color: #fff;
+    color           : #0072BB;
+    border-top      : 1px solid #0072BB;
+}

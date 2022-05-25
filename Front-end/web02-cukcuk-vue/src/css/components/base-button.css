@@ -1,0 +1,71 @@
+.m-btn {
+    height          : 25px;
+    padding         : 0 10px;
+    border-radius   : 2px;
+    border          : none;
+    outline         : none;
+    border          : 1px solid #CCC;
+    cursor          : pointer;
+    background-color: #FAFAFA;
+    box-sizing      : border-box;
+}
+
+.m-btn:hover {
+    background-color: #E4F2EA;
+    border          : 1px solid #0072BC;
+    box-sizing      : border-box;
+}
+
+.m-btn:active {
+    background-color: #E4F2EA;
+    border          : 1px solid #0072BC;
+    box-sizing      : border-box;
+}
+
+.m-btn:disabled {
+    background-color: #FAFAFA;
+    border          : 1px solid #CCC;
+    box-sizing      : border-box;
+    opacity         : 30%;
+}
+
+.m-btn-wcolor {
+    background-color: #0072BC;
+    border-color    : 1px solid #0072BC;
+    color           : #fff;
+}
+
+.m-btn-wcolor:hover {
+    background-color: #008CE6;
+    border-color    : 1px solid #008CE6;
+}
+
+.m-btn-wcolor:active {
+    background-color: #008CE6;
+    border-color    : 1px solid #008CE6;
+}
+
+.m-btn-wcolor:disabled {
+    background-color: #0072BC;
+    border-color    : 1px solid #0072BC;
+    opacity         : 30%;
+}
+
+.m-btn-wicon {
+    display: flex;
+}
+
+.m-btn-icon {
+    margin-right   : 8px;
+    display        : flex;
+    width          : 12px;
+    justify-content: center;
+}
+
+.m-btn-icon .fa-check {
+    color: green;
+}
+
+.m-btn-icon .fa-xmark {
+    color: red;
+}

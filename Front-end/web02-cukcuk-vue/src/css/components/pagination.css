@@ -1,0 +1,67 @@
+.m-pagination {
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-start;
+    height         : 24px;
+    margin-top     : 10px;
+}
+
+button.m-btn-changePage {
+    width           : 30px;
+    height          : 24px;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    cursor          : pointer;
+    border          : none;
+    outline         : none;
+    background-color: unset;
+}
+
+.m-btn-changePage:active {
+    background-color: #0072BB;
+}
+
+button.m-btn-changePage:disabled,
+button[disabled] {
+    color           : #666666;
+    background-color: unset;
+    cursor          : not-allowed;
+}
+
+.m-btn-changePage i {
+    color: grey;
+}
+
+.m-pagination-text {
+    border-left: 1px solid grey;
+    padding    : 0 10px;
+    height     : 20px;
+    display    : flex;
+}
+
+.m-refresh-page {
+    height      : 20px;
+    border-left : 1px solid grey;
+    border-right: 1px solid grey;
+}
+
+input.m-current-pagination {
+    height : 24px;
+    width  : 25px;
+    padding: 0 5px;
+    border : none;
+    outline: none;
+    border : 1px solid #d0d0d0;
+    ;
+}
+
+.m-total-pagination {
+    padding: 0 10px;
+}
+
+.m-sel-pageSize {
+    height     : 30px;
+    width      : 50px;
+    margin-left: 20px;
+}

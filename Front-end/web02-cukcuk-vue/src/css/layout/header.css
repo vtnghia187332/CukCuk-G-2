@@ -1,0 +1,149 @@
+.m-header {
+    height          : 54px;
+    width           : 100%;
+    display         : flex;
+    background-color: #0072BC !important;
+    box-sizing      : border-box;
+}
+
+.m-header .m-header-logo {
+    width          : 200px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    box-sizing     : border-box;
+}
+
+.m-btn-changeSize {
+    padding-left   : 10px;
+    width          : 30px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    margin-right   : 16px;
+    box-sizing     : border-box;
+}
+
+.m-btn-changeSize i {
+    font-size: 24px;
+    color    : #fff;
+    cursor   : pointer;
+}
+
+.m-logo-page {
+    width              : 170px;
+    height             : 100%;
+    background-image   : url('../../assets/img/logoCukCuk207x45.png');
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : contain;
+    box-sizing         : border-box;
+}
+
+.m-header-content {
+    width          : 100%;
+    display        : flex;
+    justify-content: space-between;
+    justify-items  : center;
+    padding-left   : 15px;
+
+}
+
+.m-header-left {
+    display: flex;
+}
+
+.m-center-dropdown-user {
+    width          : 200px;
+    flex           : 0 0 auto;
+    justify-content: space-between;
+    padding        : 0 16px;
+    align-self     : center;
+    justify-content: center;
+    display        : flex;
+}
+
+.m-btn-header-avatar {
+    height          : 32px;
+    width           : 32px;
+    border-radius   : 50%;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    background-color: #fff;
+    border-radius   : 50%;
+}
+
+.m-btn-header-avatar i {
+    font-size: 20px;
+}
+
+.m-header-name {
+    width       : 140px;
+    align-self  : center;
+    color       : #fff;
+    padding-left: 8px;
+}
+
+.m-header-icon-dropdown {
+    display        : flex;
+    height         : 14px;
+    width          : 14px;
+    justify-content: center;
+    align-self     : center;
+    cursor         : pointer;
+}
+
+.m-header-icon-dropdown i {
+    margin-top: -4px;
+    color     : #fff;
+}
+
+.m-tooltip-icon {
+    position: relative;
+    cursor  : pointer;
+}
+
+.m-tooltip-icon:hover {
+    background-color: #004F82;
+}
+
+.m-icon-fuction {
+    height         : 48px;
+    width          : 44px;
+    justify-content: center;
+    padding-top    : 15px;
+    box-sizing     : border-box;
+}
+
+.m-icon-fuction:hover::after {
+    content      : "";
+    width        : 0;
+    height       : 0;
+    border-bottom: 8px solid transparent;
+    border-left  : 22px solid transparent;
+    border-right : 22px solid transparent;
+    border-top   : 8px solid #004F82;
+    position     : absolute;
+    bottom       : -16px;
+    left         : 0;
+}
+
+.m-icon-component i {
+    display        : flex;
+    align-self     : center;
+    justify-content: center;
+    font-size      : 24px;
+    color          : #fff;
+}
+
+.m-combobox-selection-language {
+    margin-right: 10px;
+    margin-left : 20px;
+}
+
+.m-txt-vertion {
+    color      : #fff;
+    font-weight: 700;
+    line-height: 54px;
+}

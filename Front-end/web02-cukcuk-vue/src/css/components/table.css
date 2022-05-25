@@ -1,0 +1,205 @@
+table.m-table {
+    position       : relative;
+    overflow-x     : scroll;
+    border         : none !important;
+    padding        : 0;
+    border         : none;
+    border-collapse: collapse;
+    width          : 100%;
+}
+
+.m-grid {
+    margin-top: 10px;
+    border    : 1px solid #c7c7c7;
+}
+
+.m-table-grid-flex {
+    box-sizing: border-box;
+}
+
+.m-frame-table {
+    position: relative;
+}
+
+.m-table tr {
+    border-bottom: 1px solid #c7c7c7;
+    height       : 35px;
+}
+
+table.m-table tr th,
+td {
+    padding: 0 10px;
+}
+
+table.m-table tbody tr td {
+    border-right: 1px solid #c7c7c7;
+    cursor      : pointer;
+}
+
+table.m-table tbody tr:hover {
+    z-index         : 10000;
+    background-color: #0197fb62 !important;
+}
+
+table.m-table tbody tr.selectedRowCovertion {
+    background-color: #0197fb62 !important;
+    z-index         : 999;
+}
+
+table.m-table tbody tr td:last-child {
+    border-right: none;
+}
+
+table.m-table thead tr th {
+    border-right: 1px solid rgba(128, 128, 128, 0.438);
+}
+
+table.m-table thead tr th:last-child {
+    border-right: none;
+}
+
+table.m-table thead {
+    padding : 50px;
+    height  : 35px;
+    position: sticky;
+    top     : 0;
+    z-index : 20;
+}
+
+.m-row-selected {
+    z-index         : 10000;
+    background-color: #0197fb62 !important;
+}
+
+table.m-table thead tr th {
+    background-color: #F2F2F2;
+    border-top      : none;
+    font-weight     : 500;
+    padding         : 5px 5px;
+}
+
+
+/* .m-table tbody tr:hover {
+    background-color: #EBF4FF !important;
+    z-index         : 9;
+    cursor          : pointer;
+} */
+
+.m-sequence-number {
+    background-color: #F2F2F2;
+    z-index         : 1;
+}
+
+.m-40 {
+    width     : 150px;
+    max-width : 150px;
+    box-sizing: border-box;
+}
+
+.m-sequenc-number {
+    min-width : 40px;
+    max-width : 40px;
+    box-sizing: border-box;
+}
+
+.m-name-convertion {
+    min-width : 200px;
+    max-width : 200px;
+    box-sizing: border-box;
+}
+
+.m-rate-number {
+    min-width : 100px;
+    max-width : 100px;
+    box-sizing: border-box;
+}
+
+.m-des-convertion {
+    min-width : 250px;
+    max-width : 250px;
+    box-sizing: border-box;
+}
+
+.m-cal-convertion {
+    min-width : 243px;
+    max-width : 243px;
+    box-sizing: border-box;
+}
+
+.m-230 {
+    width     : 230px;
+    box-sizing: border-box;
+}
+
+.m-180 {
+    width     : 180px;
+    box-sizing: border-box;
+}
+
+.m-400 {
+    width     : 400px;
+    box-sizing: border-box;
+}
+
+.m-rate {
+    width     : 180px;
+    box-sizing: border-box;
+
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-left {
+    text-align: left;
+}
+
+.txt-right {
+    text-align: right;
+}
+
+.m-input-table-convert {
+    border          : none;
+    outline         : none;
+    cursor          : pointer;
+    height          : 32px;
+    background-color: transparent;
+    width           : 100%;
+}
+
+.m-input-table-convert:focus {
+    border : none;
+    outline: none;
+}
+
+
+/* Scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #BBBBBB;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #808080;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
+
+/* Scroll bar */
+
+::-webkit-scrollbar {
+    height: 8px;
+    /* height of horizontal scrollbar ← You're missing this */
+    /* width of vertical scrollbar */
+    border: 1px solid #d5d5d5;
+}

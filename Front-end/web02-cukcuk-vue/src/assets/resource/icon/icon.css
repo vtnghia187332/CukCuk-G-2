@@ -1,0 +1,87 @@
+.m-close-icon {
+    background     : url('../../img/IconSprite.png') no-repeat 0 0;
+    width          : 18px;
+    height         : 18px;
+    background-size: cover;
+}
+
+.m-change-icon {
+    background     : url('../../img/IconSprite.png') no-repeat -1px -17px;
+    width          : 18px;
+    height         : 18px;
+    background-size: cover;
+}
+
+.m-addition-icon {
+    background: url('../../img/IconSprite.png') no-repeat 0 -48px;
+    width     : 18px;
+    height    : 16px;
+}
+
+.m-cancel-icon {
+    background: url('../../img/IconSprite.png') no-repeat -2px -2683px;
+    width     : 12px;
+    height    : 11px;
+}
+
+.m-add-data-row {
+    background: url('../../img/IconSprite.png') no-repeat -1px -2416px;
+    width     : 15px;
+    height    : 15px;
+}
+
+.m-help {
+    background: url('../../img/IconSprite.png') no-repeat 0 -2602px;
+    width     : 16px;
+    height    : 12px;
+}
+
+.m-addition-db {
+    background: url('../../img/IconSprite.png') no-repeat -1px -1936px;
+    width     : 12px;
+    height    : 15px;
+}
+
+.m-addition-more-db {
+    background: url('../../img/IconSprite.png') no-repeat -1px -2416px;
+    width     : 15px;
+    height    : 15px;
+}
+
+.m-duplicate {
+    background: url('../../img/IconSprite.png') no-repeat -1px -1888px;
+    width     : 14px;
+    height    : 15px;
+
+}
+
+.m-update {
+    background: url('../../img/IconSprite.png') no-repeat 0 -1872px;
+    width     : 15px;
+    height    : 15px;
+}
+
+.m-cancel-add-icon {
+    background: url('../../img/IconSprite.png') no-repeat 0 -1968px;
+    width     : 15px;
+    height    : 15px;
+}
+
+.m-icon-navbar-material {
+    background         : url('../../img/IconSprite.png') no-repeat 0 -225px;
+    width              : 15px;
+    height             : 14px;
+    background-position: center;
+}
+
+.m-refresh {
+    background: url('../../img/IconSprite.png') no-repeat 0 -2586px;
+    width     : 16px;
+    height    : 13px;
+}
+
+.m-icon-x-cancel {
+    background: url('../../img/IconSprite.png') no-repeat -2px -2683px;
+    width     : 12px;
+    height    : 11px;
+}
