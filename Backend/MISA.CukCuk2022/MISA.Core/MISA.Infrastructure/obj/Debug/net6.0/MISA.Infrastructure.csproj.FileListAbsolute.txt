@@ -1,0 +1,15 @@
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\bin\Debug\net6.0\MISA.Infrastructure.deps.json
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\bin\Debug\net6.0\MISA.Infrastructure.dll
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\bin\Debug\net6.0\MISA.Infrastructure.pdb
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\bin\Debug\net6.0\MISA.Core.dll
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\bin\Debug\net6.0\MISA.Core.pdb
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.AssemblyInfo.cs
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.csproj.CopyComplete
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.dll
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\refint\MISA.Infrastructure.dll
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\MISA.Infrastructure.pdb
+C:\Users\ADMIN\Documents\MISA-05-2022\MISA.CukCuk2022\MISA.Core\MISA.Infrastructure\obj\Debug\net6.0\ref\MISA.Infrastructure.dll
