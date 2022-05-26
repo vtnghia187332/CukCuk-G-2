@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj": {}
+    "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
+    "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
         "projectName": "MISA.Core",
-        "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+        "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
         "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
+        "outputPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -68,14 +68,14 @@
         }
       }
     },
-    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj": {
+    "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
         "projectName": "MISA.CukCuk.Api",
-        "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+        "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
         "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\obj\\",
+        "outputPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.CukCuk.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,11 +92,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
-                "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
+              "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
               },
-              "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
+              "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
               }
             }
           }
@@ -150,14 +150,14 @@
         }
       }
     },
-    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+    "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
         "projectName": "MISA.Infrastructure",
-        "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -174,8 +174,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
-                "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
+              "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
               }
             }
           }

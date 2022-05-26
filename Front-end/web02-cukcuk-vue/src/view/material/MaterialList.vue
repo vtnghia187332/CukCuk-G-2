@@ -726,7 +726,6 @@ export default {
       if (this.checkedaAssetList.length == 1) {
         // this.checkedaAssetList[0] == this.materialSelected;
         Object.assign(this.materialSelected, this.checkedaAssetList[0]);
-        console.log(this.materialSelected);
       }
     },
     /**

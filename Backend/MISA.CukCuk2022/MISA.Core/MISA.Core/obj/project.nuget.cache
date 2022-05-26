@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J+pz7vCr19ehMAPMvFZsoT8JfoydhXkd+vsdM8ZdrOMZ6uCkMhWue3onwSUBDlSycwmgIndaXGzhaFEh8VBL+w==",
+  "dgSpecHash": "lRDf5yI7p8fq1r+oY1cw+1zoRIFNePhX0rNeGgOqDvU2oP/0kIlAzkiBW+kWMvDBTKLrDkZ1bS+i8KaKYNgdWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+  "projectFilePath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vtnghia\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\vtnghia\\.nuget\\packages\\mysqlconnector\\2.1.8\\mysqlconnector.2.1.8.nupkg.sha512"
