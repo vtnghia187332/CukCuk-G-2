@@ -1,0 +1,50 @@
+.base-input {
+    display    : flex;
+    align-items: center;
+    position   : relative;
+}
+
+button.m-sel-drp-icon {
+    display        : flex;
+    justify-content: center;
+    border         : none;
+    outline        : none;
+    height         : 30px;
+    width          : 35px;
+    line-height    : 30px;
+    cursor         : pointer;
+    line-height    : 32px;
+    border         : 1px solid #d0d0d0;
+}
+
+.m-base-input {
+    height    : 30px;
+    box-sizing: border-box;
+    border    : none;
+    outline   : none;
+    border    : 1px solid #d0d0d0;
+    padding   : 5px 10px;
+    min-width : 50px;
+    width     : 100%;
+}
+
+.drp-sel-operator-list {
+    position        : absolute;
+    top             : 37px;
+    border          : 1px solid #d0d0d0;
+    border-radius   : 2px;
+    /* box-shadow   : 0 3px 20px #d0d0d0; */
+    box-shadow      : 2px 2px 5px #d0d0d0;
+}
+
+.drp-sel-operator {
+    padding      : 8px 0;
+    padding-left : 15px;
+    padding-right: 5px;
+    cursor       : pointer;
+    ;
+}
+
+.drp-sel-operator:hover {
+    background-color: #5fa2dd;
+}

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/assets/font-awesome/css/all.min.css">
+    <title>Material</title>
+
+</head>
+
+<body>
+    <div class="m-header">
+        <div class="m-header-logo">
+            <div class="m-btn-changeSize">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="m-logo-page"></div>
+        </div>
+        <div class="m-header-content">
+
+        </div>
+    </div>
+    <div class="m-navbar">
+        <div class="m-navbar-list">
+            <div class="m-nabar">
+                <div class="m-nabar-icon">
+                    <i class="fa-solid fa-table-list"></i>
+                </div>
+                <div class="m-navbar-txt">Nguyên vật liệu</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-content-title">
+            <div class="m-txt-title">Nguyên vật liệu</div>
+            <div class="m-btn-feedback">
+                <button class="m-btn m-btn-wicon fit-center">
+                    <div class="m-btn-icon m-addition-icon"></div>
+                    <div class="m-btn-text">Phản hồi</div>
+                </button>
+            </div>
+        </div>
+        <div class="m-btn-functions">
+            <button class="m-btn m-btn-wicon fit-center btn-content">
+                <div class="m-btn-icon m-addition-more-db"></div>
+                <div class="m-btn-text">Thêm</div>
+            </button>
+            <button class="m-btn m-btn-wicon fit-center btn-content">
+                <div class="m-btn-icon m-duplicate"></div>
+                <div class="m-btn-text">Nhân bản</div>
+            </button>
+            <button class="m-btn m-btn-wicon fit-center btn-content">
+                <div class="m-btn-icon m-update"></div>
+                <div class="m-btn-text">Sửa</div>
+            </button>
+            <button class="m-btn m-btn-wicon fit-center btn-content">
+                <div class="m-btn-icon m-cancel-add-icon"></div>
+                <div class="m-btn-text">Xóa</div>
+            </button>
+            <button class="m-btn m-btn-wicon fit-center btn-content">
+                <div class="m-btn-icon m-refresh"></div>
+                <div class="m-btn-text">Nạp</div>
+            </button>
+        </div>
+        <div class="m-content-grid">
+            <div class="m-grid m-grid-content">
+                <div class="m-table-grid-flex">
+                    <div class="m-frame-table m-frame-table-content">
+                        <table class="m-table" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th class="">
+                                        <div class="txt-grid-content">Mã nguyên vật liệu</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class=" ">
+                                        <div class="txt-grid-content">Tên nguyên vật liệu</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="txt-grid-content">Tính chất</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                    <th class="">
+                                        <div class="txt-grid-content">ĐVT tính</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                    <th class="">
+                                        <div class="txt-grid-content">Nhóm nguyên vật liệu</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                    <th class="">
+                                        <div class="txt-grid-content">Ghi chú</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="m-40">
+                                        <div class="txt-grid-content">Ngừng theo dõi</div>
+                                        <div class="input-grid-content">
+                                            <div class="base-input">
+                                                <button class="m-sel-drp-icon">*
+                                                </button>
+                                                <input type="text" class="m-base-input">
+                                                <div class="drp-sel-operator-list" hidden>
+                                                    <div class="drp-sel-operator">* : Chứa</div>
+                                                    <div class="drp-sel-operator">= : Bằng</div>
+                                                    <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                                                    <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                                                    <div class="drp-sel-operator">! : Không chứa</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>111111111111111111111</td>
+                                    <td>111111111111111111111</td>
+                                    <td>111111111111111111111</td>
+                                    <td>111111111111111111111</td>
+                                    <td>111111111111111111111</td>
+                                    <td>111111111111111111111</td>
+                                    <td class="td-checkbox m-40">
+                                        <input class="checkbox" type="checkbox" />
+                                    </td>
+                                </tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="m-pagination-cus">
+            <div class="m-pagination">
+                <div class="m-btn-changePage m-first-page">
+                    <i class="fa-solid fa-angles-left"></i>
+                </div>
+                <div class="m-btn-changePage m-prev-page">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="m-pagination-text fit-center">Trang</div>
+                <input type="text" class="m-current-pagination">
+                <div class="m-total-pagination">trên <span>1</span></div>
+                <div class="m-btn-changePage m-next-page">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <div class="m-btn-changePage m-last-page">
+                    <i class="fa-solid fa-angles-right"></i>
+                </div>
+                <div class="m-btn-changePage m-refresh-page">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <select name="" id="" class="m-sel-pageSize">
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
+            <div class="footer-txt-content">
+                <div class="txt footer">Hiển thị 1-100 trên 100 kết quả</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialog -->
+    <div class="m-dialog" >
+        <div class="m-dialog-box">
+            <div class="m-dialog m-dlg-detail">
+                <div class="dialog-header dlg-header-show">
+                    <div class="m-popup-title">Thêm Nguyên vật liệu</div>
+                    <div class="m-icon-detail">
+                        <div class="m-popup-close">
+                            <i class=" fa-solid fa-maximize"></i>
+                        </div>
+                        <div class="m-popup-close">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-popup-content dlg-content-show dlg-content-detail">
+                    <div class="m-popup-content-text">
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">Tên <span class="m-compulsory-input">(*)</span></div>
+                            <input type="text" class="m-detail-input">
+                        </div>
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">Mã <span class="m-compulsory-input">(*)</span></div>
+                            <input type="text" class="m-detail-input">
+                        </div>
+                    </div>
+
+                    <div class="m-popup-content-text">
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">ĐVT <span class="m-compulsory-input">(*)</span></div>
+                            <!-- <input type="text" class="m-detail-input"> -->
+                            <div class="m-combobox-selection ">
+                                <input type="text" class="m-input-selection">
+                                <button class="m-combobox-btn-selection m-combobox-detail-form">
+                                    <i class="fa-solid fa-sort-down drp-btn"></i>
+                                </button>
+
+                                <div class="m-combobox-data-selection">
+                                    <div class="m-combobox-item-selection">Nam</div>
+                                    <div class="m-combobox-item-selection">Nữ</div>
+                                    <div class="m-combobox-item-selection">Khác</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">Kho ngầm định </div>
+                            <!-- <input type="text" class="m-detail-input"> -->
+                            <div class="m-combobox-selection ">
+                                <input type="text" class="m-input-selection">
+                                <button class="m-combobox-btn-selection m-combobox-detail-form">
+                                    <i class="fa-solid fa-sort-down drp-btn"></i>
+                                    <i class="m-addition-icon"></i>
+                                </button>
+
+                                <div class="m-combobox-data-selection">
+                                    <div class="m-combobox-item-selection">Nam</div>
+                                    <div class="m-combobox-item-selection">Nữ</div>
+                                    <div class="m-combobox-item-selection">Khác</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-popup-content-text">
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">Hạn sử dụng </div>
+                            <input type="text" class="m-detail-input">
+                        </div>
+                        <div class="m-form-detail">
+                            <div class="m-detail-name">SL tồn tối thiểu</div>
+                            <input type="text" class="m-detail-input">
+                        </div>
+                    </div>
+                    <div class="m-popup-content-text">
+                        <div class="m-form-detail m-form-detail-des">
+                            <div class="m-detail-name m-detail-name-des">Mô tả </div>
+                            <textarea class="m-detail-input m-detail-input-des" name="" id="" cols=""
+                                rows=""></textarea>
+                        </div>
+                    </div>
+                    <div class="m-header-form-controls">
+                        <div class="m-title-form-control">Đơn vị chuyển đổi</div>
+                        <div class="m-title-form-control">Lịch sử thuê bao</div>
+                        <div class="m-title-form-control">Quản lý thiết bị</div>
+                    </div>
+
+                    <!-- table -->
+                    <div class="m-grid m-grid-detail">
+                        <div class="m-table-grid-flex">
+                            <div class="m-frame-table m-frame-table-detail">
+                                <table class="m-table" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="m-40 txt-center">STT</th>
+                                            <th class="m-230 ">Đơn vị chuyển đổi</th>
+                                            <th class="m-180">Tỉ lệ chuyển đổi</th>
+                                            <th class="m-180">Phép tính</th>
+                                            <th>Mô tả</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="m-40 txt-center m-sequence-number">1</td>
+                                            <td class="m-230 txt-left">
+                                                <input type="text" class="m-input-table-convert">
+                                            </td>
+                                            <td class="m-180 txt-right">
+                                                <input type="text" class="m-input-table-convert">
+                                            </td>
+                                            <td class="m-180 txt-left">
+                                                <input type="text" class="m-input-table-convert">
+                                            </td>
+                                            <td class=" txt-left">
+                                                <input type="text" class="m-input-table-convert">
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /table -->
+                    <div class="m-table-detail-icon">
+                        <button class="m-btn m-btn-wicon fit-center m-btn-detail-table">
+                            <div class="m-btn-icon m-add-data-row"></div>
+                            <div class="m-btn-text">Thêm dòng</div>
+                        </button>
+                        <button class="m-btn m-btn-wicon fit-center m-btn-detail-table">
+                            <div class="m-btn-icon m-cancel-icon"></div>
+                            <div class="m-btn-text ">Xóa dòng</div>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="m-popup-footer m-detail-footer">
+                    <div class="left-detail-footer">
+                        <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                            <div class="m-btn-icon m-help"></div>
+                            <div class="m-btn-text">Giúp</div>
+                        </button>
+                    </div>
+                    <div class="right-detail-footer">
+                        <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                            <div class="m-btn-icon m-addition-db"></div>
+                            <div class="m-btn-text">Cất</div>
+                        </button>
+                        <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                            <div class="m-btn-icon m-addition-more-db"></div>
+                            <div class="m-btn-text">Cất và thêm</div>
+                        </button>
+                        <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                            <div class="m-btn-icon m-cancel-add-icon"></div>
+                            <div class="m-btn-text">Hủy bỏ</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /dialog -->
+</body>
+
+</html>

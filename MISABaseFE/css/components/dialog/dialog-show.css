@@ -1,0 +1,41 @@
+.m-dlg-show {
+    background-color: #0072BB;
+    width           : 500px;
+    border-radius   : 4px;
+}
+
+.dlg-header-show {
+    height         : 30px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    padding        : 7px 0;
+    padding-left   : 20px;
+    padding-right  : 10px;
+}
+
+.dlg-header-show .m-popup-title {
+    color: #fff;
+}
+
+.dlg-header-show .m-popup-close {
+    height          : 18px;
+    width           : 18px;
+    border-radius   : 50%;
+    background-color: #fff;
+    cursor          : pointer;
+}
+
+.dlg-content-show {
+    background-color: #fff;
+    margin          : 0 5px -1px 5px;
+    padding         : 20px 0;
+    padding-left    : 10px;
+    padding-right   : 25px;
+    border-bottom   : 2px solid grey;
+}
+
+.dlg-footer-show {
+    display        : flex;
+    justify-content: flex-end;
+}

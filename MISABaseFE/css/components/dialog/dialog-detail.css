@@ -1,0 +1,125 @@
+.m-dlg-detail {
+    background-color: #0072BB;
+    width           : 900px;
+    border-radius   : 4px;
+}
+
+.dlg-content-detail {
+    border: none;
+}
+
+.m-detail-footer {
+    display        : flex;
+    justify-content: space-between;
+}
+
+.right-detail-footer {
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-end;
+}
+
+.m-icon-detail {
+    display: flex;
+}
+
+.m-icon-detail .m-popup-close {
+    margin-left    : 6px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.m-icon-detail .m-popup-close i {
+    color: red;
+}
+
+.m-icon-detail .m-popup-close i.fa-maximize {
+    color: black;
+}
+
+.m-form-detail {
+    display    : flex;
+    align-items: center;
+}
+
+.m-popup-content-text {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    margin         : 10px 0;
+}
+
+.dlg-content-detail {
+    padding      : 15px 0;
+    padding-left : 15px;
+    padding-right: 15px;
+}
+
+.m-detail-name {
+    width: 120px;
+}
+
+.m-compulsory-input {
+    color      : red;
+    font-weight: 900;
+}
+
+.m-detail-input {
+    border        : none;
+    outline       : none;
+    border        : 1px solid grey;
+    height        : 32px;
+    width         : 220px;
+    /* margin-left: 80px; */
+    padding       : 0 15px;
+}
+
+.m-detail-input-des {
+    padding-top: 7px;
+    width      : 708px;
+    height     : 80px;
+}
+
+.m-grid-detail {
+    height: 236px;
+}
+
+.m-form-detail-des {
+    align-items: unset;
+}
+
+.m-table-detail-icon {
+    margin-top : 20px;
+    display    : flex;
+    align-items: center;
+}
+
+.m-btn-detail-table {
+    margin-right: 8px;
+}
+
+.m-input-detail-sel {
+    background-color: #fff;
+}
+
+.m-combobox-detail-form {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    box-sizing     : border-box;
+
+}
+
+.m-combobox-detail-form i {
+    margin-left: 10px;
+    box-sizing : border-box;
+}
+
+.m-frame-table.m-frame-table-detail {
+    position  : relative;
+    width     : 100%;
+    height    : calc(28vh - 25.5px);
+    box-sizing: border-box;
+    overflow-y: auto;
+}

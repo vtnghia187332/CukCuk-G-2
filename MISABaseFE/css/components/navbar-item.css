@@ -1,0 +1,36 @@
+.m-menu-list-item {
+    height          : 42px;
+    width           : 100%;
+    display         : flex;
+    align-items     : center;
+    padding-right   : 14px;
+    cursor          : pointer;
+    box-sizing      : border-box;
+    background-color: #0199FB;
+}
+
+.m-menu-item-icon {
+    height           : 24px;
+    width            : 24px;
+    margin-right     : 8px;
+    margin-left      : 8px;
+    background-repeat: no-repeat;
+    background-color : blue;
+
+}
+
+.m-menu-item-text {
+    height     : 24px;
+    line-height: 24px;
+    color      : #fff;
+}
+
+.m-menu-list-item:hover {
+    background-color: #0199FB;
+}
+
+.m-menu-active-item {
+    height    : 42px;
+    width     : 6px;
+    box-sizing: border-box;
+}

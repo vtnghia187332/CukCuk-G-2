@@ -1,0 +1,137 @@
+.m-import-dlg {
+    font-size  : 16px;
+    font-weight: 800;
+}
+
+.m-popup-title-content {
+    font-size  : 14px;
+    font-weight: 800;
+}
+
+.m-dlg-import {
+    width: 1350px;
+}
+
+.m-popup-content-footer {
+    padding-top: 16px;
+    text-align : center;
+}
+
+.m-popup-content-footer .m-txt-footer span {
+    color      : #0072BB;
+    font-weight: 600;
+    cursor     : pointer;
+}
+
+.m-popup-content-import {
+    position: relative;
+}
+
+.m-content-import {
+    position : absolute;
+    top      : 50%;
+    left     : 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.m-txt-content-import {
+    display        : flex;
+    justify-content: center;
+}
+
+.content-validate {
+    text-align: center;
+}
+
+
+.m-popup-content-import {
+    margin          : 10px 0;
+    height          : 500px;
+    border          : 1px dashed grey;
+    background-color: #F4F5F8;
+    border-radius   : 4px;
+}
+
+.frame-import-list {
+    height: 500px;
+}
+
+.m-btn-text {
+    font-weight: 300;
+}
+
+
+.m-content-import .txt-content-import {
+    /* font-size   : 16px; */
+    font-weight : 800;
+    margin-right: 8px;
+    line-height : 22px;
+}
+
+.m-frame-import-list {
+    margin-top      : 10px;
+    height          : 90px;
+    border          : 1px dashed grey;
+    background-color: #F4F5F8;
+    border-radius   : 4px;
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+}
+
+.import-list-left {
+    display: flex;
+}
+
+.import-list-left .fa-database {
+    color           : rgba(128, 128, 128, 0.836);
+    height          : 24px;
+    width           : 24px;
+    background-color: rgba(128, 128, 128, 0.164);
+    text-align      : center;
+    line-height     : 24px;
+    border-radius   : 50%;
+}
+
+.import-list-left .icon-import-list {
+    margin: 0 25px;
+}
+
+.import-list-left .txt-import-list {
+    line-height: 22px;
+}
+
+.import-list-right {
+    margin-right: 25px;
+}
+
+.frame-import-table {
+    height    : 400px;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+.m-grid-import {
+    border    : none !important;
+    outline   : none !important;
+    margin-top: 0;
+}
+
+
+table.m-table-import tbody tr td {
+    border : none !important;
+    outline: none !important;
+}
+
+table.m-table-import thead tr th {
+    border : none !important;
+    outline: none !important;
+}
+
+.m-table-import-footer {
+    margin-top     : 20px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+}

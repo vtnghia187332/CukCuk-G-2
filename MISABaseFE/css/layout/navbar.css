@@ -1,0 +1,40 @@
+.m-navbar {
+    width           : 200px;
+    height          : calc(100vh - 54px);
+    box-sizing      : border-box;
+    background-color: #0072BC !important;
+    box-sizing      : border-box;
+}
+
+.m-nabar {
+    display        : flex;
+    height         : 48px;
+    width          : 100%;
+    padding        : 5px 10px;
+    box-sizing     : border-box;
+    align-items    : center;
+    justify-content: flex-start;
+    cursor         : pointer;
+}
+
+.m-nabar:hover {
+    background-color: #0199FB !important;
+}
+
+.m-nabar .m-nabar-icon {
+    height       : 16px;
+    width        : 16px;
+    margin-right : 16px;
+    display      : flex;
+    align-items  : center;
+    justify-items: center;
+}
+
+.m-nabar .m-nabar-icon i {
+    color    : #fff;
+    font-size: 20px;
+}
+
+.m-navbar-txt {
+    color: #fff;
+}

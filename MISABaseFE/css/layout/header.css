@@ -1,0 +1,41 @@
+.m-header {
+    height          : 54px;
+    width           : 100%;
+    display         : flex;
+    background-color: #0072BC !important;
+    box-sizing      : border-box;
+}
+
+.m-header .m-header-logo {
+    width          : 200px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    box-sizing     : border-box;
+}
+
+.m-btn-changeSize {
+    padding-left   : 10px;
+    width          : 30px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    margin-right   : 16px;
+    box-sizing     : border-box;
+}
+
+.m-btn-changeSize i {
+    font-size: 24px;
+    color    : #fff;
+    cursor   : pointer;
+}
+
+.m-logo-page {
+    width              : 170px;
+    height             : 100%;
+    background-image   : url('../../assets/img/logoCukCuk207x45.png');
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : contain;
+    box-sizing         : border-box;
+}

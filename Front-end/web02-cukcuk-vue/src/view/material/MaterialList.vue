@@ -73,7 +73,16 @@
             <table class="m-table" cellspacing="0" cellpadding="0">
               <thead>
                 <tr>
-                  <th class="m-chkbox"></th>
+                  <th class="m-chkbox">
+                    <div class="txt-grid-content"></div>
+                    <div class="input-grid-content">
+                      <input
+                        class="checkbox"
+                        type="checkbox"
+                        @click="selAllMaterialOnClick"
+                      />
+                    </div>
+                  </th>
                   <th class="m-150">
                     <div class="txt-grid-content">Mã nguyên vật liệu</div>
                     <div class="input-grid-content">

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/assets/font-awesome/css/all.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="">1.Base button</label>
+    <div class="m-row">
+        <button class="m-btn">Đồng ý</button>
+    </div>
+
+    <label for="">1.1.Base button with icon</label>
+    <div class="m-row">
+        <button class="m-btn m-btn-wicon fit-center">
+            <div class="m-btn-icon ">1</div>
+            <div class="m-btn-text">Đồng ý</div>
+        </button>
+    </div>
+
+    <label for="">2.Base button with different background color</label>
+    <div class="m-row">
+        <button class="m-btn m-btn-wcolor">Đồng ý</button>
+    </div>
+
+    <label for="">1.1.Base button with background and icon</label>
+    <div class="m-row">
+        <button class="m-btn m-btn-wcolor m-btn-wicon fit-center">
+            <div class="m-btn-icon ">1</div>
+            <div class="m-btn-text">Đồng ý</div>
+        </button>
+    </div>
+
+    <label for="">1.1.Base input with dropdown</label>
+    <div class="m-row">
+        <div class="base-input">
+            <button class="m-sel-drp-icon">*
+            </button>
+            <input type="text" class="m-base-input">
+            <div class="drp-sel-operator-list">
+                <div class="drp-sel-operator">* : Chứa</div>
+                <div class="drp-sel-operator">= : Bằng</div>
+                <div class="drp-sel-operator">+ : Bắt đầu bằng</div>
+                <div class="drp-sel-operator">- : Kết thúc bằng</div>
+                <div class="drp-sel-operator">! : Không chứa</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-row" style="margin-top: 100px;">
+        <div class="title">1. Combobox Nghĩa</div>
+        <div class="m-combobox-selection">
+            <input type="text" class="m-input-selection">
+            <button class="m-combobox-btn-selection">
+                <i class="fa-solid fa-sort-down drp-btn"></i>
+            </button>
+            <div class="m-combobox-data-selection">
+                <div class="m-combobox-item-selection">Nam</div>
+                <div class="m-combobox-item-selection">Nữ</div>
+                <div class="m-combobox-item-selection">Khác</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-document-component" style="margin-top: 50px;">
+        <div class="m-row">
+            <div class="title">2. Logo-text-navbar</div>
+            <div class="m-menu-list-item">
+                <div class="m-menu-item-icon "></div>
+                <div class="m-menu-item-text">Tổng quan</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-document-component">
+        <div class="title">0.Custom-checkbox</div>
+        <div class="m-row">
+            <input type="checkbox" />
+            <input type="checkbox" checked />
+        </div>
+    </div>
+
+    <div class="m-document-component">
+        <div class="title">0.Pagination</div>
+        <div class="m-row">
+            <div class="m-pagination">
+                <div class="m-btn-changePage m-first-page">
+                    <i class="fa-solid fa-angles-left"></i>
+                </div>
+                <div class="m-btn-changePage m-prev-page">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="m-pagination-text fit-center">Trang</div>
+                <input type="text" class="m-current-pagination">
+                <div class="m-total-pagination">trên <span>1</span></div>
+                <div class="m-btn-changePage m-next-page">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <div class="m-btn-changePage m-last-page">
+                    <i class="fa-solid fa-angles-right"></i>
+                </div>
+                <div class="m-btn-changePage m-refresh-page">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <select name="" id="" class="m-sel-pageSize">
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-document-component">
+        <div class="title">10.Header Form Controls</div>
+        <div class="m-row">
+            <div class="m-header-form-controls">
+                <div class="m-title-form-control">Giới hạn thuê bao</div>
+                <div class="m-title-form-control">Lịch sử thuê bao</div>
+                <div class="m-title-form-control">Quản lý thiết bị</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-dialog-box" hidden>
+        <div class="m-dialog m-dlg-show">
+            <div class="dialog-header dlg-header-show">
+                <div class="m-popup-title">CUKCUK - Phần mềm quản lý nhà hàng</div>
+                <div class="m-popup-close"></div>
+            </div>
+            <div class="m-popup-content dlg-content-show">
+                <div class="m-popup-content-avatar"></div>
+                <div class="m-popup-content-text">Đây là cảnh bảo nè</div>
+            </div>
+            <div class="m-popup-footer dlg-footer-show">
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-icon ">1</div>
+                    <div class="m-btn-text">Đồng ý</div>
+                </button>
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-icon">1</div>
+                    <div class="m-btn-text">Hủy</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-dialog-box" hidden>
+        <div class="m-dialog m-dlg-detail">
+            <div class="dialog-header dlg-header-show">
+                <div class="m-popup-title">Thêm Nguyên vật liệu</div>
+                <div class="m-icon-detail">
+                    <div class="m-popup-close m-change-icon"></div>
+                    <div class="m-popup-close m-close-icon"></div>
+                </div>
+            </div>
+
+            <div class="m-popup-content dlg-content-show dlg-content-detail">
+                <div class="m-popup-content-text">
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">Tên <span class="m-compulsory-input">(*)</span></div>
+                        <input type="text" class="m-detail-input">
+                    </div>
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">Mã <span class="m-compulsory-input">(*)</span></div>
+                        <input type="text" class="m-detail-input">
+                    </div>
+                </div>
+                <div class="m-popup-content-text">
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">ĐVT <span class="m-compulsory-input">(*)</span></div>
+                        <!-- <input type="text" class="m-detail-input"> -->
+                        <div class="m-combobox-selection ">
+                            <input type="text" class="m-input-selection">
+                            <button class="m-combobox-btn-selection m-combobox-detail-form">
+                                <i class="fa-solid fa-sort-down drp-btn"></i>
+                                <i class="m-addition-icon"></i>
+                            </button>
+
+                            <div class="m-combobox-data-selection">
+                                <div class="m-combobox-item-selection">Nam</div>
+                                <div class="m-combobox-item-selection">Nữ</div>
+                                <div class="m-combobox-item-selection">Khác</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">Kho ngầm định </div>
+                        <!-- <input type="text" class="m-detail-input"> -->
+                        <div class="m-combobox-selection ">
+                            <input type="text" class="m-input-selection">
+                            <button class="m-combobox-btn-selection m-combobox-detail-form">
+                                <i class="fa-solid fa-sort-down drp-btn"></i>
+                                <i class="m-addition-icon"></i>
+                            </button>
+
+                            <div class="m-combobox-data-selection">
+                                <div class="m-combobox-item-selection">Nam</div>
+                                <div class="m-combobox-item-selection">Nữ</div>
+                                <div class="m-combobox-item-selection">Khác</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-popup-content-text">
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">Hạn sử dụng </div>
+                        <input type="text" class="m-detail-input">
+                    </div>
+                    <div class="m-form-detail">
+                        <div class="m-detail-name">SL tồn tối thiểu</div>
+                        <input type="text" class="m-detail-input">
+                    </div>
+                </div>
+                <div class="m-popup-content-text">
+                    <div class="m-form-detail m-form-detail-des">
+                        <div class="m-detail-name m-detail-name-des">Mô tả </div>
+                        <textarea class="m-detail-input m-detail-input-des" name="" id="" cols="" rows=""></textarea>
+                    </div>
+                </div>
+                <div class="m-header-form-controls">
+                    <div class="m-title-form-control">Đơn vị chuyển đổi</div>
+                    <div class="m-title-form-control">Lịch sử thuê bao</div>
+                    <div class="m-title-form-control">Quản lý thiết bị</div>
+                </div>
+
+                <!-- table -->
+                <div class="m-grid m-grid-detail">
+                    <div class="m-table-grid-flex">
+                        <div class="m-frame-table">
+                            <table class="m-table" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th class="m-40 txt-center">STT</th>
+                                        <th class="m-230 ">Đơn vị chuyển đổi</th>
+                                        <th class="m-180">Tỉ lệ chuyển đổi</th>
+                                        <th class="m-180">Phép tính</th>
+                                        <th>Mô tả</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="m-40 txt-center m-sequence-number">1</td>
+                                        <td class="m-230 txt-left">
+                                            <input type="text" class="m-input-table-convert">
+                                        </td>
+                                        <td class="m-180 txt-right">
+                                            <input type="text" class="m-input-table-convert">
+                                        </td>
+                                        <td class="m-180 txt-left">
+                                            <input type="text" class="m-input-table-convert">
+                                        </td>
+                                        <td class=" txt-left">
+                                            <input type="text" class="m-input-table-convert">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /table -->
+                <div class="m-table-detail-icon">
+                    <button class="m-btn m-btn-wicon fit-center m-btn-detail-table">
+                        <div class="m-btn-icon m-add-data-row"></div>
+                        <div class="m-btn-text">Thêm dòng</div>
+                    </button>
+                    <button class="m-btn m-btn-wicon fit-center m-btn-detail-table">
+                        <div class="m-btn-icon m-cancel-icon"></div>
+                        <div class="m-btn-text ">Xóa dòng</div>
+                    </button>
+                </div>
+
+            </div>
+            <div class="m-popup-footer m-detail-footer">
+                <div class="left-detail-footer">
+                    <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                        <div class="m-btn-icon m-help"></div>
+                        <div class="m-btn-text">Giúp</div>
+                    </button>
+                </div>
+                <div class="right-detail-footer">
+                    <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                        <div class="m-btn-icon m-addition-db"></div>
+                        <div class="m-btn-text">Cất</div>
+                    </button>
+                    <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                        <div class="m-btn-icon m-addition-more-db"></div>
+                        <div class="m-btn-text">Cất và thêm</div>
+                    </button>
+                    <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                        <div class="m-btn-icon m-cancel-add-icon"></div>
+                        <div class="m-btn-text">Hủy bỏ</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- b1: import -->
+    <div class="m-dialog-box" hidden>
+        <div class="m-dialog m-dlg-show m-dlg-import">
+            <div class="dialog-header dlg-header-show">
+                <div class="m-popup-title m-import-dlg">Nhập khẩu nguyên vật liệu</div>
+                <div class="m-popup-close"></div>
+            </div>
+            <div class="m-popup-content dlg-content-show">
+                <div class="m-popup-title-content">Bước 1: Tải tệp lên</div>
+                <div class="m-popup-content-import">
+                    <div class="m-content-import">
+                        <div class="m-txt-content-import">
+                            <div class="txt-content-import">Thả tệp vào đây hoặc</div>
+                            <button class="m-btn fit-center">
+                                <div class="m-btn-text m-btn-import">TẢI LÊN</div>
+                            </button>
+                        </div>
+                        <div class="content-validate">Định dạng được hỗ trợ: xlsx, xls, csv, ods</div>
+                    </div>
+                </div>
+                <div class="m-popup-content-footer">
+                    <div class="m-txt-footer">
+                        Để có kết quả nhập khẩu chính xác, hãy sử dụng tệp mẫu. <span>Tải xuống tệp mẫu</span>
+                    </div>
+                    <div class="m-txt-footer">
+                        Mỗi dòng dữ liệu đều trong tệp nhập khẩu tương ứng với 1 nguyên vật liệu
+                    </div>
+                </div>
+            </div>
+            <div class="m-popup-footer dlg-footer-show">
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Hủy</div>
+                </button>
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Tiếp theo</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- b2: import -->
+    <div class="m-dialog-box" hidden>
+        <div class="m-dialog m-dlg-show m-dlg-import">
+            <div class="dialog-header dlg-header-show">
+                <div class="m-popup-title m-import-dlg">Nhập khẩu nguyên vật liệu</div>
+                <div class="m-popup-close"></div>
+            </div>
+            <div class="m-popup-content dlg-content-show">
+                <div class="m-popup-title-content">Bước 1: Tải tệp lên</div>
+                <div class="frame-import-list">
+                    <div class="m-frame-import-list">
+                        <div class="import-list-left">
+                            <div class="icon-import-list"><i class="fa-solid fa-database"></i></div>
+                            <div class="txt-import-list">Danh sach nguyen vat lieu.xlxs</div>
+                        </div>
+                        <div class="import-list-right">
+                            <button class="m-btn fit-center">
+                                <div class="m-btn-text m-btn-import ">TẢI LÊN TỆP KHÁC</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="m-popup-content-footer">
+                        <div class="m-txt-footer">
+                            Để có kết quả nhập khẩu chính xác, hãy sử dụng tệp mẫu. <span>Tải xuống tệp mẫu</span>
+                        </div>
+                        <div class="m-txt-footer">
+                            Mỗi dòng dữ liệu đều trong tệp nhập khẩu tương ứng với 1 nguyên vật liệu
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-popup-footer dlg-footer-show">
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Hủy</div>
+                </button>
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Tiếp theo</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- b3: import validate-->
+    <div class="m-dialog-box">
+        <div class="m-dialog m-dlg-show m-dlg-import">
+            <div class="dialog-header dlg-header-show">
+                <div class="m-popup-title m-import-dlg">Nhập khẩu nguyên vật liệu</div>
+                <div class="m-popup-close"></div>
+            </div>
+            <div class="m-popup-content dlg-content-show">
+                <div class="m-popup-title-content">Bước 2: Kiểm tra dữ liệu</div>
+                <div class="frame-import-table">
+                    <div class="m-grid m-grid-import">
+                        <div class="m-table-grid-flex">
+                            <div class="m-frame-table m-frame-table-import">
+                                <table class="m-table m-table-import" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="">MÃ NGUYÊN VẬT LIỆU</th>
+                                            <th class="">TÊN NGUYÊN VẬT LIỆU</th>
+                                            <th class="">TÍNH CHẤT</th>
+                                            <th class="">ĐƠN VỊ TÍNH</th>
+                                            <th class="">LÝ DO</th>
+                                            <th class=""></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr> <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                         <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                         <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr> <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                         <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="m-table-import-footer">
+                    <div class="m-import-footer-left">Hiển thị 1-10 trên 120 kết quả</div>
+                    <div class="m-import-footer-right">2</div>
+                </div>
+            </div>
+            <div class="m-popup-footer dlg-footer-show">
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Hủy</div>
+                </button>
+                <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+                    <div class="m-btn-text">Tiếp theo</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
