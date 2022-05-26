@@ -35,7 +35,7 @@
       </button>
       <button
         class="m-btn m-btn-wicon fit-center btn-content"
-        :disabled="this.materialSelected.MaterialId == null"
+        :disabled="this.checkedaAssetList.length == 0"
         @click="deleteRowHandle"
       >
         <div class="m-btn-icon m-cancel-add-icon"></div>
@@ -48,6 +48,23 @@
         <div class="m-btn-icon m-refresh"></div>
         <div class="m-btn-text">Nạp</div>
       </button>
+      <button
+        class="m-btn m-btn-wicon fit-center btn-content"
+        @click="loadData"
+      >
+        <div class="m-btn-icon m-refresh"></div>
+        <div class="m-btn-text">Nạp</div>
+      </button>
+
+      <button class="m-btn m-btn-wicon fit-center btn-content">
+        <div class="m-btn-icon"><i class="fa-solid fa-file-import"></i></div>
+        <div class="m-btn-text">Nhập khẩu</div>
+      </button>
+
+      <button class="m-btn m-btn-wicon fit-center btn-content">
+        <div class="m-btn-icon"><i class="fa-solid fa-download"></i></div>
+        <div class="m-btn-text">Xuất khẩu</div>
+      </button>
     </div>
     <div class="m-content-grid">
       <div class="m-grid m-grid-content">
@@ -56,6 +73,7 @@
             <table class="m-table" cellspacing="0" cellpadding="0">
               <thead>
                 <tr>
+                  <th class="m-chkbox"></th>
                   <th class="m-150">
                     <div class="txt-grid-content">Mã nguyên vật liệu</div>
                     <div class="input-grid-content">
@@ -130,13 +148,16 @@
                 <tr
                   v-for="material in materials"
                   :key="material.MaterialId"
-                  @dblclick="rowOnDBClick(material)"
                   @click="activate(material)"
-                  :class="{
-                    'm-row-selected':
-                      materialSelected.MaterialId == material.MaterialId,
-                  }"
+                  @dblclick="rowOnDBClick(material)"
                 >
+                  <td class="m-chkbox">
+                    <input
+                      class="checkbox"
+                      type="checkbox"
+                      :checked="checkedaAssetList.includes(material)"
+                    />
+                  </td>
                   <td class="m-row-list">{{ material.MaterialCode }}</td>
                   <td class="m-row-list">{{ material.MaterialName }}</td>
                   <td class="m-row-list">{{ material.MaterialFeature }}</td>
@@ -280,6 +301,9 @@ export default {
   },
   data() {
     return {
+      //Tạo mảng để hứng các nguyên vật liệu được chọn
+      checkedaAssetList: [],
+
       //Các giá trị lựa chọn của Following
       selFollowingVals: [
         {
@@ -600,9 +624,15 @@ export default {
      * Created date: 17:33 12/05/2022
      */
     deleteRowHandle() {
-      this.handleWarningDlg(
-        `Bạn có thực sự muốn xóa Nguyên liệu <"${this.materialSelected.MaterialCode}"> không?`
-      );
+      if (this.checkedaAssetList.length == 1) {
+        this.handleWarningDlg(
+          `Bạn có thực sự muốn xóa Nguyên liệu <"${this.materialSelected?.MaterialCode}"> không?`
+        );
+      } else {
+        this.handleWarningDlg(
+          `Bạn có thực sự muốn xóa những Nguyên liệu đã chọn không?`
+        );
+      }
     },
     /**
      * Mô tả : Bấm nút đồng í -> gọi api để xóa object
@@ -614,10 +644,18 @@ export default {
     agreeHanleOnClick(isDelete) {
       // Đồng ý xóa
       if (isDelete) {
-        this.callApiTodeleteRowHandle();
+        // gọi api để xóa dữ liệu
+        // Xóa 1 dữ liệu
+        if (this.checkedaAssetList == 1) {
+          this.callApiTodeleteRowHandle();
+        } else {
+          // Xóa nhiều dữ liệu
+          console.log("Xóa nhiều nhé");
+        }
       }
       // Không đồng ý xóa
       else {
+        // Đóng form
         this.showWarningDlg(false);
       }
     },
@@ -668,11 +706,27 @@ export default {
      * Created date: 08:37 01/04/2022
      */
     activate(material) {
-      if (this.materialSelected.MaterialId == material.MaterialId) {
-        this.materialSelected = {};
+      // this.checkedaAssetList.map((elememt) => elememt.MaterialId) ==
+      //   material.MaterialId;
+      // Kiểm tra xem đã tích sản phẩm trước đó chưa
+      this.materialSelected = {};
+      if (this.checkedaAssetList.includes(material)) {
+        // Nếu tích r thì bỏ tích
+        // Lấy index của sản phẩm được chọn
+        const selecedIndex = this.checkedaAssetList.findIndex(
+          (prd) => prd.MaterialId == material.MaterialId
+        );
+        // Xóa theo index splice(start, deleteCount)
+        this.checkedaAssetList.splice(selecedIndex, 1);
       } else {
-        this.materialSelected = material;
-        this.materialSelected.MaterialId = material.MaterialId;
+        // Nếu chưa thì add vào list
+        this.checkedaAssetList.push(material);
+        // Nếu tại độ dài mảng checkedaAssetList.length == 1 -> Gán giá trị material == materialSeleted
+      }
+      if (this.checkedaAssetList.length == 1) {
+        // this.checkedaAssetList[0] == this.materialSelected;
+        Object.assign(this.materialSelected, this.checkedaAssetList[0]);
+        console.log(this.materialSelected);
       }
     },
     /**
@@ -809,5 +863,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

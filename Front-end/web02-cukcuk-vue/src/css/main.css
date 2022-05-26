@@ -12,76 +12,90 @@
 @import url("@/css/components/table.css");
 @import url("@/css/components/loadingPage.css");
 
-
 @import url("@/css/layout/content.css");
 @import url("@/css/layout/header.css");
 @import url("@/css/layout/navbar.css");
 
 @import url("@/assets/font-awesome/css/all.min.css");
 
-
-
 body {
-    margin     : 0;
-    font-family: MISA GoogleSans;
-    font-size  : 13px;
-    font-weight: 500;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: MISA NotoSans;
+  background-color: #f4f5f8;
+  font-weight: 400;
 }
-
-.m-row {
-    padding: 30px;
-}
-
 
 @font-face {
-    font-family: MISA Tahoma;
-    src        : url(../assets/font/Tahoma/@font-face/cd0381aa3322dff4babd137f03829c8c.eot);
+  font-family: MISA NotoSans;
+  src: url("@/assets/fonts/notosans-regular.2cb88a13.woff2");
+}
+
+@font-face {
+  font-family: MISA NotoSans Semi Bold;
+  src: url("@/assets/fonts/notosans-semibold.df3e6dc4.woff2");
+}
+
+@font-face {
+  font-family: MISA NotoSans Bold;
+  src: url("@/assets/fonts/notosans-bold.3ede5aff.woff2");
+}
+
+@font-face {
+  font-family: MISA NotoSans Italic;
+  src: url("@/assets/fonts/notosans-italic.1c1aaac9.woff2");
 }
 
 .m-input-error {
-    border-color: #FF4747 !important;
+  border-color: #ff4747 !important;
 }
 
 .fit-center {
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .m-150 {
-    width     : 200px;
-    max-width : 200px;
-    box-sizing: border-box;
+  width: 200px;
+  max-width: 200px;
+  box-sizing: border-box;
 }
 
 .m-row-list {
-    min-width : 200px;
-    max-width : 200px;
-    box-sizing: border-box;
+  min-width: 200px;
+  max-width: 200px;
+  box-sizing: border-box;
 }
 
 .m-250 {
-    width     : 250px;
-    max-width : 250px;
-    box-sizing: border-box;
+  width: 250px;
+  max-width: 250px;
+  box-sizing: border-box;
+}
+.m-chkbox {
+  width: 50px;
+  max-width: 50px;
+  box-sizing: border-box;
 }
 
 .m-500 {
-    width        : 500px;
-    /* min-width : 500px; */
-    max-width    : 500px;
-    box-sizing   : border-box;
-    white-space  : nowrap;
-    overflow     : hidden;
-    text-overflow: ellipsis;
+  width: 500px;
+  /* min-width : 500px; */
+  max-width: 500px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .m-error-input {
-    border : none;
-    outline: none;
-    border : 1px solid red !important;
+  border: none;
+  outline: none;
+  border: 1px solid red !important;
 }
 
 .outline-error-input:focus {
-    border: 1px solid red !important;
+  border: 1px solid red !important;
 }

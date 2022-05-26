@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {}
+    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
+    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
         "projectName": "MISA.Core",
-        "projectPath": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
+        "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+        "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,21 +64,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+    "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
         "projectName": "MISA.Infrastructure",
-        "projectPath": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,8 +92,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
-                "projectPath": "C:\\Users\\ADMIN\\Documents\\MISA-05-2022\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
+              "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\vtnghia\\Documents\\MISA-GĐ2\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj"
               }
             }
           }
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
