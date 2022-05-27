@@ -290,7 +290,7 @@
       @agreeAlertOnClick="agreeAlertOnClick"
     />
     <ImportDataFirst
-      v-if="isShowImportDlgFirst"
+      v-if="isShowImportDlgFirst = true"
       @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick"
     />
   </div>
