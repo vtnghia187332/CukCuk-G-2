@@ -1,109 +1,71 @@
 .base-input {
-    display    : flex;
-    align-items: center;
-    position   : relative;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-
-
 button.m-sel-drp-icon {
-    display        : flex;
-    justify-content: center;
-    border         : none;
-    outline        : none;
-    height         : 30px;
-    width          : 35px;
-    line-height    : 30px;
-    cursor         : pointer;
-    line-height    : 32px;
-    border         : 1px solid #d0d0d0;
+  display: flex;
+  justify-content: center;
+  border: none;
+  outline: none;
+  height: 30px;
+  width: 35px;
+  line-height: 30px;
+  cursor: pointer;
+  line-height: 32px;
+  border: 1px solid #d0d0d0;
 }
 
 .m-base-input {
-    height    : 30px;
-    box-sizing: border-box;
-    border    : none;
-    outline   : none;
-    border    : 1px solid #d0d0d0;
-    padding   : 5px 10px;
-    min-width : 50px;
-    width     : 100%;
+  height: 30px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border: 1px solid #d0d0d0;
+  padding: 5px 10px;
+  min-width: 50px;
+  width: 100%;
 }
 
 .drp-sel-operator-list {
-    position        : absolute;
-    top             : 37px;
-    border          : 1px solid #d0d0d0;
-    border-radius   : 2px;
-    /* box-shadow   : 0 3px 20px #d0d0d0; */
-    box-shadow      : 2px 2px 5px #d0d0d0;
-    z-index         : auto;
-    background-color: #fff;
-}
-
-.drp-sel-operator-list-show {
-    display: block !important;
-    z-index: auto;
+  position: absolute;
+  top: 37px;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  /* box-shadow   : 0 3px 20px #d0d0d0; */
+  box-shadow: 2px 2px 5px #d0d0d0;
 }
 
 .drp-sel-operator {
-    padding      : 8px 0;
-    padding-left : 15px;
-    padding-right: 5px;
-    cursor       : pointer;
-    text-align   : left;
-    position     : relative;
-}
-
-.m-icon-drp-input-grid {
-    height  : 28px;
-    width   : 28px;
-    position: absolute;
-    right   : 1px;
-    cursor  : pointer;
-}
-
-.m-icon-drp-input-grid:hover {
-    background-color: rgba(128, 128, 128, 0.253);
-}
-
-.m-icon-drp-input-grid i {
-    display        : flex;
-    justify-content: center;
-    line-height    : 28px;
-}
-
-
-.sel-drpdown-grid {
-    padding         : 5px 0;
-    position        : absolute;
-    width           : 100%;
-    top             : 33px;
-    background-color: #fff;
-    box-sizing      : border-box;
-}
-
-.sel-drpdown-val {
-    padding: 5px 10px
-}
-
-.sel-drpdown-val:hover {
-    box-sizing      : border-box;
-    background-color: #0199FB;
-    cursor          : pointer;
-    color: #fff;
+  padding: 8px 0;
+  padding-left: 15px;
+  padding-right: 5px;
+  cursor: pointer;
 }
 
 .drp-sel-operator:hover {
-    background-color: #5fa2dd;
+  background-color: #5fa2dd;
 }
 
-.drp-sel-operator:focus {
-    color           : #fff;
-    background-color: #5fa2dd;
+label {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: black;
+  padding: 4px 10px;
+  cursor: pointer;
 }
-
-.drp-sel-operator-active {
-    color           : #fff;
-    background-color: #5fa2dd;
+label:hover {
+  background-color: #e4f2ea;
+  border: 1px solid #0072bc;
+}
+label:active {
+  background-color: #e4f2ea;
+  border: 1px solid #0072bc;
+}
+label:disabled {
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  opacity: 30%;
 }

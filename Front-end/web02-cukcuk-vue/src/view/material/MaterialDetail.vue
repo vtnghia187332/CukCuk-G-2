@@ -13,7 +13,8 @@
               class="m-popup-close"
               @click="
                 btnCloseDialogOnClick(
-                  !isMatch(this.compareObject, this.material)
+                  !isMatch(this.compareObject, this.material),
+                  !isMatch(this.compareConvertions, this.convertions)
                 )
               "
             >
@@ -252,7 +253,8 @@
               tabindex=""
               @click="
                 btnCloseDialogOnClick(
-                  !isMatch(this.compareObject, this.material)
+                  !isMatch(this.compareObject, this.material),
+                  !isMatch(this.compareConvertions, this.convertions)
                 )
               "
             >
@@ -347,6 +349,7 @@ export default {
       // Activate row Selected Convertion
       isSelectedConvertion: false,
 
+      // Thực hiện thêm mới những đối tượng nguyên vật liệu và bộ chuyển đổi
       _materialWConvertions: {
         material: {},
         convertions: [],
@@ -363,7 +366,8 @@ export default {
     isCloseDialogWithCondition: function (newValue) {
       if (newValue) {
         this.btnCloseDialogOnClick(
-          !this.isMatch(this.compareObject, this.material)
+          !this.isMatch(this.compareObject, this.material),
+          !isMatch(this.compareConvertions, this.convertions)
         );
       }
     },
@@ -447,7 +451,7 @@ export default {
       this.convertion = {};
       this.convertionSelected = {};
       this.convertion.MaterialId = this.material.MaterialId;
-      // Thêm mảng rỗng vào mảng để chuẩn bịHa xử lý
+      // Thêm mảng rỗng vào mảng để chuẩn bị xử lý
       this.convertions.push(this.convertion);
     },
 
@@ -472,19 +476,19 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 11:16 18/05/2022
      */
-    async deleteConvertionRowSelected() {
+    deleteConvertionRowSelected() {
       // Nếu tồn tại ConvertionId -> Gọi Api để xóa
-      if (this.convertionSelected?.ConvertionId) {
-        // gọi api để xóa convertion
-        await this.deleteConvertionById();
-        // load lại data convertion
-        await this.getConvertionByMaterialId();
-      } else {
-        // Nếu không tồn tại -> Xóa phần tử trong mảng
-        this.convertions.splice(this.currentIndex, 1);
-        // clear currentIndex của row bảng convertions
-        this.currentIndex = null;
-      }
+      // if (this.convertionSelected?.ConvertionId) {
+      //   // gọi api để xóa convertion
+      //    this.deleteConvertionById();
+      //   // load lại data convertion
+      //    this.getConvertionByMaterialId();
+      // } else {
+      // Nếu không tồn tại -> Xóa phần tử trong mảng
+      this.convertions.splice(this.currentIndex, 1);
+      // clear currentIndex của row bảng convertions
+      this.currentIndex = null;
+      // }
     },
 
     /**
@@ -505,6 +509,7 @@ export default {
                 // đối tượng binding data
                 me.convertions = res.data;
                 // Xử lý mô tả của bộ chuyển đổi
+                console.log(me.convertions);
               }
             })
             .catch(function (res) {
@@ -886,13 +891,22 @@ export default {
               }
             });
         } else {
-          if (this.convertionForUpdate.length != 0) {
+          // Cập nhật bộ chuyển đổi theo Id Material
+          if (this.convertionForUpdate?.length != 0) {
             //Cập nhật bảng chuyển đổi
             await this.updateConvertionByMaterialId();
           }
+          // Thêm bộ chuyển đổi theo Id Material
           if (this.convertionForInsert?.length != 0) {
             //Thêm bảng chuyển đổi
             await this.insertConvertionByMaterialId();
+          }
+          // Xóa bộ chuyển đổi theo Id Mateiral
+          if (this.convertionSelected?.ConvertionId) {
+            // gọi api để xóa convertion
+            this.deleteConvertionById();
+            // load lại data convertion
+            this.getConvertionByMaterialId();
           }
           /**
            * Mô tả : Gọi API để sửa dữ liệu nhân viên đã được chọn
@@ -940,8 +954,9 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 21:00 15/04/2022
      */
-    btnCloseDialogOnClick(isMatch = false) {
-      if (isMatch) {
+    btnCloseDialogOnClick(isMatchMaterial = false, isMatchConvertion = false) {
+      console.log(this.isMatch(this.compareConvertions, this.convertions));
+      if (isMatchMaterial || isMatchConvertion) {
         // Nếu thay đổi, hiển thị thông báo xác nhận -> đóng form
         this.$emit(
           "handleConfirmDlg",
@@ -1060,5 +1075,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

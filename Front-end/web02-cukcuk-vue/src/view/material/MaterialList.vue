@@ -56,7 +56,10 @@
         <div class="m-btn-text">Nạp</div>
       </button>
 
-      <button class="m-btn m-btn-wicon fit-center btn-content">
+      <button
+        class="m-btn m-btn-wicon fit-center btn-content"
+        @click="isShowDlgImportFirstOnClick(true)"
+      >
         <div class="m-btn-icon"><i class="fa-solid fa-file-import"></i></div>
         <div class="m-btn-text">Nhập khẩu</div>
       </button>
@@ -160,7 +163,7 @@
                   @click="activate(material)"
                   @dblclick="rowOnDBClick(material)"
                 >
-                  <td class="m-chkbox">
+                  <td class="m-chkbox txt-center">
                     <input
                       class="checkbox"
                       type="checkbox"
@@ -286,6 +289,10 @@
       @showAlertDlg="showAlertDlg"
       @agreeAlertOnClick="agreeAlertOnClick"
     />
+    <ImportDataFirst
+      v-if="isShowImportDlgFirst"
+      @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick"
+    />
   </div>
 </template>
 
@@ -299,6 +306,7 @@ import BaseInputGrid from "@/view/baseInput/BaseInputGrid.vue";
 import WarningDialog from "@/view/notification/WarningDialog.vue";
 import ShowConfirm from "@/view/notification/ShowConfirm.vue";
 import AlertConfirm from "@/view/notification/AlertConfirm.vue";
+import ImportDataFirst from "@/components/Import-Data/Import-Data-First.vue";
 
 export default {
   components: {
@@ -307,9 +315,13 @@ export default {
     WarningDialog,
     ShowConfirm,
     AlertConfirm,
+    ImportDataFirst,
   },
   data() {
     return {
+      // Mở form dialog import bước đầu tiên
+      isShowImportDlgFirst: false,
+
       //Tạo mảng để hứng các nguyên vật liệu được chọn
       checkedaAssetList: [],
 
@@ -388,6 +400,15 @@ export default {
   },
 
   methods: {
+    /**
+     * Mô tả :Hiển thị dialog nhập khẩu
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 11:29 27/05/2022
+     */
+    isShowDlgImportFirstOnClick(isShow) {
+      this.isShowImportDlgFirst = isShow;
+    },
+
     /**
      * Mô tả : Bấm nút esc để close dialog detail
      * Created by: Vũ Trọng Nghĩa - MF1108
@@ -483,14 +504,12 @@ export default {
      * Created date: 13:44 12/05/2022
      */
     showWarningDlg(isShow) {
-      debugger;
       this.isShowWarningDlg = isShow;
       // clear đối tượng
       this.materialSelected = {};
     },
 
     escDlgWarning(e) {
-      debugger;
       if (e) {
         this.isShowWarningDlg = false;
       }
@@ -709,6 +728,44 @@ export default {
     },
 
     /**
+     * Mô tả : Chọn tất cả nguyên vật liệu trong trang
+     * @param
+     * @return
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:16 27/05/2022
+     */
+    selAllMaterialOnClick() {
+      // Nếu tồn tại phần tử trong mảng -> Set mảng rỗng
+      if (this.checkedaAssetList.length >= this.totalObjectPerPage) {
+        this.checkedaAssetList = [];
+      } else {
+        // Chọn tất cả các phần tử trong mảng
+        for (const material of this.materials) {
+          this.checkedaAssetList.push(material);
+          // Loại bỏ các phần tử trùng lặp
+          this.checkedaAssetList = this.uniqueMaterials(this.checkedaAssetList);
+        }
+      }
+    },
+
+    /**
+     * Mô tả : Loại bỏ các phần tử trùng trong mảng
+     * @param: Danh sách các phần tử trong mảng
+     * @return: Danh sách các phần tử không trùng lặp
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:38 27/05/2022
+     */
+    uniqueMaterials(arr) {
+      let newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) === -1) {
+          newArr.push(arr[i]);
+        }
+      }
+      return newArr;
+    },
+
+    /**
      * Mô tả : Kiểm tra điều kiện đã chọn hàng để xóa hay chưa
      * @param: employeeId
      * Created by:materialSelected Vũ Trọng Nghĩa - MF1108
@@ -745,7 +802,12 @@ export default {
      */
     async rowOnDBClick(material) {
       var me = this;
+      // Clear đối tượng được chọn
       this.materialSelected = {};
+      // Thêm vào danh sách các phần tử được chọn(Kiểm tra các phần tử bị trùng lặp)
+      this.activate(material);
+      this.checkedaAssetList.push(material);
+      // Formode: update
       this.formMode = this.misaEnum.formMode.Update;
       try {
         await axios
