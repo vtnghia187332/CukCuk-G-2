@@ -290,7 +290,7 @@
       @agreeAlertOnClick="agreeAlertOnClick"
     />
     <ImportDataFirst
-      v-if="isShowImportDlgFirst = true"
+      v-if="isShowImportDlgFirst"
       @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick"
     />
   </div>
@@ -670,6 +670,7 @@ export default {
      * Created date: 14:29 15/05/2022
      */
     agreeHanleOnClick(isDelete) {
+      debugger;
       // Đồng ý xóa
       if (isDelete) {
         // gọi api để xóa dữ liệu
@@ -678,14 +679,54 @@ export default {
           this.callApiTodeleteRowHandle();
         } else {
           // Xóa nhiều dữ liệu
-          console.log("Xóa nhiều nhé");
+          this.deleteMultipleMaterials();
         }
+        this.showWarningDlg(false);
       }
       // Không đồng ý xóa
       else {
         // Đóng form
         this.showWarningDlg(false);
       }
+    },
+
+    /**
+     * Mô tả : Thực hiện gọi API và xóa hàng loạt Emp đã được chọn
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 14:55 25/04/2022
+     */
+    async deleteMultipleMaterials() {
+      debugger;
+      let me = this;
+      let tempDeleteMultiple = [];
+      for (let i = 0; i < this.checkedaAssetList.length; i++) {
+        // console.log(this.manyEmps[i].EmployeeId);
+        tempDeleteMultiple.push(this.checkedaAssetList[i].MaterialId);
+      }
+      await axios
+        .post(
+          "http://localhost:5236/api/v1/Materials/ObjectIds",
+          tempDeleteMultiple
+        )
+        .then(function (res) {
+          if (res) {
+            me.showLoading = !me.showLoading;
+            setTimeout(() => {
+              me.showLoading = false;
+            }, 200);
+            //load lại data
+            me.loadData();
+            // Clear mảng dữ liệu manyEmps[]
+            me.tempDeleteMultiple = [];
+            me.checkedaAssetList = [];
+
+            // Đóng dialog showConfirm
+            this.showWarningDlg(false);
+          }
+        })
+        .catch(function (res) {
+          console.log(res);
+        });
     },
 
     /**

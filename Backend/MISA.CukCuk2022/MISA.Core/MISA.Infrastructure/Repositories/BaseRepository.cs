@@ -22,7 +22,7 @@ namespace MISA.Infrastructure.Repositories
 
         public BaseRepository()
         {
-            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=12345678";
+            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=123456";
             _sqlConnection = new MySqlConnection(_connectionString);
         }
         #endregion
@@ -174,6 +174,39 @@ namespace MISA.Infrastructure.Repositories
             var newCode = $"{className}-{code}";
             return newCode;
         }
+
+
+        /// <summary>
+        /// Xóa nhiều đối tượng
+        /// </summary>
+        /// <param name="entityIds">Danh sách Id của các đối tượng</param>
+        /// <returns>Số dòng bị ảnh hưởng trong DB</returns>
+        public int DeleteMulti(List<Guid> entityIds)
+        {
+            //Khai báo tên bảng
+            var tableName = typeof(T).Name;
+            var tableNameLower = typeof(T).Name.ToLower();
+
+            //Khai báo biến tạm hứng Ids
+            List<string> temp = new List<string>();
+            foreach (var id in entityIds)
+            {
+                string idString = $" {tableName}Id = '{id}' ";
+                temp.Add(idString);
+            }
+            string condition = String.Join("OR", temp);
+            DynamicParameters paras = new DynamicParameters();
+            paras.Add("@tableName", tableNameLower);
+            paras.Add("@condition", condition);
+
+            //sql command
+            string sqlString = $"Delete from {tableNameLower} where {@condition}";
+            //trả về kết quả
+            var res = _sqlConnection.Execute(sqlString);
+            return res;
+        }
+
+
         #endregion
     }
 }

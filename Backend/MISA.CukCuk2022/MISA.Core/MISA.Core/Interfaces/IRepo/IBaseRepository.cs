@@ -64,6 +64,15 @@ namespace MISA.Core.Interfaces
         public string GetNewCode();
 
 
+        /// <summary>
+        /// Xóa nhiều đối tượng
+        /// </summary>
+        /// <param name="entityIds">Danh sách Id của các đối tượng</param>
+        /// <returns>Số dòng bị ảnh hưởng trong DB</returns>
+        public int DeleteMulti(List<Guid> entityIds);
+
+
+
 
     }
 }

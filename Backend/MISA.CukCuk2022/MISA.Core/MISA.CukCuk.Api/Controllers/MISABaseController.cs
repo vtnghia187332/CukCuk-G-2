@@ -167,6 +167,24 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Xóa nhiều đối tượng
+        /// </summary>
+        /// <param name="entityIds">Danh sách Id các đối tượng cần xóa</param>
+        /// <returns> Số dòng thay đổi trong Database</returns>
+        [HttpPost("ObjectIds")]
+        public IActionResult DeleteEmployees([FromBody] List<Guid> entityIds)
+        {
+            try
+            {
+                var datas = _ibaseRepository.DeleteMulti(entityIds);
+                return Ok(datas);
+            }
+            catch (MISAException ex)
+            {
+                return HandleException(ex);
+            }
+        }
 
 
 
@@ -199,6 +217,9 @@ namespace MISA.CukCuk.Api.Controllers
             }
 
         }
+
+
+       
 
         #endregion
 
