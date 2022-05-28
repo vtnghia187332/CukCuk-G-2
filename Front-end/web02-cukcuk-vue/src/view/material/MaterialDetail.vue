@@ -84,7 +84,22 @@
           <div class="m-popup-content-text">
             <div class="m-form-detail">
               <div class="m-detail-name">Hạn sử dụng</div>
-              <BaseDatepicker tabindex="5" v-model="dateFormat" />
+
+              <DatePicker
+                v-model:value="dateFormat"
+                :format="'DD/MM/YYYY'"
+                :placeholder="'DD/MM/YYYY'"
+                :lang="'vi'"
+                :clearable="false"
+                title-format="'DD/MM/YYYY'"
+                :disabled-date="afterToday"
+              />
+              <!-- <input
+                type="text"
+                class="m-detail-input"
+                tabindex="2"
+                v-model="dateFormat"
+              /> -->
             </div>
             <div class="m-form-detail">
               <div class="m-detail-name">SL tồn tối thiểu</div>
@@ -275,9 +290,11 @@
 import axios from "axios";
 import BaseCombobox from "@/view/baseCombobox/BaseCombobox.vue";
 import BaseDatepicker from "@/view/datePicker/DatePicker.vue";
+import "vue-datepicker-next/index.css";
+import DatePicker from "vue-datepicker-next";
 
 export default {
-  components: { BaseCombobox, BaseDatepicker },
+  components: { BaseCombobox, BaseDatepicker, DatePicker },
   props: [
     "isShow",
     "formMode",
@@ -367,7 +384,7 @@ export default {
       if (newValue) {
         this.btnCloseDialogOnClick(
           !this.isMatch(this.compareObject, this.material),
-          !isMatch(this.compareConvertions, this.convertions)
+          !this.isMatch(this.compareConvertions, this.convertions)
         );
       }
     },
@@ -391,9 +408,8 @@ export default {
       get() {
         if (!this.material.MaterialExpiry) {
           return;
-        } else {
-          return new Date(this.material.MaterialExpiry);
         }
+        return new Date(this.material.MaterialExpiry);
       },
       set(newValue) {
         this.material.MaterialExpiry = newValue.toDateString();
@@ -509,7 +525,6 @@ export default {
                 // đối tượng binding data
                 me.convertions = res.data;
                 // Xử lý mô tả của bộ chuyển đổi
-                console.log(me.convertions);
               }
             })
             .catch(function (res) {
@@ -955,7 +970,6 @@ export default {
      * Created date: 21:00 15/04/2022
      */
     btnCloseDialogOnClick(isMatchMaterial = false, isMatchConvertion = false) {
-      console.log(this.isMatch(this.compareConvertions, this.convertions));
       if (isMatchMaterial || isMatchConvertion) {
         // Nếu thay đổi, hiển thị thông báo xác nhận -> đóng form
         this.$emit(

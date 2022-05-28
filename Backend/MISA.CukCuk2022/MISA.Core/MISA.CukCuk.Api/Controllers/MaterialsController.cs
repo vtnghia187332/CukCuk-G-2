@@ -68,6 +68,20 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
+        [HttpPost("import")]
+        public IActionResult Import(IFormFile formFile)
+        {
+            try
+            {
+                var res = _materialService.Import(formFile);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         /// <summary>
         /// Hàm xử lý Exception
         /// </summary>

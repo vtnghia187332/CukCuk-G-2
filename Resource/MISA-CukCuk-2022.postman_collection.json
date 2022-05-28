@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "2351e842-1866-481d-8ef7-a96f8e74ac51",
+		"name": "MISA-CukCuk-2022",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12620972"
+	},
+	"item": [
+		{
+			"name": "Material",
+			"item": [
+				{
+					"name": "Get All Materials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Material",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials/4b649055-43d5-2b07-de1d-086412a8ea97",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials",
+								"4b649055-43d5-2b07-de1d-086412a8ea97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Material",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"MaterialId\": \"2262139e-1397-4dd4-94a8-346beae8bdbb\",\r\n        \"MaterialCode\": \"B-78726\",\r\n        \"MaterialName\": \"Vũ Nghĩa\",\r\n        \"MaterialFeature\": \"Đồ ăn nhanh\",\r\n        \"MaterialNote\": \"5F5003B\",\r\n        \"GroupMaterial\": null,\r\n        \"Following\": 1,\r\n        \"MaterialStockMin\": 12,\r\n        \"MaterialExpiry\": \"1988-06-10T00:00:00\",\r\n        \"MaterialDescription\": \"Maiores et ut; suscipit voluptates esse. Fugiat beatae consectetur. Sequi aliquam ea; architecto error in. Nostrum velit voluptate! In qui a. Consequatur et.\",\r\n        \"UnitId\": \"5e6695e2-5aad-3241-6c1a-bb545470e80c\",\r\n        \"UnitName\": \"Vỉ\",\r\n        \"StorageId\": \"7c4f14d8-66fb-14ae-198f-6354f958f4c0\",\r\n        \"CreatedDate\": \"2022-05-21T00:00:00\",\r\n        \"CreatedBy\": \"Lương Trần Hùng\",\r\n        \"ModifiedDate\": \"2022-05-19T00:00:00\",\r\n        \"ModifiedBy\": \"Hồ Gia Tài\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials/13ede5b6-19dd-563e-1980-de64d090a2c2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials",
+								"13ede5b6-19dd-563e-1980-de64d090a2c2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Materials",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"operator\": 0,\r\n    \"columnName\": \"MaterialCode\",\r\n    \"columnValue\": \"79448\"\r\n  },\r\n  {\r\n    \"operator\": 4,\r\n    \"columnName\": \"MaterialName\",\r\n    \"columnValue\": \"Bia\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials/filter?pageNumber=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5236/api/v1/Materials/MaterialWithConvertions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"material\": {\r\n        \"MaterialCode\": \"B-78726\",\r\n        \"MaterialName\": \"Vũ Nghĩa\",\r\n        \"MaterialFeature\": \"Đồ ăn nhanh\",\r\n        \"MaterialNote\": \"5F5003B\",\r\n        \"GroupMaterial\": null,\r\n        \"Following\": 1,\r\n        \"MaterialStockMin\": 12,\r\n        \"MaterialExpiry\": \"1988-06-10T00:00:00\",\r\n        \"MaterialDescription\": \"Maiores et ut; suscipit voluptates esse. Fugiat beatae consectetur. Sequi aliquam ea; architecto error in. Nostrum velit voluptate! In qui a. Consequatur et.\",\r\n        \"UnitId\": \"5e6695e2-5aad-3241-6c1a-bb545470e80c\",\r\n        \"UnitName\": \"Vỉ\",\r\n        \"RatingCovertion\": null,\r\n        \"ConvertionCalculation\": null,\r\n        \"ConvertionDescription\": null,\r\n        \"StorageId\": \"7c4f14d8-66fb-14ae-198f-6354f958f4c0\",\r\n        \"CreatedDate\": \"2022-05-13T00:00:00\",\r\n        \"CreatedBy\": \"Lương Trần Hùng\",\r\n        \"ModifiedDate\": \"2022-05-19T00:00:00\",\r\n        \"ModifiedBy\": \"Hồ Gia Tài\"\r\n  },\r\n  \"convertions\": [\r\n    {\r\n        \"ConvertionCode\": null,\r\n        \"ConvertionName\": \"1\",\r\n        \"RatingCovertion\": 1,\r\n        \"ConvertionCalculation\": 0,\r\n        \"ConvertionCalculationName\": \"+\",\r\n        \"ConvertionDescription\": \"1\",\r\n        \"MaterialId\": \"4989ff24-23e7-7b82-b6d2-89b22d10517e\",\r\n        \"CreatedDate\": \"2022-05-17T21:52:52\",\r\n        \"CreatedBy\": null,\r\n        \"ModifiedDate\": null,\r\n        \"ModifiedBy\": null\r\n    }, \r\n    {\r\n        \"ConvertionCode\": null,\r\n        \"ConvertionName\": \"2\",\r\n        \"RatingCovertion\": 2,\r\n        \"ConvertionCalculation\": 2,\r\n        \"ConvertionCalculationName\": \"+\",\r\n        \"ConvertionDescription\": \"hello world\",\r\n        \"MaterialId\": \"4989ff24-23e7-7b82-b6d2-89b22d10517e\",\r\n        \"CreatedDate\": \"2022-05-17T21:52:52\",\r\n        \"CreatedBy\": null,\r\n        \"ModifiedDate\": null,\r\n        \"ModifiedBy\": null\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials/MaterialWithConvertions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials",
+								"MaterialWithConvertions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Multiple objects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Convertions/ObjectIds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Convertions",
+								"ObjectIds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import file excel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "formFile",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Materials/import",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Materials",
+								"import"
+							],
+							"query": [
+								{
+									"key": "formFile",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unit",
+			"item": [
+				{
+					"name": "Get All Units",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Units",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Unit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"UnitId\": \"11fbda18-5d9f-396c-1299-04b3a3d51ef2\",\r\n        \"UnitCode\": \"DVK-39588\",\r\n        \"UnitName\": \"Hộp\",\r\n        \"CreatedDate\": \"1996-07-30T18:55:27\",\r\n        \"CreatedBy\": \"Thái Thảo Anh\",\r\n        \"ModifiedDate\": \"2014-01-15T16:07:10\",\r\n        \"ModifiedBy\": \"Brett Abney\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Units",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Unit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"UnitId\": \"11fbda18-5d9f-396c-1299-04b3a3d51ef2\",\r\n        \"UnitCode\": \"DVK-39586\",\r\n        \"UnitName\": \"Lô\",\r\n        \"CreatedDate\": \"1996-07-30T18:55:27\",\r\n        \"CreatedBy\": \"Thái Thảo Anh\",\r\n        \"ModifiedDate\": \"2014-01-15T16:07:10\",\r\n        \"ModifiedBy\": \"Brett Abney\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Units/11fbda18-5d9f-396c-1299-04b3a3d51ef2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Units",
+								"11fbda18-5d9f-396c-1299-04b3a3d51ef2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Storage",
+			"item": [
+				{
+					"name": "Get All Storage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Storages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Storages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Convertion",
+			"item": [
+				{
+					"name": "Get All Convertions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Convertions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Convertions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5236/api/v1/Convertions/InsertByMaterialId/255b28ba-2177-6baf-0835-60b3ebf808a9",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"ConvertionId\": \"19aaf1ce-d589-11ec-88e3-847beb44fa72\",\r\n    \"ConvertionCode\": \"QD-94297\",\r\n    \"ConvertionName\": \"Thùng\",\r\n    \"RatingCovertion\": 48,\r\n    \"ConvertionCalculation\": 1,\r\n    \"ConvertionCalculationName\": \"-\",\r\n    \"ConvertionDescription\": \"Hello world\",\r\n    \"MaterialId\": \"6349b25b-78e2-2d06-2780-de64d090a2c2\",\r\n    \"CreatedDate\": \"2022-05-17T09:28:55\",\r\n    \"CreatedBy\": \"Vũ Minh Hoàng\",\r\n    \"ModifiedDate\": \"2022-05-17T16:38:59\",\r\n    \"ModifiedBy\": \"Đào Thị An\"\r\n  },{\r\n    \"ConvertionId\": \"19aaf1ce-d589-11ec-88e3-847beb44fa72\",\r\n    \"ConvertionCode\": \"QD-94297\",\r\n    \"ConvertionName\": \"Thùng\",\r\n    \"RatingCovertion\": 48,\r\n    \"ConvertionCalculation\": 1,\r\n    \"ConvertionCalculationName\": \"-\",\r\n    \"ConvertionDescription\": \"Hello world\",\r\n    \"MaterialId\": \"6349b25b-78e2-2d06-2780-de64d090a2c2\",\r\n    \"CreatedDate\": \"2022-05-17T09:28:55\",\r\n    \"CreatedBy\": \"Vũ Minh Hoàng\",\r\n    \"ModifiedDate\": \"2022-05-17T16:38:59\",\r\n    \"ModifiedBy\": \"Đào Thị An\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Convertions/ConvertionsOfMaterial/255b28ba-2177-6baf-0835-60b3ebf808a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Convertions",
+								"ConvertionsOfMaterial",
+								"255b28ba-2177-6baf-0835-60b3ebf808a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5236/api/v1/Convertions/InsertByMaterialId/6349b25b-78e2-2d06-2780-de64d090a2c2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"ConvertionId\": \"19aaf1ce-d589-11ec-88e3-847beb44fa72\",\r\n    \"ConvertionCode\": \"QD-94297\",\r\n    \"ConvertionName\": \"Thùng Phá Sảnh\",\r\n    \"RatingCovertion\": 5000,\r\n    \"ConvertionCalculation\": 1,\r\n    \"ConvertionCalculationName\": \"-\",\r\n    \"ConvertionDescription\": \"Hello world\",\r\n    \"MaterialId\": \"6349b25b-78e2-2d06-2780-de64d090a2c2\",\r\n    \"CreatedDate\": \"2022-05-17T09:28:55\",\r\n    \"CreatedBy\": \"Vũ Minh Hoàng\",\r\n    \"ModifiedDate\": \"2022-05-17T16:38:59\",\r\n    \"ModifiedBy\": \"Đào Thị An\"\r\n  },{\r\n    \"ConvertionId\": \"19aaf1ce-d589-11ec-88e3-847beb44fa72\",\r\n    \"ConvertionCode\": \"QD-94297\",\r\n    \"ConvertionName\": \"Test cái thùng này nhé\",\r\n    \"RatingCovertion\": 4800,\r\n    \"ConvertionCalculation\": 1,\r\n    \"ConvertionCalculationName\": \"-\",\r\n    \"ConvertionDescription\": \"Hello world\",\r\n    \"MaterialId\": \"6349b25b-78e2-2d06-2780-de64d090a2c2\",\r\n    \"CreatedDate\": \"2022-05-17T09:28:55\",\r\n    \"CreatedBy\": \"Vũ Minh Hoàng\",\r\n    \"ModifiedDate\": \"2022-05-17T16:38:59\",\r\n    \"ModifiedBy\": \"Đào Thị An\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5236/api/v1/Convertions/ConvertionsOfMaterial/6349b25b-78e2-2d06-2780-de64d090a2c2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5236",
+							"path": [
+								"api",
+								"v1",
+								"Convertions",
+								"ConvertionsOfMaterial",
+								"6349b25b-78e2-2d06-2780-de64d090a2c2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API",
+			"value": "http://localhost:5236/api/v1",
+			"type": "string"
+		}
+	]
+}

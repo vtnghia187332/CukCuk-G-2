@@ -1,4 +1,5 @@
-﻿using MISA.Core.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using MISA.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,5 +29,12 @@ namespace MISA.Core.Interfaces
         /// <returns>số dòng bị ảnh hưởng</returns>
         ///  created by: VTNghia - MF1108
         int InsertMaterialWithConvertions(Material material, List<Convertion>? convertions);
+
+        /// <summary>
+        /// Thực hiện đọc tệp dữ liệu và xử lý nghiệp vụ nhập khẩu danh sách nguyên vật liệu
+        /// </summary>
+        /// <param name="formFile">Tệp chứa thông tin nguyên vật liệu</param>
+        /// <returns>Danh sách nguyên vật liệu kèm theo trạng thái chi tiết kết quả nhập khẩu</returns>
+        Task<List<Material>> Import(IFormFile formFile);
     }
 }

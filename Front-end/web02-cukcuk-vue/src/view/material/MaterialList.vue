@@ -83,6 +83,9 @@
                         class="checkbox"
                         type="checkbox"
                         @click="selAllMaterialOnClick"
+                        :checked="
+                          this.checkedaAssetList.length == this.materials.length
+                        "
                       />
                     </div>
                   </th>

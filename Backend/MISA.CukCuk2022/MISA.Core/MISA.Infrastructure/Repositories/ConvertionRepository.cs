@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using MISA.Core.Exceptions;
+using MISA.Core.Resources;
 
 namespace MISA.Infrastructure.Repositories
 {
@@ -58,12 +60,35 @@ namespace MISA.Infrastructure.Repositories
                 var dynamicParam = new DynamicParameters();
                 //Đọc từng prop của obj:
                 var properties = convertion.GetType().GetProperties();
+                Dictionary<string, string> error = new Dictionary<string, string>();
+
                 //Duyệt từng prop:
                 foreach (var prop in properties)
                 {
                     var propName = prop.Name;
                     var propValue = prop.GetValue(convertion);
-                    
+
+                    //if (propName == "ConvertionCode")
+                    //{
+
+                    //    var propValue1 = propValue.ToString();
+                       
+                    //    if (String.IsNullOrEmpty(propValue1))
+                    //    {
+                    //        error.Add(propName, $"Mã <{propValue}> không được để trống");
+                    //        throw new MISAException(MISAResource.VN_NotValidInput, error);
+                    //    }
+                    //    else
+                    //    {
+                    //        var isExist = base.CheckCodeExist(propValue1);
+                    //        if (isExist)
+                    //        {
+                    //            error.Add(propName, $"Mã <{propValue}> đã tồn tại trong hệ thống");
+                    //            throw new MISAException(MISAResource.VN_NotValidInput, error);
+                    //        }
+
+                    //    }
+                    //}
                     dynamicParam.Add($"@{propName}", propValue);
                 }
                 //số dòng ảnh hưởng trong DB

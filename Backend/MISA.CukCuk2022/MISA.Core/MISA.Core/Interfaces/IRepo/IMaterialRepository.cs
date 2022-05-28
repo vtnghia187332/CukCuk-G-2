@@ -35,5 +35,12 @@ namespace MISA.Core.Interfaces
         /// <returns>true: Mã code bị trùng || false: Mã code không bị trùng</returns>
         ///  created by: VTNGHIA - MF1108
         bool CheckMaterialCode(string materialCode);
+
+        /// <summary>
+        /// Thực hiện nhập khẩu dữ liệu vào Database
+        /// </summary>
+        /// <param name="materials">Danh sách nguyên vật lị đã được validate dữ liệu (hợp lệ)</param>
+        /// <returns>Danh sách những nhân viên đã được thêm vào database</returns>
+        IEnumerable<Material> Import(List<Material> materials);
     }
 }

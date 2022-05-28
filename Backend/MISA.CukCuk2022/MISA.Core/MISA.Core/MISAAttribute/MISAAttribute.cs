@@ -10,10 +10,16 @@ namespace MISA.Core.MISAAttribute
     /// Không liên kết trường với DB
     /// created by: VTNghia - MF1108
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property|AttributeTargets.Field|AttributeTargets.Method)]
     public class NotMap : Attribute
     {
     }
+
+    /// <summary>
+    /// Không liên kết trường với DB - dành cho field
+    /// created by: VTNghia - MF1108
+    /// </summary>
+   
 
     /// <summary>
     /// Không được phép để trống

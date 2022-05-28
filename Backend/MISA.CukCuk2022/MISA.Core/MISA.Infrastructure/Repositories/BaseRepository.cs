@@ -52,10 +52,8 @@ namespace MISA.Infrastructure.Repositories
                 //Không bị trùng Code
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            
+            return true;
         }
         /// <summary>
         /// Xóa bản ghi trong đối tượng

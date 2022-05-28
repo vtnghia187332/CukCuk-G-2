@@ -6,16 +6,16 @@
     >
     <Datepicker
       v-bind="$attrs"
-      :modelValue="date"
+      :modelValue="dateFormat"
       autoApply
       placeholder="DD/MM/YYYY"
       format="dd/MM/yyyy"
+      :minDate="new Date(new Date().setHours(0, 0, 0, 0))"
       :enableTimePicker="false"
       showNowButton
       @update:modelValue="(value) => handleDate(value)"
       inputClassName="dp-custom-input"
       textInput
-      :minDate="new Date(new Date().setHours(0, 0, 0, 0))"
     >
       <template #calendar-header="{ index }">
         <div>
@@ -31,8 +31,10 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 /*eslint-disable */
 export default {
+  name: "BaseDatepicker",
   props: {
     // label
     label: {
@@ -58,11 +60,33 @@ export default {
      * Created by: Vũ Trọng Nghĩa
      * Created date: 20:50 22/04/2022
      */
-    modelValue: function () {
-      if (this.modelValue) this.date = new Date(this.modelValue);
-      else this.date = null;
+    // modelValue: function () {
+    //   debugger;
+    //   if (this.modelValue) this.date = new Date(this.modelValue);
+    //   else this.date = null;
+    // },
+  },
+  computed: {
+    /**
+     * Mô tả : Format date - picker (Chỉnh lại ngày tháng bị lệch)
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:09 27/04/2022
+     */
+    dateFormat: {
+      get() {
+        debugger;
+        if (!this.modelValue) {
+          return;
+        }
+        return new Date(this.modelValue);
+      },
+      set(newValue) {
+        debugger;
+        this.modelValue = newValue.toDateString();
+      },
     },
   },
+
   methods: {
     /**
      * Mô tả : Sự kiện khi thay đổi ngày
@@ -72,7 +96,8 @@ export default {
      * Created date: 22:42 21/04/2022
      */
     handleDate: function (value) {
-      if (value) this.date = new Date(value);
+      debugger;
+      if (value) this.date = new Date(value).toDateString();
       else this.date = null;
     },
   },

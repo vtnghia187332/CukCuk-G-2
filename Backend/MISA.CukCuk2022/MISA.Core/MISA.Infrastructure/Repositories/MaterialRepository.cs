@@ -165,7 +165,21 @@ namespace MISA.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
-       
+
+        /// <summary>
+        /// Thực hiện nhập khẩu dữ liệu vào Database
+        /// </summary>
+        /// <param name="materials">Danh sách nguyên vật liệu đã được validate dữ liệu (hợp lệ)</param>
+        /// <returns>Danh sách những nhân viên đã được thêm vào database</returns>
+        public IEnumerable<Material> Import(List<Material> materials)
+        {
+            foreach (var material in materials)
+            {
+                Insert(material);
+            }
+             return materials;
+        }
+
         #endregion
     }
 }

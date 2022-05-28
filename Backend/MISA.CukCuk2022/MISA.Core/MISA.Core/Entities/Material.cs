@@ -18,12 +18,14 @@ namespace MISA.Core.Entities
         /// </summary>
         public Guid MaterialId { get; set; }
 
+        [NotEmpty]
         /// <summary>
         /// Mã nguyên liệu
         /// created by: VTNghia - MF1108
         /// </summary>
         public string MaterialCode { get; set; }
 
+        [NotEmpty]
         /// <summary>
         /// Tên nguyên liệu
         /// created by: VTNghia - MF1108
@@ -89,6 +91,20 @@ namespace MISA.Core.Entities
         /// created by: VTNghia - MF1108
         /// </summary>
         public Guid? StorageId { get; set; }
+
+        [NotMap]
+        /// <summary>
+        /// Nhận biết đối tượng truyền vào từ file excel có hợp lệ hay không?
+        /// created by: VTNghia - MF1108
+        /// </summary>
+        public bool IsValid { get; set; } = true;
+
+
+        [NotMap]
+        /// <summary>
+        /// Danh sách hứng lỗi
+        /// </summary>
+        public List<string> ErrorValidateNotValid { get; set; } = new List<string>();
 
         #endregion
     }

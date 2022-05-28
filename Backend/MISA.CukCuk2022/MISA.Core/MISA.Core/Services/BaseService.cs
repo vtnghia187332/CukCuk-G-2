@@ -15,12 +15,14 @@ namespace MISA.Core.Services
     {
         #region DECLARE
         IBaseRepository<T> _baseRepository;
+        protected List<string> ValidateErrorMsg;
         #endregion
 
         #region Constructor
         public BaseService(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
+            ValidateErrorMsg = new List<string>();
         }
         #endregion
 
@@ -43,10 +45,12 @@ namespace MISA.Core.Services
             {
                 throw new MISAException(MISAResource.VN_NotValidInput, errorList);
             }
+
             var entityCodeToCheck = typeof(T).GetProperty($"{className}Code").GetValue(entity, null).ToString();
             if (_baseRepository.CheckCodeExist(entityCodeToCheck) == true)
             {
                 error.Add($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống");
+                ValidateErrorMsg.Add(string.Format($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống"));
                 throw new MISAException(MISAResource.VN_NotValidInput, error);
             }
             else
@@ -65,7 +69,7 @@ namespace MISA.Core.Services
         /// <param name="entityId">Đối tượng</param>
         /// <returns>Số dòng trong DB bị ảnh hưởng</returns>
         ///  created by: VTNghia - MF1108
-        public int UpdateService (T entity, Guid entityId)
+        public int UpdateService(T entity, Guid entityId)
         {
             Dictionary<string, string> error = new Dictionary<string, string>();
             var className = typeof(T).Name;
@@ -82,6 +86,7 @@ namespace MISA.Core.Services
             if (entityInDb == null)
             {
                 error.Add(entityIdColumn, "Đối tượng không tồn tại");
+                ValidateErrorMsg.Add(string.Format("Đối tượng không tồn tại"));
                 throw new MISAException("Đối tượng không tồn tại", error);
             }
 
@@ -102,6 +107,7 @@ namespace MISA.Core.Services
                 {
                     // Báo lỗi mã đã tồn tại trong resource
                     error.Add(entityCodeColumn, $"Mã <{entityCode}> đã tồn tại trong hệ thống");
+                    ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> đã tồn tại trong hệ thống"));
                     throw new MISAException($"Mã <{entityCode}> đã tồn tại trong hệ thống", error);
                 }
                 // Kiểm tra regex của mã nhân viên và mã đơn vị
@@ -111,6 +117,7 @@ namespace MISA.Core.Services
                 {
                     // Báo lỗi mã đã tồn tại trong resource
                     error.Add(entityCodeColumn, $"Mã <{entityCode}> sai định dạng");
+                    ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> sai định dạng"));
                     throw new MISAException($"Mã <{entityCode}> sai định dạng", error);
                 }
             }
@@ -155,17 +162,20 @@ namespace MISA.Core.Services
                     if (isGuid == true && propValue.Equals(Guid.Empty))
                     {
                         error.Add(propName, $"{propDisplayName} không được phép để trống");
+                        ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
+
                         //throw new DataMisalignedException($"{propDisplayName} không được phép để trống");
                     }
-                    else if (string.IsNullOrEmpty(propValue.ToString()))
+                    else if (string.IsNullOrEmpty((string?)propValue))
                     {
                         error.Add(propName, $"{propDisplayName} không được phép để trống");
+                        ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
+
                     }
 
-                    //ErrorValidateMsg.Add($"Thông tin {propDisplayName} không được phép để trống");
-                    //error.Add(propName, $"Thông tin {propDisplayName} không được phép để trống");
-                    //throw new DataMisalignedException($"Thông tin {propDisplayName} không được phép để trống");
                 }
+
+               
 
                 //Kiểm tra Attribute [isMaxLength]
                 var isMaxLength = property.IsDefined(typeof(MaxLength), true);
@@ -177,6 +187,7 @@ namespace MISA.Core.Services
                         //throw new DataMisalignedException($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
                         //ErrorValidateMsg.Add($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
                         error.Add(propName, $"Thông tin {propDisplayName} không vượt quá { length } kí tự");
+                        ValidateErrorMsg.Add(string.Format($"Thông tin {propDisplayName} không vượt quá { length } kí tự"));
                     }
                 }
             }
