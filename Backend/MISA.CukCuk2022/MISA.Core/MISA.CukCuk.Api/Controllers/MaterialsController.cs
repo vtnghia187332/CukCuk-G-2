@@ -4,6 +4,7 @@ using MISA.Core.Entities;
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces;
 using MISA.Core.Resources;
+using OfficeOpenXml;
 
 namespace MISA.CukCuk.Api.Controllers
 {
@@ -35,7 +36,7 @@ namespace MISA.CukCuk.Api.Controllers
         {
             try
             {
-                var entities = _materialService.FilterMaterial(pageNumber, pageSize, filters );
+                var entities = _materialService.FilterMaterial(pageNumber, pageSize, filters);
                 return Ok(entities);
             }
             catch (Exception ex)
@@ -81,6 +82,41 @@ namespace MISA.CukCuk.Api.Controllers
                 return HandleException(ex);
             }
         }
+
+        [HttpPut("Export")]
+        public async Task<IActionResult> Export([FromBody] List<Material>? materialsExport)
+        {
+            var list = new List<Material>();
+            //Kiểm tra điều kiện danh sách Nguyên vật liệu muốn xuất file Excel(khác null)
+            if (materialsExport.Count() > 0)
+            {
+                list= materialsExport.ToList();
+            }
+            else
+            {
+                // query data from database  
+                await Task.Yield();
+                //Lấy danh sách nguyên vật liệu dưới DB
+                list = (List<Material>)_materialRepository.Get();
+
+            }
+            //Setup những trường sẽ được sẽ được xuất khẩu
+
+            var stream = new MemoryStream();
+
+            using (var package = new ExcelPackage(stream))
+            {
+                var workSheet = package.Workbook.Worksheets.Add("Sheet1");
+                workSheet.Cells.LoadFromCollection(list, true);
+                package.Save();
+            }
+            stream.Position = 0;
+            string excelName = $"Nguyen.vat.lieu-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
+
+            //return File(stream, "application/octet-stream", excelName);
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+        }
+
 
         /// <summary>
         /// Hàm xử lý Exception

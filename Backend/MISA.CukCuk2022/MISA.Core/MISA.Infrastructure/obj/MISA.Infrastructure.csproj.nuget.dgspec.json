@@ -120,6 +120,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.1.8, )"

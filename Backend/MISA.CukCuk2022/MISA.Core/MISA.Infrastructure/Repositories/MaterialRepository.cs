@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using MISA.Core.Enum;
+using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 
 namespace MISA.Infrastructure.Repositories
 {
@@ -179,6 +181,32 @@ namespace MISA.Infrastructure.Repositories
             }
              return materials;
         }
+       
+
+    //    public async Task<IActionResult> Export()
+    //    {
+    //        // query data from database  
+    //        await Task.Yield();
+
+    //        var list = new List<Material>()
+    //{
+    //        new Material { MaterialCode = "M-19876", MaterialName = "catcher" },
+    //        new Material { MaterialCode = "M-19876", MaterialName = "james" },
+    //};
+    //        var stream = new MemoryStream();
+
+    //        using (var package = new ExcelPackage(stream))
+    //        {
+    //            var workSheet = package.Workbook.Worksheets.Add("Sheet1");
+    //            workSheet.Cells.LoadFromCollection(list, true);
+    //            package.Save();
+    //        }
+    //        stream.Position = 0;
+    //        string excelName = $"UserList-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
+
+    //        return File(stream, "application/octet-stream", excelName);
+    //        //return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+    //    }
 
         #endregion
     }
