@@ -89,7 +89,6 @@ export default {
 
     const drop = (e) => {
       dropzoneFile.value = e.dataTransfer.files[0];
-      console.log(dropzoneFile);
     };
 
     const selectedFile = () => {

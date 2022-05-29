@@ -15,14 +15,16 @@ namespace MISA.Core.Services
     {
         #region DECLARE
         IBaseRepository<T> _baseRepository;
-        protected List<string> ValidateErrorMsg;
+        //protected List<string> ValidateErrorMsg;
+        //tạo biến dictionary hứng lỗi
+        protected Dictionary<string, string> _error;
         #endregion
 
         #region Constructor
         public BaseService(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
-            ValidateErrorMsg = new List<string>();
+            _error = new Dictionary<string, string>();
         }
         #endregion
 
@@ -34,7 +36,7 @@ namespace MISA.Core.Services
         /// created by: VTNghia - MF1108
         public int InsertService(T entity)
         {
-            Dictionary<string, string> error = new Dictionary<string, string>();
+            //Dictionary<string, string> error = new Dictionary<string, string>();
             //Khai báo biến
             var className = typeof(T).Name;
             var errorList = ValidateObject(entity);
@@ -49,9 +51,9 @@ namespace MISA.Core.Services
             var entityCodeToCheck = typeof(T).GetProperty($"{className}Code").GetValue(entity, null).ToString();
             if (_baseRepository.CheckCodeExist(entityCodeToCheck) == true)
             {
-                error.Add($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống");
-                ValidateErrorMsg.Add(string.Format($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống"));
-                throw new MISAException(MISAResource.VN_NotValidInput, error);
+                _error.Add($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống");
+                //ValidateErrorMsg.Add(string.Format($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống"));
+                throw new MISAException(MISAResource.VN_NotValidInput, _error);
             }
             else
             {
@@ -71,7 +73,7 @@ namespace MISA.Core.Services
         ///  created by: VTNghia - MF1108
         public int UpdateService(T entity, Guid entityId)
         {
-            Dictionary<string, string> error = new Dictionary<string, string>();
+            //Dictionary<string, string> error = new Dictionary<string, string>();
             var className = typeof(T).Name;
             var errorList = ValidateObject(entity);
 
@@ -85,9 +87,9 @@ namespace MISA.Core.Services
             //Nếu đối tượng cần update không tồn tại -> văng ra lỗi cảnh báo
             if (entityInDb == null)
             {
-                error.Add(entityIdColumn, "Đối tượng không tồn tại");
-                ValidateErrorMsg.Add(string.Format("Đối tượng không tồn tại"));
-                throw new MISAException("Đối tượng không tồn tại", error);
+                _error.Add(entityIdColumn, "Đối tượng không tồn tại");
+                //ValidateErrorMsg.Add(string.Format("Đối tượng không tồn tại"));
+                throw new MISAException("Đối tượng không tồn tại", _error);
             }
 
             //Validate mã entity ở request ~ entity trong DB có trùng ko
@@ -106,9 +108,9 @@ namespace MISA.Core.Services
                 if (existCodeInReq == true)
                 {
                     // Báo lỗi mã đã tồn tại trong resource
-                    error.Add(entityCodeColumn, $"Mã <{entityCode}> đã tồn tại trong hệ thống");
-                    ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> đã tồn tại trong hệ thống"));
-                    throw new MISAException($"Mã <{entityCode}> đã tồn tại trong hệ thống", error);
+                    _error.Add(entityCodeColumn, $"Mã <{entityCode}> đã tồn tại trong hệ thống");
+                    //ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> đã tồn tại trong hệ thống"));
+                    throw new MISAException($"Mã <{entityCode}> đã tồn tại trong hệ thống", _error);
                 }
                 // Kiểm tra regex của mã nhân viên và mã đơn vị
                 var regex = new Regex(@"[a-zA-Z]$");
@@ -116,9 +118,9 @@ namespace MISA.Core.Services
                 if (regex.IsMatch(entityCode))
                 {
                     // Báo lỗi mã đã tồn tại trong resource
-                    error.Add(entityCodeColumn, $"Mã <{entityCode}> sai định dạng");
-                    ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> sai định dạng"));
-                    throw new MISAException($"Mã <{entityCode}> sai định dạng", error);
+                    _error.Add(entityCodeColumn, $"Mã <{entityCode}> sai định dạng");
+                    //ValidateErrorMsg.Add(string.Format($"Mã <{entityCode}> sai định dạng"));
+                    throw new MISAException($"Mã <{entityCode}> sai định dạng", _error);
                 }
             }
 
@@ -135,8 +137,7 @@ namespace MISA.Core.Services
         /// <exception cref="DataMisalignedException"></exception>
         public Dictionary<string, string> ValidateObject(T entity)
         {
-            //tạo biến dictionary hứng lỗi
-            Dictionary<string, string> error = new Dictionary<string, string>();
+            //Dictionary<string, string> error = new Dictionary<string, string>();
 
             //Lấy ra các property:
             var properties = typeof(T).GetProperties();
@@ -161,15 +162,15 @@ namespace MISA.Core.Services
                     var isGuid = property.IsDefined(typeof(IsGuid), true);
                     if (isGuid == true && propValue.Equals(Guid.Empty))
                     {
-                        error.Add(propName, $"{propDisplayName} không được phép để trống");
-                        ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
+                        _error.Add(propName, $"{propDisplayName} không được phép để trống");
+                        //ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
 
                         //throw new DataMisalignedException($"{propDisplayName} không được phép để trống");
                     }
                     else if (string.IsNullOrEmpty((string?)propValue))
                     {
-                        error.Add(propName, $"{propDisplayName} không được phép để trống");
-                        ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
+                        _error.Add(propName, $"{propDisplayName} không được phép để trống");
+                        //ValidateErrorMsg.Add(string.Format($"{propDisplayName} không được phép để trống"));
 
                     }
 
@@ -186,12 +187,12 @@ namespace MISA.Core.Services
                     {
                         //throw new DataMisalignedException($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
                         //ErrorValidateMsg.Add($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
-                        error.Add(propName, $"Thông tin {propDisplayName} không vượt quá { length } kí tự");
-                        ValidateErrorMsg.Add(string.Format($"Thông tin {propDisplayName} không vượt quá { length } kí tự"));
+                        _error.Add(propName, $"Thông tin {propDisplayName} không vượt quá { length } kí tự");
+                        //ValidateErrorMsg.Add(string.Format($"Thông tin {propDisplayName} không vượt quá { length } kí tự"));
                     }
                 }
             }
-            return error;
+            return _error;
         }
 
         /// <summary>

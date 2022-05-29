@@ -105,18 +105,17 @@ namespace MISA.Core.Services
                         material.MaterialNote = ProcessValueToString(worksheet.Cells[row, 5].Value);
 
                         //Thực hiện validate dữ liệu
-                        ValidateErrorMsg = new List<string>();
+                        _error = new Dictionary<string, string>();
                         base.ValidateObject(material);
-                        if (ValidateErrorMsg.Count() > 0)
+                        if (_error.Count() > 0)
                         {
+                            //Nếu xảy ra lỗi, thêm vào biến hiển thị lỗi
                             material.IsValid = false;
-                            material.ErrorValidateNotValid = ValidateErrorMsg;
-
+                            material.ErrorValidateNotValid = _error;
                         }
                         else
                         {
                             materialsValid.Add(material);
-
                         }
 
                         materials.Add(material);
