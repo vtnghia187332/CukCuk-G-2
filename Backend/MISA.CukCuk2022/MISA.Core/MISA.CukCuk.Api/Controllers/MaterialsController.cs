@@ -69,6 +69,11 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Xử lý hàm nhập khẩu nguyên vật liệu ra file Excel
+        /// </summary>
+        /// <param name="formFile">File excel</param>
+        /// <returns>Danh sách các nguyên vật liệu</returns>
         [HttpPost("import")]
         public IActionResult Import(IFormFile formFile)
         {
@@ -83,14 +88,19 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
-        [HttpPut("Export")]
+        /// <summary>
+        /// Xử lý hàm xuất khẩu nguyên vật liệu ra file Excel
+        /// </summary>
+        /// <param name="materialsExport">Danh sách nguyên vật liệu xuất ra file excel</param>
+        /// <returns>File Excel</returns>
+        [HttpPost("Export")]
         public async Task<IActionResult> Export([FromBody] List<Material>? materialsExport)
         {
             var list = new List<Material>();
             //Kiểm tra điều kiện danh sách Nguyên vật liệu muốn xuất file Excel(khác null)
             if (materialsExport.Count() > 0)
             {
-                list= materialsExport.ToList();
+                list = materialsExport.ToList();
             }
             else
             {
@@ -98,23 +108,19 @@ namespace MISA.CukCuk.Api.Controllers
                 await Task.Yield();
                 //Lấy danh sách nguyên vật liệu dưới DB
                 list = (List<Material>)_materialRepository.Get();
-
             }
-            //Setup những trường sẽ được sẽ được xuất khẩu
-
+            //Setup những trường sẽ được sẽ được xuất khẩu: 
+            var _objectForExport = new ObjectForExport();
             var stream = new MemoryStream();
+           
+            //Khai báo thông tin file excel
+            string excelName = $"Nguyen-vat-lieu-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
 
-            using (var package = new ExcelPackage(stream))
-            {
-                var workSheet = package.Workbook.Worksheets.Add("Sheet1");
-                workSheet.Cells.LoadFromCollection(list, true);
-                package.Save();
-            }
-            stream.Position = 0;
-            string excelName = $"Nguyen.vat.lieu-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
+            //config file excel
+            _objectForExport = _materialService.ConfigFileToExport(list, stream, excelName);
 
-            //return File(stream, "application/octet-stream", excelName);
-            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+            //trả về file excel
+            return File(stream, "application/octet-stream", _objectForExport.excelName);
         }
 
 

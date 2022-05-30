@@ -155,3 +155,12 @@ C:\Users\ADMIN\Documents\MISA-CukCuk-Duplicate\Backend\MISA.CukCuk2022\MISA.Core
 C:\Users\ADMIN\Documents\MISA-CukCuk-Duplicate\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\ADMIN\Documents\MISA-CukCuk-Duplicate\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\ADMIN\Documents\MISA-CukCuk-Duplicate\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\EPPlus.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\EPPlus.Interfaces.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\EPPlus.System.Drawing.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\vtnghia\Documents\GitHub\CukCuk-G-2\Backend\MISA.CukCuk2022\MISA.Core\MISA.CukCuk.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

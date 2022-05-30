@@ -36,5 +36,14 @@ namespace MISA.Core.Interfaces
         /// <param name="formFile">Tệp chứa thông tin nguyên vật liệu</param>
         /// <returns>Danh sách nguyên vật liệu kèm theo trạng thái chi tiết kết quả nhập khẩu</returns>
         Task<List<Material>> Import(IFormFile formFile);
+
+        /// <summary>
+        /// Xử lý sự kiện config thông tin file Excel
+        /// </summary>
+        /// <param name="list">Danh sách nguyên vật liệu</param>
+        /// <param name="stream">Stream</param>
+        /// <param name="excelName">Tên file Excel</param>
+        /// <returns>thông tin config file</returns>
+        ObjectForExport ConfigFileToExport(List<Material> list, MemoryStream stream, string excelName);
     }
 }

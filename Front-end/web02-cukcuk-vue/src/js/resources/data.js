@@ -10,13 +10,13 @@ const misaEnum = {
 // Tài nguyên API chung
 const misaApi = {
     // Material
-    getMaterial: "http://localhost:5236/api/v1/Materials",
+    getMaterials: "http://localhost:5236/api/v1/Materials",
     getMaterialById: "http://localhost:5236/api/v1/Materials",
     getNewMaterialCode: "http://localhost:5236/api/v1/Materials/GetNewCode",
     deleteMaterial: "http://localhost:5236/api/v1/Materials",
     postMaterialWithConvertions: "http://localhost:5236/api/v1/Materials/MaterialWithConvertions",
-
     getMaterialFilter: "http://localhost:5236/api/v1/Materials/filter",
+    exportMaterialToExcel:"http://localhost:5236/api/v1/Materials/Export",
 
     // Unit
     getUnit: "http://localhost:5236/api/v1/Units",

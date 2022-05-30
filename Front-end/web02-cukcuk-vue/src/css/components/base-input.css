@@ -35,6 +35,7 @@ button.m-sel-drp-icon {
   border-radius: 2px;
   /* box-shadow   : 0 3px 20px #d0d0d0; */
   box-shadow: 2px 2px 5px #d0d0d0;
+  background-color: #fff !important;
 }
 
 .drp-sel-operator {
@@ -42,6 +43,7 @@ button.m-sel-drp-icon {
   padding-left: 15px;
   padding-right: 5px;
   cursor: pointer;
+  text-align: left;
 }
 
 .drp-sel-operator:hover {

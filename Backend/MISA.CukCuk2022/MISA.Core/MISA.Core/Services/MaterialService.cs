@@ -77,10 +77,11 @@ namespace MISA.Core.Services
                 throw new MISAException("Tệp dữ liệu phải có định dạng là .xls hoặc .xlsx");
             }
             //1. Đọc dữ liệu có trong tệp
-
             var materials = new List<Material>();
             //Danh sách nhân viên hợp lệ
             var materialsValid = new List<Material>();
+
+            //todo: đọc file excel trả về kết quả 
 
             using (var stream = new MemoryStream())
             {
@@ -98,7 +99,7 @@ namespace MISA.Core.Services
                         //Thêm Id mới cho từng đối tượng
                         material.MaterialId = Guid.NewGuid();
 
-                        material.MaterialCode = ProcessValueToString(worksheet.Cells[row, 1].Value);
+                        material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString(); //
                         material.MaterialName = ProcessValueToString(worksheet.Cells[row, 2].Value);
                         material.MaterialFeature = ProcessValueToString(worksheet.Cells[row, 3].Value);
                         material.GroupMaterial = ProcessValueToString(worksheet.Cells[row, 4].Value);
@@ -128,6 +129,11 @@ namespace MISA.Core.Services
             }
         }
 
+        /// <summary>
+        /// commnent
+        /// </summary>
+        /// <param name="cellValue"></param>
+        /// <returns></returns>
         private string? ProcessValueToString(object cellValue)
         {
             if (cellValue != null)
@@ -176,15 +182,34 @@ namespace MISA.Core.Services
                     //trả về data
                     return res;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw new MISAException("Có lỗi xảy ra, vui lòng liên hệ MISA để được trợ giúp");
                 }
-
-
             }
         }
+        /// <summary>
+        /// Xử lý sự kiện config thông tin file Excel
+        /// </summary>
+        /// <param name="list">Danh sách nguyên vật liệu</param>
+        /// <param name="stream">Stream</param>
+        /// <param name="excelName">Tên file Excel</param>
+        /// <returns>thông tin config file</returns>
+        public ObjectForExport ConfigFileToExport(List<Material> list, MemoryStream stream, string excelName)
+        {
+            var _objectForExport = new ObjectForExport();
+            using (var package = new ExcelPackage(stream))
+            {
+                var workSheet = package.Workbook.Worksheets.Add("Sheet1");
+                workSheet.Cells.LoadFromCollection(list, true);
+                package.Save();
+            }
+            stream.Position = 0;
+            
+            _objectForExport.excelName = excelName;
 
+            return _objectForExport;
+        }
 
         #endregion
     }

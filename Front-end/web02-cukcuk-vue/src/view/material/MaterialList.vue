@@ -48,13 +48,6 @@
         <div class="m-btn-icon m-refresh"></div>
         <div class="m-btn-text">Nạp</div>
       </button>
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        @click="loadData"
-      >
-        <div class="m-btn-icon m-refresh"></div>
-        <div class="m-btn-text">Nạp</div>
-      </button>
 
       <button
         class="m-btn m-btn-wicon fit-center btn-content"
@@ -64,7 +57,10 @@
         <div class="m-btn-text">Nhập khẩu</div>
       </button>
 
-      <button class="m-btn m-btn-wicon fit-center btn-content">
+      <button
+        class="m-btn m-btn-wicon fit-center btn-content"
+        @click="handleExportOnClick"
+      >
         <div class="m-btn-icon"><i class="fa-solid fa-download"></i></div>
         <div class="m-btn-text">Xuất khẩu</div>
       </button>
@@ -134,6 +130,7 @@
                       />
                     </div>
                   </th>
+
                   <th class="m-500">
                     <div class="txt-grid-content">Ghi chú</div>
                     <div class="input-grid-content">
@@ -143,6 +140,7 @@
                       />
                     </div>
                   </th>
+
                   <th class="m-40">
                     <div class="txt-grid-content">Ngừng theo dõi</div>
                     <div class="input-grid-content">
@@ -310,6 +308,7 @@ import WarningDialog from "@/view/notification/WarningDialog.vue";
 import ShowConfirm from "@/view/notification/ShowConfirm.vue";
 import AlertConfirm from "@/view/notification/AlertConfirm.vue";
 import ImportDataFirst from "@/components/Import-Data/Import-Data-First.vue";
+import { saveAs } from "file-saver";
 
 export default {
   components: {
@@ -403,6 +402,95 @@ export default {
   },
 
   methods: {
+    /**
+     * Mô tả : Xử lý sự kiện export nguyên vật liệu ra file excel
+     * @param: mảng chứa nguyên vật liệu cần export ra file excel
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:24 30/05/2022
+     */
+    handleExportOnClick(materialToExcel) {
+      materialToExcel = this.checkedaAssetList;
+      // Nếu trong mảng chứa phần tử -> Xuất file excel các phần tử đó
+      if (materialToExcel.length > 0) {
+        this.handleExport(materialToExcel);
+      }
+      // Nếu không chứa -> Xuất toàn bộ nguyên vật liệu có trong Database
+      else {
+        console.log(this.getAllMaterials());
+      }
+    },
+
+    /**
+     * Mô tả : Gọi API để lấy ra toàn bộ nguyên vật liệu có trong Database
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:29 30/05/2022
+     */
+    async getAllMaterials() {
+      let me = this;
+      //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
+      let tempMaterialsToRes = [];
+      await axios
+        .get(`${me.misaApi.getMaterials}`)
+        .then(function (res) {
+          if (res) {
+            tempMaterialsToRes = res;
+          }
+        })
+        .catch(function (res) {
+          console.log(res);
+        });
+      return tempMaterialsToRes;
+    },
+
+    /**
+     * Mô tả : Gọi Api để xử lý hàm xuất khẩu ra file excel
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:30 30/05/2022
+     */
+    async handleExport(materialToExport) {
+      debugger;
+      let me = this;
+      // time biến thành tên của file
+      const tempDateTime = new Date();
+      const fileName = `Nguyen_vat_lieu${tempDateTime.getTime()}.xlsx`;
+      //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
+      await axios
+        .post(
+          `${me.misaApi.exportMaterialToExcel}`,
+          materialToExport,
+          {
+            responseType: "blob",
+            contentType: "application/json-patch+json",
+          }
+        )
+        .then(function (res) {
+          if (res) {
+            var url = window.URL.createObjectURL(new Blob([res.data]));
+            console.log(url);
+            var a = document.createElement("a");
+            a.href = url;
+            //Lấy file name mà server trả về -> save file 
+            a.download = fileName;
+            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+            a.click();
+            a.remove(); //afterwards we remove the element again
+
+            // const reader = new FileReader();
+            // reader.readAsDataURL(new Blob([res.data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+            // reader.onload =  function(e){
+            //   console.log('DataURL:', e.target.result);
+            //   saveAs(e.target.result, fileName);
+            // };
+            // // download file
+            // console.log(res);
+            // // saveAs(new Blob([res.data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), fileName);
+          }
+        })
+        .catch(function (res) {
+          console.log(res);
+        });
+    },
+
     /**
      * Mô tả :Hiển thị dialog nhập khẩu
      * Created by: Vũ Trọng Nghĩa - MF1108
@@ -699,7 +787,6 @@ export default {
      * Created date: 14:55 25/04/2022
      */
     async deleteMultipleMaterials() {
-      debugger;
       let me = this;
       let tempDeleteMultiple = [];
       for (let i = 0; i < this.checkedaAssetList.length; i++) {
