@@ -321,6 +321,8 @@ export default {
   },
   data() {
     return {
+      // Danh sách nguyên vật liệu có trong Database
+      allMaterials: [],
       // Mở form dialog import bước đầu tiên
       isShowImportDlgFirst: false,
 
@@ -408,15 +410,17 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 08:24 30/05/2022
      */
-    handleExportOnClick(materialToExcel) {
+    async handleExportOnClick(materialToExcel) {
       materialToExcel = this.checkedaAssetList;
       // Nếu trong mảng chứa phần tử -> Xuất file excel các phần tử đó
       if (materialToExcel.length > 0) {
-        this.handleExport(materialToExcel);
+        await this.handleExport(materialToExcel);
+        this.checkedaAssetList = [];
       }
       // Nếu không chứa -> Xuất toàn bộ nguyên vật liệu có trong Database
       else {
-        console.log(this.getAllMaterials());
+        await this.handleExport(materialToExcel);
+        this.checkedaAssetList = [];
       }
     },
 
@@ -425,22 +429,21 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 08:29 30/05/2022
      */
-    async getAllMaterials() {
-      let me = this;
-      //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
-      let tempMaterialsToRes = [];
-      await axios
-        .get(`${me.misaApi.getMaterials}`)
-        .then(function (res) {
-          if (res) {
-            tempMaterialsToRes = res;
-          }
-        })
-        .catch(function (res) {
-          console.log(res);
-        });
-      return tempMaterialsToRes;
-    },
+    // async getAllMaterials() {
+    //   let me = this;
+    //   //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
+    //   me.allMaterials = [];
+    //   await axios
+    //     .get(`${me.misaApi.getMaterials}`)
+    //     .then(function (res) {
+    //       if (res) {
+    //         me.allMaterials = res;
+    //       }
+    //     })
+    //     .catch(function (res) {
+    //       console.log(res);
+    //     });
+    // },
 
     /**
      * Mô tả : Gọi Api để xử lý hàm xuất khẩu ra file excel
@@ -455,35 +458,21 @@ export default {
       const fileName = `Nguyen_vat_lieu${tempDateTime.getTime()}.xlsx`;
       //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
       await axios
-        .post(
-          `${me.misaApi.exportMaterialToExcel}`,
-          materialToExport,
-          {
-            responseType: "blob",
-            contentType: "application/json-patch+json",
-          }
-        )
+        .post(`${me.misaApi.exportMaterialToExcel}`, materialToExport, {
+          responseType: "blob",
+          contentType: "application/json-patch+json",
+        })
         .then(function (res) {
           if (res) {
             var url = window.URL.createObjectURL(new Blob([res.data]));
             console.log(url);
             var a = document.createElement("a");
             a.href = url;
-            //Lấy file name mà server trả về -> save file 
+            //Lấy file name mà server trả về -> save file
             a.download = fileName;
             document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
             a.click();
             a.remove(); //afterwards we remove the element again
-
-            // const reader = new FileReader();
-            // reader.readAsDataURL(new Blob([res.data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
-            // reader.onload =  function(e){
-            //   console.log('DataURL:', e.target.result);
-            //   saveAs(e.target.result, fileName);
-            // };
-            // // download file
-            // console.log(res);
-            // // saveAs(new Blob([res.data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), fileName);
           }
         })
         .catch(function (res) {

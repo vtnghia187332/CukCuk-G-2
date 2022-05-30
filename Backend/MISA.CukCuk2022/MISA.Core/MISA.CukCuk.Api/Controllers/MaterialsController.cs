@@ -108,9 +108,12 @@ namespace MISA.CukCuk.Api.Controllers
                 await Task.Yield();
                 //Lấy danh sách nguyên vật liệu dưới DB
                 list = (List<Material>)_materialRepository.Get();
+
             }
+
             //Setup những trường sẽ được sẽ được xuất khẩu: 
             var _objectForExport = new ObjectForExport();
+
             var stream = new MemoryStream();
            
             //Khai báo thông tin file excel

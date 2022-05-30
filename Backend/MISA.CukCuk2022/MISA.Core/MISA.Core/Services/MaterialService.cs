@@ -2,6 +2,7 @@
 using MISA.Core.Entities;
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces;
+using MISA.Core.Interfaces.IRepo;
 using MISA.Core.Resources;
 using OfficeOpenXml;
 using System;
@@ -18,12 +19,15 @@ namespace MISA.Core.Services
         #region DECLARE
         IMaterialRepository _materialRepository;
         IConvertionRepository _convertionRepository;
+        IEPPLusAppService _iEPPLusAppService;
+
         #endregion
         #region Constructor
-        public MaterialService(IMaterialRepository materialRepository, IConvertionRepository convertionRepository) : base(materialRepository)
+        public MaterialService(IMaterialRepository materialRepository, IConvertionRepository convertionRepository, IEPPLusAppService iEPPLusAppService) : base(materialRepository)
         {
             _materialRepository = materialRepository;
             _convertionRepository = convertionRepository;
+            _iEPPLusAppService = iEPPLusAppService;
         }
         #endregion
 
@@ -76,57 +80,81 @@ namespace MISA.Core.Services
             {
                 throw new MISAException("Tệp dữ liệu phải có định dạng là .xls hoặc .xlsx");
             }
-            //1. Đọc dữ liệu có trong tệp
-            var materials = new List<Material>();
-            //Danh sách nhân viên hợp lệ
+
             var materialsValid = new List<Material>();
+            Task<List<Material>>? materials = _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
 
-            //todo: đọc file excel trả về kết quả 
-
-            using (var stream = new MemoryStream())
+            foreach (var material in await materials)
             {
-                await formFile.CopyToAsync(stream);
-                using (var package = new ExcelPackage(stream))
+                _error = new Dictionary<string, string>();
+                base.ValidateObject(material);
+                if (_error.Count() > 0)
                 {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-                    var rowCount = worksheet.Dimension.Rows;
-                    //2. Thực hiện build thành danh sách nguyên vật liệu với các dữ liệu đã đọc được trong tệp
-                    for (int row = 2; row <= rowCount; row++)
-                    {
-                        var material = new Material();
-                        //Xử lý thông tin các trường dữ liệu
-
-                        //Thêm Id mới cho từng đối tượng
-                        material.MaterialId = Guid.NewGuid();
-
-                        material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString(); //
-                        material.MaterialName = ProcessValueToString(worksheet.Cells[row, 2].Value);
-                        material.MaterialFeature = ProcessValueToString(worksheet.Cells[row, 3].Value);
-                        material.GroupMaterial = ProcessValueToString(worksheet.Cells[row, 4].Value);
-                        material.MaterialNote = ProcessValueToString(worksheet.Cells[row, 5].Value);
-
-                        //Thực hiện validate dữ liệu
-                        _error = new Dictionary<string, string>();
-                        base.ValidateObject(material);
-                        if (_error.Count() > 0)
-                        {
-                            //Nếu xảy ra lỗi, thêm vào biến hiển thị lỗi
-                            material.IsValid = false;
-                            material.ErrorValidateNotValid = _error;
-                        }
-                        else
-                        {
-                            materialsValid.Add(material);
-                        }
-
-                        materials.Add(material);
-                    }
+                    material.IsValid = false;
+                    material.ErrorValidateNotValid = _error;
                 }
-                //Thực hiện thêm danh sách nhân viên vào database
-                //var materialImporteds = _materialRepository.Import(materialsValid);
-                //return materialImporteds.ToList();
-                return materials;
+                else
+                {
+                    materialsValid.Add(material);
+                }
             }
+
+            //1. Đọc dữ liệu có trong tệp
+            ////Danh sách nhân viên hợp lệ
+            
+
+            ////todo: đọc file excel trả về kết quả 
+
+            //using (var stream = new MemoryStream())
+            //{
+            //    await formFile.CopyToAsync(stream);
+            //    using (var package = new ExcelPackage(stream))
+            //    {
+            //        ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+            //        var rowCount = worksheet.Dimension.Rows;
+            //        //2. Thực hiện build thành danh sách nguyên vật liệu với các dữ liệu đã đọc được trong tệp
+            //        for (int row = 2; row <= rowCount; row++)
+            //        {
+            //            var material = new Material();
+            //            //Xử lý thông tin các trường dữ liệu
+
+            //            //Thêm Id mới cho từng đối tượng
+            //            material.MaterialId = Guid.NewGuid();
+
+            //            material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString();
+            //            material.MaterialName = worksheet.Cells[row, 1].Value?.ToString();
+            //            material.MaterialFeature = worksheet.Cells[row, 1].Value?.ToString();
+            //            material.GroupMaterial = worksheet.Cells[row, 1].Value?.ToString();
+            //            material.MaterialNote = worksheet.Cells[row, 1].Value?.ToString();
+
+            //            //Thực hiện validate dữ liệu
+            //            _error = new Dictionary<string, string>();
+            //            base.ValidateObject(material);
+            //            if (_error.Count() > 0)
+            //            {
+            //                //Nếu xảy ra lỗi, thêm vào biến hiển thị lỗi
+            //                material.IsValid = false;
+            //                material.ErrorValidateNotValid = _error;
+            //            }
+            //            else
+            //            {
+            //                materialsValid.Add(material);
+            //            }
+
+            //            materials.Add(material);
+            //        }
+
+            //        //collection kết quả của hàm EPPLUS 
+            //        //foreach (var item in collection)
+            //        //{
+            //        //    base.ValidateObject(item);
+            //        //}
+            //    }
+            //    //Thực hiện thêm danh sách nhân viên vào database
+            //    //var materialImporteds = _materialRepository.Import(materialsValid);
+            //    //return materialImporteds.ToList();
+            //}
+            return await materials;
         }
 
         /// <summary>
@@ -134,17 +162,17 @@ namespace MISA.Core.Services
         /// </summary>
         /// <param name="cellValue"></param>
         /// <returns></returns>
-        private string? ProcessValueToString(object cellValue)
-        {
-            if (cellValue != null)
-            {
-                return cellValue.ToString();
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //private string? ProcessValueToString(object cellValue)
+        //{
+        //    if (cellValue != null)
+        //    {
+        //        return cellValue.ToString();
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
 
         /// <summary>
@@ -205,7 +233,7 @@ namespace MISA.Core.Services
                 package.Save();
             }
             stream.Position = 0;
-            
+
             _objectForExport.excelName = excelName;
 
             return _objectForExport;

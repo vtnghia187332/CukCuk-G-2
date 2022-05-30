@@ -1,4 +1,6 @@
 ﻿using MISA.Core.Interfaces;
+using MISA.Core.Interfaces.IRepo;
+using MISA.Core.Lib;
 using MISA.Core.Services;
 using MISA.Infrastructure.Repositories;
 using Newtonsoft.Json.Serialization;
@@ -25,6 +27,7 @@ builder.Services.AddScoped<IConvertionService, ConvertionService>();
 
 
 builder.Services.AddScoped<IMaterialRepository, MaterialRepository>();
+builder.Services.AddScoped<IEPPLusAppService, EPPLusAppService>();
 builder.Services.AddScoped<IMaterialService, MaterialService>();
 
 

@@ -6,6 +6,7 @@
 .m-popup-title-content {
   font-size: 14px;
   font-weight: 800;
+  margin-bottom: 10px;
 }
 
 .m-dlg-import {
@@ -101,8 +102,8 @@
 }
 
 .frame-import-table {
-  height: 400px;
-  margin-top: 10px;
+  height: 480px;
+  /* margin-top: 10px; */
   overflow-y: auto;
 }
 

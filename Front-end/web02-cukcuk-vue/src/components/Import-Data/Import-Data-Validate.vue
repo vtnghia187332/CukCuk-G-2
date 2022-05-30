@@ -1,9 +1,11 @@
 <template>
-  <div class="m-dialog-box" hidden>
+  <div class="m-dialog-box">
     <div class="m-dialog m-dlg-show m-dlg-import">
       <div class="dialog-header dlg-header-show">
         <div class="m-popup-title m-import-dlg">Nhập khẩu nguyên vật liệu</div>
-        <div class="m-popup-close"></div>
+        <div class="m-popup-close" @click="showAlertDlg">
+          <i class="fa-solid fa-x"></i>
+        </div>
       </div>
       <div class="m-popup-content dlg-content-show">
         <div class="m-popup-title-content">Bước 2: Kiểm tra dữ liệu</div>
@@ -203,6 +205,8 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  
+};
 </script>
 <style scoped></style>
