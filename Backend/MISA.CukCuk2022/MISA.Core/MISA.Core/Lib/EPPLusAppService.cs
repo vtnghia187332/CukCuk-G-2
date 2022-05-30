@@ -40,6 +40,8 @@ namespace MISA.Core.Lib
                         //Thêm Id mới cho từng đối tượng
                         material.MaterialId = Guid.NewGuid();
 
+
+                        //Duyệt từng đối tượng(row) trong file excel
                         material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString();
                         material.MaterialName = worksheet.Cells[row, 1].Value?.ToString();
                         material.MaterialFeature = worksheet.Cells[row, 1].Value?.ToString();
@@ -49,6 +51,7 @@ namespace MISA.Core.Lib
                         materials.Add(material);
                     }
                 }
+                //Danh sách nguyên vật liệu trong file excel
                 return materials;
             }
         }

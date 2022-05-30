@@ -308,7 +308,6 @@ import WarningDialog from "@/view/notification/WarningDialog.vue";
 import ShowConfirm from "@/view/notification/ShowConfirm.vue";
 import AlertConfirm from "@/view/notification/AlertConfirm.vue";
 import ImportDataFirst from "@/components/Import-Data/Import-Data-First.vue";
-import { saveAs } from "file-saver";
 
 export default {
   components: {

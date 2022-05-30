@@ -31,11 +31,26 @@
                       </div>
                     </div>
                     <div class="import-list-right">
-                      <button class="m-btn fit-center">
+                      <!-- <button
+                        class="m-btn fit-center"
+                        @change="selectedFile"
+                      >
                         <div class="m-btn-text m-btn-import">
                           TẢI LÊN TỆP KHÁC
                         </div>
-                      </button>
+                      </button> -->
+                      <div class="m-btn-upload-file">
+                        <!--default html file upload button-->
+                        <input
+                          type="file"
+                          id="dropzoneFile"
+                          class="dropzoneFile"
+                          @change="selectedFile"
+                          hidden
+                        />
+                        <!--our custom file upload button-->
+                        <label for="dropzoneFile">TẢI LÊN TỆP KHÁC</label>
+                      </div>
                     </div>
                   </div>
                   <div class="m-popup-content-footer">
@@ -263,6 +278,7 @@
           <button
             class="m-btn m-btn-wicon fit-center m-btn-fotter"
             @click="handleTableForImportOnClick"
+            :disabled="dropzoneFile.name == null"
           >
             <div class="m-btn-text">Tiếp theo</div>
           </button>
@@ -284,6 +300,7 @@
 /*eslint-disable */
 import { ref } from "vue";
 import DropZone from "@/components/Import-Data/Drop-zone.vue";
+import axios from "axios";
 
 export default {
   components: { DropZone },
@@ -314,8 +331,35 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 16:08 30/05/2022
      */
-    handleTableForImportOnClick() {
+    async handleTableForImportOnClick() {
+      // Hiển thị form thay đổi
       this.isShowTableOnClick = true;
+      //Gọi Api để lấy về danh sách nguyên vật liệu trong file excel
+      await this.handleImportFileExcel();
+    },
+    /**
+    * Mô tả : Xử lý code gọi API để xử lý file import -> Trả về danh sách nguyên vật liệu
+    
+    
+    * Created by: Vũ Trọng Nghĩa - MF1108
+    * Created date: 21:57 30/05/2022
+    */
+    async handleImportFileExcel(files) {
+      files.forEach(async (ifile) => {
+        const formData = new FormData();
+        formData.append("file", ifile);
+        await axios
+          .post(
+            "http://localhost:5236/api/v1/Materials/import",
+            formData
+          )
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
     },
     /**
      * Mô tả : off dialog

@@ -75,7 +75,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="formFile">File excel</param>
         /// <returns>Danh sách các nguyên vật liệu</returns>
         [HttpPost("import")]
-        public IActionResult Import(IFormFile formFile)
+        public IActionResult Import([FromForm] IFormFile formFile)
         {
             try
             {
