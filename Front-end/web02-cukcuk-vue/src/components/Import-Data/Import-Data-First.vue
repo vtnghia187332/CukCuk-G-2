@@ -105,7 +105,7 @@
                         </th>
                         <th class="m-table-validate txt-left">TÍNH CHẤT</th>
                         <th class="m-table-validate txt-left">ĐƠN VỊ TÍNH</th>
-                        <th class="m-table-validate txt-left">LÝ DO</th>
+                        <th class="txt-left">LÝ DO</th>
                         <th class="m-table-validate-action txt-left"></th>
                       </tr>
                     </thead>
@@ -135,13 +135,10 @@
                           />
                         </td>
                         <td class="">
-                          <BaseInput
-                            v-model="material.UnitName"
-                            class="width-100"
-                          />
+                          <BaseInput v-model="material.UnitName" />
                         </td>
                         <td class="">
-                          <div class="reason-error">
+                          <div class="reason-error txt-error-table">
                             {{ this.listErrValidate[index] }}
                           </div>
                         </td>
@@ -283,7 +280,6 @@ export default {
         await this.handleImportFileExcel();
       }
       if (this.materialsToImport.length > 0) {
-        debugger;
         // Hiển thị form thay đổi lựa chọn file
         this.isShowTableOnClick = true;
         // Validate dữ liệu
@@ -306,7 +302,6 @@ export default {
           },
         })
         .then(function (res) {
-          debugger;
           // Lấy dữ liệu từ Api trả về
           me.materialsToImport = res.data.Result;
         })

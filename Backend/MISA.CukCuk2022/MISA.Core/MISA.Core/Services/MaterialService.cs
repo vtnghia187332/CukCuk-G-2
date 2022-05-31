@@ -84,79 +84,83 @@ namespace MISA.Core.Services
             var materialsValid = new List<Material>();
 
             //Thực hiện đọc file excel và trả về danh sách nguyên vật liệu
-            Task<List<Material>>? materials = _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
+            List<Material> materials = await _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
 
-            foreach (var material in await materials)
+            var _errorCount = 0;
+            foreach (var material in materials)
             {
                 _error = new Dictionary<string, string>();
+                //Validate thông tin file excel
                 base.ValidateObject(material);
                 if (_error.Count() > 0)
                 {
+                    //Check điều kiện: để trống
                     material.IsValid = false;
                     material.ErrorValidateNotValid = _error;
+                    _errorCount++;
+                }
+                //check code trùng lặp trong file excel
+                else if (CheckCodeExistInFile(material.MaterialCode, material.MaterialId, materials))
+                //else if (materials.Any(item => item.MaterialCode == material.MaterialCode) && materials.Any(item => item.MaterialId != material.MaterialId))
+                {
+                    material.IsValid = false;
+                    _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");
+                    material.ErrorValidateNotValid = _error;
+                    _errorCount++;
+                }
+                //Check code trùng lặp trong DB(Nếu không trùng tên trong file excel)
+                else if (_materialRepository.CheckCodeExist(material.MaterialCode) == true)
+                {
+                    material.IsValid = false;
+                    _error.Add("MaterialCode", $"Mã nguyên vật liệu đã tồn tại");
+                    material.ErrorValidateNotValid = _error;
+                    _errorCount++;
                 }
                 else
                 {
+                    //Thêm vào danh sách nguyên vật liệu hợp lệ
                     materialsValid.Add(material);
                 }
             }
 
-            //1. Đọc dữ liệu có trong tệp
-            ////Danh sách nhân viên hợp lệ
-            
 
-            ////todo: đọc file excel trả về kết quả 
-
-            //using (var stream = new MemoryStream())
+            //Nếu không có lỗi trùng -> Thêm vào CSDL
+            //foreach (var materialIsValid in materialsValid)
             //{
-            //    await formFile.CopyToAsync(stream);
-            //    using (var package = new ExcelPackage(stream))
-            //    {
-            //        ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-            //        var rowCount = worksheet.Dimension.Rows;
-            //        //2. Thực hiện build thành danh sách nguyên vật liệu với các dữ liệu đã đọc được trong tệp
-            //        for (int row = 2; row <= rowCount; row++)
-            //        {
-            //            var material = new Material();
-            //            //Xử lý thông tin các trường dữ liệu
-
-            //            //Thêm Id mới cho từng đối tượng
-            //            material.MaterialId = Guid.NewGuid();
-
-            //            material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString();
-            //            material.MaterialName = worksheet.Cells[row, 1].Value?.ToString();
-            //            material.MaterialFeature = worksheet.Cells[row, 1].Value?.ToString();
-            //            material.GroupMaterial = worksheet.Cells[row, 1].Value?.ToString();
-            //            material.MaterialNote = worksheet.Cells[row, 1].Value?.ToString();
-
-            //            //Thực hiện validate dữ liệu
-            //            _error = new Dictionary<string, string>();
-            //            base.ValidateObject(material);
-            //            if (_error.Count() > 0)
-            //            {
-            //                //Nếu xảy ra lỗi, thêm vào biến hiển thị lỗi
-            //                material.IsValid = false;
-            //                material.ErrorValidateNotValid = _error;
-            //            }
-            //            else
-            //            {
-            //                materialsValid.Add(material);
-            //            }
-
-            //            materials.Add(material);
-            //        }
-
-            //        //collection kết quả của hàm EPPLUS 
-            //        //foreach (var item in collection)
-            //        //{
-            //        //    base.ValidateObject(item);
-            //        //}
-            //    }
-            //    //Thực hiện thêm danh sách nhân viên vào database
-            //    //var materialImporteds = _materialRepository.Import(materialsValid);
-            //    //return materialImporteds.ToList();
+            //    _materialRepository.Insert(materialIsValid);
             //}
-            return await materials;
+
+            //return materialImporteds.ToList();
+            return materials;
+        }
+
+        /// <summary>
+        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL
+        /// </summary>
+        /// <param name="_mateiralsIsValid">Danh sách các nguyên vật liệu hợp lệ để thêm vào CSDl</param>
+        /// <returns>Số dòng bị ảnh hưởng trong CSDL</returns>
+        public int InsertMaterialIsVaildToDB(List<Material> _mateiralsIsValid)
+        {
+            return 1;
+        }
+
+        /// <summary>
+        /// Kiểm tra giá trị trùng lặp mã code trong File Excel
+        /// </summary>
+        /// <param name="_materialCodeToCheck">Giá trị mã code để kiểm tra</param>
+        /// <param name="_materialsInFile">Danh sách nguyên vật liệu để kiểm tra</param>
+        /// <returns>true: Trùng lặp  / False: Không trùng lặp</returns>
+        public bool CheckCodeExistInFile(string materialCodeToCheck, Guid materialIdToCheck, List<Material> materialsInFile)
+        {
+            //return materialsInFile.Select(item => item.MaterialCode).Contains(materialCodeToCheck);
+            foreach (var materialToCheck in materialsInFile)
+            {
+                if (materialToCheck.MaterialCode == materialCodeToCheck && materialToCheck.MaterialId != materialIdToCheck)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

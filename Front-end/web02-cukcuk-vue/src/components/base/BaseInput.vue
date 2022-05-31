@@ -67,7 +67,6 @@ export default {
      * Created date: 23:40 23/04/2022
      */
     setError() {
-      debugger;
       this.$refs.input.style.height = "26px";
       this.$refs.input.style.border = "1px solid red";
 

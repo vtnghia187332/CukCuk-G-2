@@ -49,6 +49,7 @@ namespace MISA.Core.Services
             }
 
             var entityCodeToCheck = typeof(T).GetProperty($"{className}Code").GetValue(entity, null).ToString();
+
             if (_baseRepository.CheckCodeExist(entityCodeToCheck) == true)
             {
                 _error.Add($"{className}Code", $"Mã <{entityCodeToCheck}> đã tồn tại trong hệ thống");
@@ -63,6 +64,7 @@ namespace MISA.Core.Services
             }
 
         }
+
 
         /// <summary>
         /// Cập nhật đối tượng
@@ -176,7 +178,7 @@ namespace MISA.Core.Services
 
                 }
 
-               
+
 
                 //Kiểm tra Attribute [isMaxLength]
                 var isMaxLength = property.IsDefined(typeof(MaxLength), true);
@@ -187,7 +189,7 @@ namespace MISA.Core.Services
                     {
                         //throw new DataMisalignedException($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
                         //ErrorValidateMsg.Add($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
-                        _error.Add(propName, $"Thông tin {propDisplayName} không vượt quá { length } kí tự");
+                        _error.Add(propName, $"Thông tin {propDisplayName} không vượt quá {length} kí tự");
                         //ValidateErrorMsg.Add(string.Format($"Thông tin {propDisplayName} không vượt quá { length } kí tự"));
                     }
                 }
