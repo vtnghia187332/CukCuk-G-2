@@ -8,19 +8,22 @@
         </div>
       </div>
       <div class="m-popup-content dlg-content-show">
-        <div class="first-form-drop" v-if="!isShowTableOnClick">
+        <div class="first-form-drop" v-show="!isShowTableOnClick">
           <div class="m-popup-title-content">Bước 1: Tải tệp lên</div>
 
           <div class="m-popup-content-import">
             <div class="m-content-import">
               <div class="m-txt-content-import">
                 <DropZone
-                  v-if="dropzoneFile.name == null"
+                  v-show="dropzoneFile.name == null"
                   @drop.prevent="drop"
                   @change="selectedFile"
                 />
 
-                <div class="frame-import-list" v-if="dropzoneFile.name != null">
+                <div
+                  class="frame-import-list"
+                  v-show="dropzoneFile.name != null"
+                >
                   <div class="m-frame-import-list">
                     <div class="import-list-left">
                       <div class="icon-import-list">
@@ -67,7 +70,10 @@
               </div>
             </div>
           </div>
-          <div class="m-popup-content-footer" v-if="dropzoneFile.name == null">
+          <div
+            class="m-popup-content-footer"
+            v-show="dropzoneFile.name == null"
+          >
             <div class="m-txt-footer">
               Để có kết quả nhập khẩu chính xác, hãy sử dụng tệp mẫu.
               <span>Tải xuống tệp mẫu</span>
@@ -78,7 +84,7 @@
             </div>
           </div>
         </div>
-        <div class="second-form-drop" v-if="isShowTableOnClick">
+        <div class="second-form-drop" v-show="isShowTableOnClick">
           <div class="m-popup-title-content">Bước 2: Kiểm tra dữ liệu</div>
           <div class="frame-import-table">
             <div class="m-grid m-grid-import">
@@ -91,166 +97,55 @@
                   >
                     <thead>
                       <tr>
-                        <th class="">MÃ NGUYÊN VẬT LIỆU</th>
-                        <th class="">TÊN NGUYÊN VẬT LIỆU</th>
-                        <th class="">TÍNH CHẤT</th>
-                        <th class="">ĐƠN VỊ TÍNH</th>
-                        <th class="">LÝ DO</th>
-                        <th class=""></th>
+                        <th class="m-table-validate txt-left">
+                          MÃ NGUYÊN VẬT LIỆU
+                        </th>
+                        <th class="m-table-validate txt-left">
+                          TÊN NGUYÊN VẬT LIỆU
+                        </th>
+                        <th class="m-table-validate txt-left">TÍNH CHẤT</th>
+                        <th class="m-table-validate txt-left">ĐƠN VỊ TÍNH</th>
+                        <th class="m-table-validate txt-left">LÝ DO</th>
+                        <th class="m-table-validate-action txt-left"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                      </tr>
-                      <tr>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
-                        <td class=""></td>
+                      <tr
+                        v-for="(material, index) in materialsToImport"
+                        :key="index"
+                      >
+                        <td class="">
+                          <BaseInput
+                            ref="MaterialCode"
+                            v-model="material.MaterialCode"
+                            class="width-100"
+                          />
+                        </td>
+                        <td class="">
+                          <BaseInput
+                            ref="MaterialName"
+                            v-model="material.MaterialName"
+                            class="width-100"
+                          />
+                        </td>
+                        <td class="">
+                          <BaseInput
+                            v-model="material.MaterialFeature"
+                            class="width-100"
+                          />
+                        </td>
+                        <td class="">
+                          <BaseInput
+                            v-model="material.UnitName"
+                            class="width-100"
+                          />
+                        </td>
+                        <td class="">
+                          <div class="reason-error">
+                            {{ this.listErrValidate[index] }}
+                          </div>
+                        </td>
+                        <td class="">X</td>
                       </tr>
                     </tbody>
                   </table>
@@ -268,7 +163,7 @@
         </div>
       </div>
       <div class="m-popup-footer dlg-footer-show">
-        <div class="first-form-drop-footer" v-if="!isShowTableOnClick">
+        <div class="first-form-drop-footer" v-show="!isShowTableOnClick">
           <button
             class="m-btn m-btn-wicon fit-center m-btn-fotter"
             @click="showAlertDlg"
@@ -283,7 +178,11 @@
             <div class="m-btn-text">Tiếp theo</div>
           </button>
         </div>
-        <div class="second-form-drop-fotter" v-if="isShowTableOnClick">
+        <div
+          class="second-form-drop-fotter"
+          v-show="isShowTableOnClick"
+          @click="turnbackChangeForm"
+        >
           <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
             <div class="m-btn-text">Quay lại</div>
           </button>
@@ -300,17 +199,131 @@
 /*eslint-disable */
 import { ref } from "vue";
 import DropZone from "@/components/Import-Data/Drop-zone.vue";
+import BaseInput from "@/components/base/BaseInput.vue";
 import axios from "axios";
 
 export default {
-  components: { DropZone },
+  components: { DropZone, BaseInput },
   data() {
     return {
       // Hiển thị table trước khi import nguyên vật liệu
       isShowTableOnClick: false,
+      //Danh sách nguyên vật liệu được thêm vào từ file excel
+      materialsToImport: [],
+      // chứa thông tin lỗi validate từ file excel
+      listErrValidate: {},
     };
   },
   props: [],
+  methods: {
+    /**
+     * Mô tả : Thực hiện validate nguyên vật liệu
+     * @param: Mảng dữ liệu của danh sách materials được import từ file excel
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 09:46 31/05/2022
+     */
+    validateMaterials(arrayMaterials) {
+      if (arrayMaterials.length > 0) {
+        for (let index = 0; index < arrayMaterials.length; index++) {
+          let tempMaterial = arrayMaterials[index];
+
+          let keyErrs = Object.keys(tempMaterial.ErrorValidateNotValid);
+          let object = tempMaterial.ErrorValidateNotValid;
+
+          for (const key of keyErrs) {
+            if (
+              tempMaterial.IsValid == false &&
+              tempMaterial.ErrorValidateNotValid[key]
+            )
+              // focus vào ô lỗi
+              this.$refs[key][index].setError();
+            // Hiển thị thông tin lỗi
+            this.listErrValidate[index] = object[key];
+            continue;
+            // console.log(object[key]);
+          }
+          // if (
+          //   tempMaterial.IsValid == false &&
+          //   tempMaterial.ErrorValidateNotValid.MaterialCode
+          // ) {
+          //   this.$refs.MaterialCode[index].setError();
+          // }
+          // if (
+          //   tempMaterial.IsValid == false &&
+          //   tempMaterial.ErrorValidateNotValid.MaterialName
+          // ) {
+          //   this.$refs.MaterialName[index].setError();
+          // }
+        }
+      }
+    },
+    /**
+     * Mô tả : Thực hiện lưu nguyên vật liệu vào cơ sở dữ liệu
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 09:41 31/05/2022
+     */
+    saveMaterialsFromExcel() {},
+    /**
+     * Mô tả : Quay Lại form hiển thị file và chọn file khác
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 08:43 31/05/2022
+     */
+    turnbackChangeForm() {
+      this.isShowTableOnClick = false;
+    },
+
+    /**
+     * Mô tả : Hiển thị table trước khi import xuống database
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 16:08 30/05/2022
+     */
+    async handleTableForImportOnClick() {
+      if (this.materialsToImport.length == 0) {
+        //Gọi Api để lấy về danh sách nguyên vật liệu trong file excel
+        await this.handleImportFileExcel();
+      }
+      if (this.materialsToImport.length > 0) {
+        debugger;
+        // Hiển thị form thay đổi lựa chọn file
+        this.isShowTableOnClick = true;
+        // Validate dữ liệu
+        this.validateMaterials(this.materialsToImport);
+      }
+    },
+    /**
+     * Mô tả : Xử lý code gọi API để xử lý file import -> Trả về danh sách nguyên vật liệu
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 21:57 30/05/2022
+     */
+    async handleImportFileExcel() {
+      var me = this;
+      var formData = new FormData();
+      formData.append("formFile", me.dropzoneFile);
+      await axios
+        .post("http://localhost:5236/api/v1/Materials/import", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(function (res) {
+          debugger;
+          // Lấy dữ liệu từ Api trả về
+          me.materialsToImport = res.data.Result;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
+    /**
+     * Mô tả : off dialog
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 13:55 12/05/2022
+     */
+    showAlertDlg() {
+      this.$emit("isShowDlgImportFirstOnClick", false);
+    },
+  },
   setup() {
     let dropzoneFile = ref("");
 
@@ -320,55 +333,9 @@ export default {
 
     const selectedFile = () => {
       dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
-      console.log(dropzoneFile.value);
     };
 
     return { dropzoneFile, drop, selectedFile };
-  },
-  methods: {
-    /**
-     * Mô tả : Hiển thị table trước khi import xuống database
-     * Created by: Vũ Trọng Nghĩa - MF1108
-     * Created date: 16:08 30/05/2022
-     */
-    async handleTableForImportOnClick() {
-      // Hiển thị form thay đổi
-      this.isShowTableOnClick = true;
-      //Gọi Api để lấy về danh sách nguyên vật liệu trong file excel
-      await this.handleImportFileExcel();
-    },
-    /**
-    * Mô tả : Xử lý code gọi API để xử lý file import -> Trả về danh sách nguyên vật liệu
-    
-    
-    * Created by: Vũ Trọng Nghĩa - MF1108
-    * Created date: 21:57 30/05/2022
-    */
-    async handleImportFileExcel(files) {
-      files.forEach(async (ifile) => {
-        const formData = new FormData();
-        formData.append("file", ifile);
-        await axios
-          .post(
-            "http://localhost:5236/api/v1/Materials/import",
-            formData
-          )
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-    },
-    /**
-     * Mô tả : off dialog
-     * Created by: Vũ Trọng Nghĩa - MF1108
-     * Created date: 13:55 12/05/2022
-     */
-    showAlertDlg() {
-      this.$emit("isShowDlgImportFirstOnClick", false);
-    },
   },
 };
 </script>
@@ -389,5 +356,17 @@ export default {
   .file-info {
     margin-top: 32px;
   }
+}
+.m-table-validate {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+.m-table-validate-action {
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  box-sizing: border-box;
 }
 </style>

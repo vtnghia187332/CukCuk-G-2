@@ -43,10 +43,11 @@ namespace MISA.Core.Lib
 
                         //Duyệt từng đối tượng(row) trong file excel
                         material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString();
-                        material.MaterialName = worksheet.Cells[row, 1].Value?.ToString();
-                        material.MaterialFeature = worksheet.Cells[row, 1].Value?.ToString();
-                        material.GroupMaterial = worksheet.Cells[row, 1].Value?.ToString();
-                        material.MaterialNote = worksheet.Cells[row, 1].Value?.ToString();
+                        material.MaterialName = worksheet.Cells[row, 2].Value?.ToString();
+                        material.MaterialFeature = worksheet.Cells[row, 3].Value?.ToString();
+                        material.MaterialFeature = worksheet.Cells[row, 3].Value?.ToString();
+                        material.GroupMaterial = worksheet.Cells[row, 4].Value?.ToString();
+                        material.MaterialNote = worksheet.Cells[row, 5].Value?.ToString();
 
                         materials.Add(material);
                     }

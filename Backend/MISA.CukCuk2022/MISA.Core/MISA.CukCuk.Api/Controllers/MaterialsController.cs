@@ -75,7 +75,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="formFile">File excel</param>
         /// <returns>Danh sách các nguyên vật liệu</returns>
         [HttpPost("import")]
-        public IActionResult Import([FromForm] IFormFile formFile)
+        public IActionResult Import(IFormFile formFile)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace MISA.CukCuk.Api.Controllers
             var _objectForExport = new ObjectForExport();
 
             var stream = new MemoryStream();
-           
+
             //Khai báo thông tin file excel
             string excelName = $"Nguyen-vat-lieu-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
 

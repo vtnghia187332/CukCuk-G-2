@@ -94,6 +94,11 @@ table.m-table thead tr th {
   max-width: 150px;
   box-sizing: border-box;
 }
+.m-30 {
+  width: 30px;
+  max-width: 30px;
+  box-sizing: border-box;
+}
 
 .m-sequenc-number {
   min-width: 40px;
