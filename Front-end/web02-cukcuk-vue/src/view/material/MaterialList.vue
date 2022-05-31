@@ -744,12 +744,10 @@ export default {
     /**
      * Mô tả : Bấm nút đồng í -> gọi api để xóa object
      * @param isDelete: true -> xóa || false -> hủy
-     * @return
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 14:29 15/05/2022
      */
     agreeHanleOnClick(isDelete) {
-      debugger;
       // Đồng ý xóa
       if (isDelete) {
         // gọi api để xóa dữ liệu

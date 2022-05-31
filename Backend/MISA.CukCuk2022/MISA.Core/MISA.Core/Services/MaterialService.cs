@@ -81,13 +81,73 @@ namespace MISA.Core.Services
                 throw new MISAException("Tệp dữ liệu phải có định dạng là .xls hoặc .xlsx");
             }
 
-            var materialsValid = new List<Material>();
+            //var materialsValid = new List<Material>();
 
             //Thực hiện đọc file excel và trả về danh sách nguyên vật liệu
             List<Material> materials = await _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
 
-            var _errorCount = 0;
-            foreach (var material in materials)
+            //validate dữ liệu của file excel
+            materials = ValidateMaterialsFromFile(materials);
+
+            //trả về danh sách nguyên vật liệu từ file (Kèm theo validate)
+            return materials;
+        }
+
+        /// <summary>
+        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL(cAll từ API)
+        /// </summary>
+        /// <param name="mateiralsFromClient">Danh sách các nguyên vật liệu từ Client</param>
+        /// <returns>Danh sách nguyên vật liệu sau khi validate</returns>
+        public int InsertMaterialsFromFile(List<Material> mateiralsFromClient)
+        {
+            //Danh sách Nguyên vật liệu để validate
+            var materialsToValidate = new List<Material>();
+            //Danh sách nguyên vật liệu thỏa mãn yêu cầu
+            var materialsIsValid = new List<Material>();
+            //Số nguyên vật liệu bị lỗi
+            var errorCount = 0;
+
+            //thực hiện validate dữ liệu
+            materialsToValidate = ValidateMaterialsFromFile(mateiralsFromClient);
+            //Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
+            foreach (var material in materialsToValidate)
+            {
+                if (material.IsValid == true)
+                {
+                    materialsIsValid.Add(material);
+                }
+                else
+                {
+                    errorCount++;
+                }
+            }
+            if (errorCount == 0)
+            {
+                //Nếu thỏa mãn -> Thêm vào CSDL
+                foreach (var materialValid in materialsIsValid)
+                {
+                    _materialRepository.Insert(materialValid);
+                }
+                return 1;
+            }
+            else
+            {
+                //Nếu vẫn còn lỗi -> Throw ra lỗi thông báo
+                throw new MISAException("Gặp lỗi");
+                return 0;
+            }
+            //Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
+        }
+
+        /// <summary>
+        /// Danh sách Nguyên vật liệu trả về sau khi validate
+        /// </summary>
+        /// <param name="mateiralsToValidate">Danh sách nguyên vật liệu</param>
+        /// <returns>Trả về danh sách nguyên vật liệu(Sau khi validate)</returns>
+        public List<Material> ValidateMaterialsFromFile(List<Material> mateiralsToValidate)
+        {
+            //validate dữ liệu
+            foreach (var material in mateiralsToValidate)
             {
                 _error = new Dictionary<string, string>();
                 //Validate thông tin file excel
@@ -97,16 +157,13 @@ namespace MISA.Core.Services
                     //Check điều kiện: để trống
                     material.IsValid = false;
                     material.ErrorValidateNotValid = _error;
-                    _errorCount++;
                 }
                 //check code trùng lặp trong file excel
-                else if (CheckCodeExistInFile(material.MaterialCode, material.MaterialId, materials))
-                //else if (materials.Any(item => item.MaterialCode == material.MaterialCode) && materials.Any(item => item.MaterialId != material.MaterialId))
+                else if (CheckCodeExistInFile(material.MaterialCode, material.MaterialId, mateiralsToValidate))
                 {
                     material.IsValid = false;
                     _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");
                     material.ErrorValidateNotValid = _error;
-                    _errorCount++;
                 }
                 //Check code trùng lặp trong DB(Nếu không trùng tên trong file excel)
                 else if (_materialRepository.CheckCodeExist(material.MaterialCode) == true)
@@ -114,34 +171,9 @@ namespace MISA.Core.Services
                     material.IsValid = false;
                     _error.Add("MaterialCode", $"Mã nguyên vật liệu đã tồn tại");
                     material.ErrorValidateNotValid = _error;
-                    _errorCount++;
-                }
-                else
-                {
-                    //Thêm vào danh sách nguyên vật liệu hợp lệ
-                    materialsValid.Add(material);
                 }
             }
-
-
-            //Nếu không có lỗi trùng -> Thêm vào CSDL
-            //foreach (var materialIsValid in materialsValid)
-            //{
-            //    _materialRepository.Insert(materialIsValid);
-            //}
-
-            //return materialImporteds.ToList();
-            return materials;
-        }
-
-        /// <summary>
-        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL
-        /// </summary>
-        /// <param name="_mateiralsIsValid">Danh sách các nguyên vật liệu hợp lệ để thêm vào CSDl</param>
-        /// <returns>Số dòng bị ảnh hưởng trong CSDL</returns>
-        public int InsertMaterialIsVaildToDB(List<Material> _mateiralsIsValid)
-        {
-            return 1;
+            return mateiralsToValidate;
         }
 
         /// <summary>

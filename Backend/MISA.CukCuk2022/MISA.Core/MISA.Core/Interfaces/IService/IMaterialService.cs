@@ -45,5 +45,12 @@ namespace MISA.Core.Interfaces
         /// <param name="excelName">Tên file Excel</param>
         /// <returns>thông tin config file</returns>
         ObjectForExport ConfigFileToExport(List<Material> list, MemoryStream stream, string excelName);
+
+        /// <summary>
+        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL(cAll từ API)
+        /// </summary>
+        /// <param name="mateiralsFromClient">Danh sách các nguyên vật liệu từ Client</param>
+        /// <returns>Danh sách nguyên vật liệu sau khi validate</returns>
+        int InsertMaterialsFromFile(List<Material> mateiralsFromClient);
     }
 }

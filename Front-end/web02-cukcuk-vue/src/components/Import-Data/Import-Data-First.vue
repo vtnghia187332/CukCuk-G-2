@@ -175,15 +175,17 @@
             <div class="m-btn-text">Tiếp theo</div>
           </button>
         </div>
-        <div
-          class="second-form-drop-fotter"
-          v-show="isShowTableOnClick"
-          @click="turnbackChangeForm"
-        >
-          <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+        <div class="second-form-drop-fotter" v-show="isShowTableOnClick">
+          <button
+            class="m-btn m-btn-wicon fit-center m-btn-fotter"
+            @click="turnbackChangeForm"
+          >
             <div class="m-btn-text">Quay lại</div>
           </button>
-          <button class="m-btn m-btn-wicon fit-center m-btn-fotter">
+          <button
+            class="m-btn m-btn-wicon fit-center m-btn-fotter"
+            @click="saveMaterialsFromExcel"
+          >
             <div class="m-btn-text">Nhập khẩu</div>
           </button>
         </div>
@@ -236,30 +238,51 @@ export default {
               this.$refs[key][index].setError();
             // Hiển thị thông tin lỗi
             this.listErrValidate[index] = object[key];
-            continue;
-            // console.log(object[key]);
+            // continue;
           }
-          // if (
-          //   tempMaterial.IsValid == false &&
-          //   tempMaterial.ErrorValidateNotValid.MaterialCode
-          // ) {
-          //   this.$refs.MaterialCode[index].setError();
-          // }
-          // if (
-          //   tempMaterial.IsValid == false &&
-          //   tempMaterial.ErrorValidateNotValid.MaterialName
-          // ) {
-          //   this.$refs.MaterialName[index].setError();
-          // }
         }
       }
     },
+
     /**
      * Mô tả : Thực hiện lưu nguyên vật liệu vào cơ sở dữ liệu
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 09:41 31/05/2022
      */
-    saveMaterialsFromExcel() {},
+    async saveMaterialsFromExcel() {
+      debugger;
+      // Validate trên Client
+      // Set biến isValid = true(Thỏa mãn yêu cầu)
+      for (const material of this.materialsToImport) {
+        material.ErrorValidateNotValid = {};
+        material.IsValid = true;
+      }
+      //gọi api để lưu data sau khi sửa trên Client
+      await this.ImportFileToServer();
+    },
+
+    /**
+     * Mô tả : Gọi API để thực hiện thêm dữ liệu vào CSDL
+     * Created by: Vũ Trọng Nghĩa - MF1108
+     * Created date: 00:00 01/06/2022
+     */
+    async ImportFileToServer() {
+      let me = this;
+      await axios
+        .post(
+          "http://localhost:5236/api/v1/Materials/file",
+          me.materialsToImport
+        )
+        .then(function (res) {
+          if (res) {
+            console.log(res);
+          }
+        })
+        .catch(function (res) {
+          console.log(res);
+        });
+    },
+
     /**
      * Mô tả : Quay Lại form hiển thị file và chọn file khác
      * Created by: Vũ Trọng Nghĩa - MF1108

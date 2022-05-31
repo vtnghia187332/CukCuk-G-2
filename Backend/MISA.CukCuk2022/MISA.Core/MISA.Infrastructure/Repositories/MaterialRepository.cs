@@ -26,7 +26,7 @@ namespace MISA.Infrastructure.Repositories
 
         public MaterialRepository(IConvertionRepository injection)
         {
-            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=12345678";
+            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=123456";
             _sqlConnection = new MySqlConnection(_connectionString);
             _convertionRepository = injection;
         }

@@ -70,7 +70,7 @@ namespace MISA.CukCuk.Api.Controllers
         }
 
         /// <summary>
-        /// Xử lý hàm nhập khẩu nguyên vật liệu ra file Excel
+        /// Xử lý hàm nhập khẩu nguyên vật liệu từ file Excel
         /// </summary>
         /// <param name="formFile">File excel</param>
         /// <returns>Danh sách các nguyên vật liệu</returns>
@@ -87,6 +87,27 @@ namespace MISA.CukCuk.Api.Controllers
                 return HandleException(ex);
             }
         }
+
+        /// <summary>
+        /// Thực hiện lưu dữ liệu vào DB từ file excel
+        /// </summary>
+        /// <param name="formFile">File excel</param>
+        /// <returns>Danh sách các nguyên vật liệu</returns>
+        [HttpPost("file")]
+        public IActionResult SaveToDB(List<Material> materialsFromClient)
+        {
+            try
+            {
+                var res = _materialService.InsertMaterialsFromFile(materialsFromClient);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
+
 
         /// <summary>
         /// Xử lý hàm xuất khẩu nguyên vật liệu ra file Excel
