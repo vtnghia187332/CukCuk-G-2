@@ -51,6 +51,6 @@ namespace MISA.Core.Interfaces
         /// </summary>
         /// <param name="mateiralsFromClient">Danh sách các nguyên vật liệu từ Client</param>
         /// <returns>Danh sách nguyên vật liệu sau khi validate</returns>
-        int InsertMaterialsFromFile(List<Material> mateiralsFromClient);
+        List<Material> InsertMaterialsFromFile(List<Material> mateiralsFromClient);
     }
 }

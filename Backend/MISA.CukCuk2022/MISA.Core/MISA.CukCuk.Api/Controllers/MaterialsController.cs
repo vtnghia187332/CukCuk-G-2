@@ -91,8 +91,8 @@ namespace MISA.CukCuk.Api.Controllers
         /// <summary>
         /// Thực hiện lưu dữ liệu vào DB từ file excel
         /// </summary>
-        /// <param name="formFile">File excel</param>
-        /// <returns>Danh sách các nguyên vật liệu</returns>
+        /// <param name="materialsFromClient">Danh sách nguyên vật liệu từ Client</param>
+        /// <returns>Danh sách các nguyên vật liệu chưa được import vào database</returns>
         [HttpPost("file")]
         public IActionResult SaveToDB(List<Material> materialsFromClient)
         {

@@ -10,57 +10,36 @@
       </div>
     </div>
     <div class="m-btn-functions">
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        @click="btnAddOnClick"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" @click="btnAddOnClick">
         <div class="m-btn-icon m-addition-more-db"></div>
         <div class="m-btn-text">Thêm</div>
       </button>
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        :disabled="this.materialSelected.MaterialId == null"
-        @click="handleDuplicateObject"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" :disabled="this.materialSelected.MaterialId == null"
+        @click="handleDuplicateObject">
         <div class="m-btn-icon m-duplicate"></div>
         <div class="m-btn-text">Nhân bản</div>
       </button>
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        :disabled="this.materialSelected.MaterialId == null"
-        @click="clickRowOnUpdate"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" :disabled="this.materialSelected.MaterialId == null"
+        @click="clickRowOnUpdate">
         <div class="m-btn-icon m-update"></div>
         <div class="m-btn-text">Sửa</div>
       </button>
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        :disabled="this.checkedaAssetList.length == 0"
-        @click="deleteRowHandle"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" :disabled="this.checkedaAssetList.length == 0"
+        @click="deleteRowHandle">
         <div class="m-btn-icon m-cancel-add-icon"></div>
         <div class="m-btn-text">Xóa</div>
       </button>
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        @click="loadData"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" @click="loadData">
         <div class="m-btn-icon m-refresh"></div>
         <div class="m-btn-text">Nạp</div>
       </button>
 
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        @click="isShowDlgImportFirstOnClick(true)"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" @click="isShowDlgImportFirstOnClick(true)">
         <div class="m-btn-icon"><i class="fa-solid fa-file-import"></i></div>
         <div class="m-btn-text">Nhập khẩu</div>
       </button>
 
-      <button
-        class="m-btn m-btn-wicon fit-center btn-content"
-        @click="handleExportOnClick"
-      >
+      <button class="m-btn m-btn-wicon fit-center btn-content" @click="handleExportOnClick">
         <div class="m-btn-icon"><i class="fa-solid fa-download"></i></div>
         <div class="m-btn-text">Xuất khẩu</div>
       </button>
@@ -75,101 +54,64 @@
                   <th class="m-chkbox">
                     <div class="txt-grid-content"></div>
                     <div class="input-grid-content">
-                      <input
-                        class="checkbox"
-                        type="checkbox"
-                        @click="selAllMaterialOnClick"
-                        :checked="
-                          this.checkedaAssetList.length == this.materials.length
-                        "
-                      />
+                      <input class="checkbox" type="checkbox" @click="selAllMaterialOnClick" :checked="
+                        this.checkedaAssetList.length == this.materials.length
+                      " />
                     </div>
                   </th>
                   <th class="m-150">
                     <div class="txt-grid-content">Mã nguyên vật liệu</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        @getValueToQuery="getValueToQuery"
-                        keyword="MaterialCode"
-                      />
+                      <BaseInputGrid @getValueToQuery="getValueToQuery" keyword="MaterialCode" />
                     </div>
                   </th>
                   <th class="m-150">
                     <div class="txt-grid-content">Tên nguyên vật liệu</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="MaterialName"
-                        @getValueToQuery="getValueToQuery"
-                      />
+                      <BaseInputGrid keyword="MaterialName" @getValueToQuery="getValueToQuery" />
                     </div>
                   </th>
                   <th class="m-150">
                     <div class="txt-grid-content">Tính chất</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="MaterialFeature"
-                        @getValueToQuery="getValueToQuery"
-                      />
+                      <BaseInputGrid keyword="MaterialFeature" @getValueToQuery="getValueToQuery" />
                     </div>
                   </th>
                   <th class="m-150">
                     <div class="txt-grid-content">ĐVT tính</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="UnitName"
-                        @getValueToQuery="getValueToQuery"
-                      />
+                      <BaseInputGrid keyword="UnitName" @getValueToQuery="getValueToQuery" />
                     </div>
                   </th>
                   <th class="m-150">
                     <div class="txt-grid-content">Nhóm nguyên vật liệu</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="GroupMaterial"
-                        @getValueToQuery="getValueToQuery"
-                      />
+                      <BaseInputGrid keyword="GroupMaterial" @getValueToQuery="getValueToQuery" />
                     </div>
                   </th>
 
                   <th class="m-500">
                     <div class="txt-grid-content">Ghi chú</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="MaterialNote"
-                        @getValueToQuery="getValueToQuery"
-                      />
+                      <BaseInputGrid keyword="MaterialNote" @getValueToQuery="getValueToQuery" />
                     </div>
                   </th>
 
                   <th class="m-40">
                     <div class="txt-grid-content">Ngừng theo dõi</div>
                     <div class="input-grid-content">
-                      <BaseInputGrid
-                        keyword="Following"
-                        @getValueToQuery="getValueToQuery"
-                        :defaultData="this.selFollowingVals"
-                        :isHaveDrpGrid="true"
-                        propVal="val"
-                        propTxt="txt"
-                      />
+                      <BaseInputGrid keyword="Following" @getValueToQuery="getValueToQuery"
+                        :defaultData="this.selFollowingVals" :isHaveDrpGrid="true" propVal="val" propTxt="txt" />
                     </div>
                   </th>
                 </tr>
               </thead>
               <div class="m-loader" v-if="showLoading"></div>
               <tbody v-if="!showLoading">
-                <tr
-                  v-for="material in materials"
-                  :key="material.MaterialId"
-                  @click="activate(material)"
-                  @dblclick="rowOnDBClick(material)"
-                >
+                <tr v-for="material in materials" :key="material.MaterialId" @click="activate(material)"
+                  @dblclick="rowOnDBClick(material)">
                   <td class="m-chkbox txt-center">
-                    <input
-                      class="checkbox"
-                      type="checkbox"
-                      :checked="checkedaAssetList.includes(material)"
-                    />
+                    <input class="checkbox" type="checkbox" :checked="checkedaAssetList.includes(material)" />
                   </td>
                   <td class="m-row-list">{{ material.MaterialCode }}</td>
                   <td class="m-row-list">{{ material.MaterialName }}</td>
@@ -178,11 +120,7 @@
                   <td class="m-row-list">{{ material.GroupMaterial }}</td>
                   <td class="m-500">{{ material.MaterialNote }}</td>
                   <td class="td-checkbox m-40">
-                    <input
-                      class="checkbox"
-                      type="checkbox"
-                      :checked="material.Following"
-                    />
+                    <input class="checkbox" type="checkbox" :checked="material.Following" />
                   </td>
                 </tr>
               </tbody>
@@ -193,54 +131,28 @@
     </div>
     <div class="m-pagination-cus">
       <div class="m-pagination">
-        <button
-          class="m-btn-changePage m-first-page"
-          @click="goToFirstPage"
-          :disabled="this.indexPage == 1"
-        >
+        <button class="m-btn-changePage m-first-page" @click="goToFirstPage" :disabled="this.indexPage == 1">
           <i class="fa-solid fa-angles-left"></i>
         </button>
-        <button
-          class="m-btn-changePage m-prev-page"
-          @click="goToPrevPage"
-          :disabled="this.indexPage == 1"
-        >
+        <button class="m-btn-changePage m-prev-page" @click="goToPrevPage" :disabled="this.indexPage == 1">
           <i class="fa-solid fa-angle-left"></i>
         </button>
         <div class="m-pagination-text fit-center">Trang</div>
-        <input
-          type="text"
-          class="m-current-pagination"
-          @input="inputSearchPaging"
-          v-model="this.indexPage"
-        />
+        <input type="text" class="m-current-pagination" @input="inputSearchPaging" v-model="this.indexPage" />
         <div class="m-total-pagination">
           trên <span>{{ this.totalPage }}</span>
         </div>
-        <button
-          class="m-btn-changePage m-next-page"
-          @click="goToNextPage"
-          :disabled="this.indexPage == this.totalPage"
-        >
+        <button class="m-btn-changePage m-next-page" @click="goToNextPage" :disabled="this.indexPage == this.totalPage">
           <i class="fa-solid fa-angle-right"></i>
         </button>
-        <button
-          class="m-btn-changePage m-last-page"
-          @click="goToLastPage"
-          :disabled="this.indexPage == this.totalPage"
-        >
+        <button class="m-btn-changePage m-last-page" @click="goToLastPage" :disabled="this.indexPage == this.totalPage">
           <i class="fa-solid fa-angles-right"></i>
         </button>
         <button class="m-btn-changePage m-refresh-page" @click="loadData">
           <i class="fa-solid fa-arrows-rotate"></i>
         </button>
-        <select
-          name=""
-          id="selectionPagination"
-          class="m-sel-pageSize"
-          @click="changePageSize"
-          :value="this.totalObjectPerPage"
-        >
+        <select name="" id="selectionPagination" class="m-sel-pageSize" @click="changePageSize"
+          :value="this.totalObjectPerPage">
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="50">50</option>
@@ -256,44 +168,18 @@
         </div>
       </div>
     </div>
-    <MaterialDetail
-      @keydown.esc="closeDialogWithCondition"
-      :isCloseDialogWithCondition="isCloseDialogWithCondition"
-      v-if="isShowDialog"
-      @closeOnClick="showOrHideDialog"
-      @btnAddOnClick="btnAddOnClick"
-      :materialSelectedInChild="materialSelected"
-      @loadingData="loadData"
-      :formMode="formMode"
-      @handleConfirmDlg="handleConfirmDlg"
-      :isSaveData="isSaveData"
-      :isCancelData="isCancelData"
-      @showConfirmDlg="showConfirmDlg"
-      @handleAlertOnClick="handleAlertOnClick"
-      :isShowErrorInput="isShowErrorInput"
-    />
-    <WarningDialog
-      v-if="isShowWarningDlg"
-      :txtWarningDlg="txtWarningDlg"
-      @showWarningDlg="showWarningDlg"
-      @agreeHanleOnClick="agreeHanleOnClick"
-    />
-    <ShowConfirm
-      v-if="isShowConfirmDlg"
-      :txtConfirmDlg="txtConfirmDlg"
-      @showConfirmDlg="showConfirmDlg"
-      @handleAfterChangeOnClick="handleAfterChangeOnClick"
-    />
-    <AlertConfirm
-      v-if="isShowAlertDlg"
-      :txtAlertDlg="txtAlertDlg"
-      @showAlertDlg="showAlertDlg"
-      @agreeAlertOnClick="agreeAlertOnClick"
-    />
-    <ImportDataFirst
-      v-if="isShowImportDlgFirst"
-      @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick"
-    />
+    <MaterialDetail @keydown.esc="closeDialogWithCondition" :isCloseDialogWithCondition="isCloseDialogWithCondition"
+      v-if="isShowDialog" @closeOnClick="showOrHideDialog" @btnAddOnClick="btnAddOnClick"
+      :materialSelectedInChild="materialSelected" @loadingData="loadData" :formMode="formMode"
+      @handleConfirmDlg="handleConfirmDlg" :isSaveData="isSaveData" :isCancelData="isCancelData"
+      @showConfirmDlg="showConfirmDlg" @handleAlertOnClick="handleAlertOnClick" :isShowErrorInput="isShowErrorInput" />
+    <WarningDialog v-if="isShowWarningDlg" :txtWarningDlg="txtWarningDlg" @showWarningDlg="showWarningDlg"
+      @agreeHanleOnClick="agreeHanleOnClick" />
+    <ShowConfirm v-if="isShowConfirmDlg" :txtConfirmDlg="txtConfirmDlg" @showConfirmDlg="showConfirmDlg"
+      @handleAfterChangeOnClick="handleAfterChangeOnClick" />
+    <AlertConfirm v-if="isShowAlertDlg" :txtAlertDlg="txtAlertDlg" @showAlertDlg="showAlertDlg"
+      @agreeAlertOnClick="agreeAlertOnClick" />
+    <ImportDataFirst v-if="isShowImportDlgFirst" @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick" />
   </div>
 </template>
 
@@ -423,26 +309,7 @@ export default {
       }
     },
 
-    /**
-     * Mô tả : Gọi API để lấy ra toàn bộ nguyên vật liệu có trong Database
-     * Created by: Vũ Trọng Nghĩa - MF1108
-     * Created date: 08:29 30/05/2022
-     */
-    // async getAllMaterials() {
-    //   let me = this;
-    //   //  Khai báo mảng để hứng dữ liệu nguyên vật liệu trả về
-    //   me.allMaterials = [];
-    //   await axios
-    //     .get(`${me.misaApi.getMaterials}`)
-    //     .then(function (res) {
-    //       if (res) {
-    //         me.allMaterials = res;
-    //       }
-    //     })
-    //     .catch(function (res) {
-    //       console.log(res);
-    //     });
-    // },
+  
 
     /**
      * Mô tả : Gọi Api để xử lý hàm xuất khẩu ra file excel
@@ -450,7 +317,6 @@ export default {
      * Created date: 08:30 30/05/2022
      */
     async handleExport(materialToExport) {
-      debugger;
       let me = this;
       // time biến thành tên của file
       const tempDateTime = new Date();
@@ -1046,8 +912,9 @@ export default {
      */
     this.loadData();
   },
-  beforeDestroy() {},
+  beforeDestroy() { },
 };
 </script>
 
-<style></style>
+<style>
+</style>

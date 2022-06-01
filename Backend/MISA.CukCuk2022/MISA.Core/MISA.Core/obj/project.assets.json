@@ -977,19 +977,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\vtnghia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Documents\\MISA-CukCuk-Duplicate\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+      "projectUniqueName": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
       "projectName": "MISA.Core",
-      "projectPath": "C:\\Users\\ADMIN\\Documents\\MISA-CukCuk-Duplicate\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Documents\\MISA-CukCuk-Duplicate\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
+      "projectPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\MISA.Core.csproj",
+      "packagesPath": "C:\\Users\\vtnghia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vtnghia\\Documents\\GitHub\\CukCuk-G-2\\Backend\\MISA.CukCuk2022\\MISA.Core\\MISA.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vtnghia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1047,7 +1047,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

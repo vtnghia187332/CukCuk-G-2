@@ -61,7 +61,6 @@ export default {
      * Created date: 20:50 22/04/2022
      */
     // modelValue: function () {
-    //   debugger;
     //   if (this.modelValue) this.date = new Date(this.modelValue);
     //   else this.date = null;
     // },
@@ -74,14 +73,12 @@ export default {
      */
     dateFormat: {
       get() {
-        debugger;
         if (!this.modelValue) {
           return;
         }
         return new Date(this.modelValue);
       },
       set(newValue) {
-        debugger;
         this.modelValue = newValue.toDateString();
       },
     },
@@ -96,7 +93,6 @@ export default {
      * Created date: 22:42 21/04/2022
      */
     handleDate: function (value) {
-      debugger;
       if (value) this.date = new Date(value).toDateString();
       else this.date = null;
     },

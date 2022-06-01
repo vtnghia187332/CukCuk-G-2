@@ -20,7 +20,6 @@ namespace MISA.Core.Services
         IMaterialRepository _materialRepository;
         IConvertionRepository _convertionRepository;
         IEPPLusAppService _iEPPLusAppService;
-        //protected Dictionary<string, string> _errorFromClient = new Dictionary<string, string>();
 
         #endregion
         #region Constructor
@@ -97,87 +96,41 @@ namespace MISA.Core.Services
         }
 
         /// <summary>
-        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL(cAll từ API)
+        /// Thêm những nguyên vật liệu hợp lệ xuống CSDL(call từ API)
         /// </summary>
         /// <param name="mateiralsFromClient">Danh sách các nguyên vật liệu từ Client</param>
         /// <returns>Danh sách nguyên vật liệu sau khi validate</returns>
-        public int InsertMaterialsFromFile(List<Material> mateiralsFromClient)
+        public List<Material> InsertMaterialsFromFile(List<Material> mateiralsFromClient)
         {
             //Danh sách nguyên vật liệu thỏa mãn yêu cầu
             var materialsIsValid = new List<Material>();
-            var errorCount = 0;
+            //Danh sách nguyên vật liệu KHÔNG thỏa mãn yêu cầu
+            var marterialNotValid = new List<Material>();
 
             foreach (var materialForValidate in mateiralsFromClient)
             {
+                //Validate dữ liệu
                 ValidateMaterials(materialForValidate, mateiralsFromClient);
                 if (materialForValidate.IsValid == true)
                 {
+                    //Nếu thành công -> Thêm vào Database
                     materialsIsValid.Add(materialForValidate);
                 }
                 else
                 {
-                    errorCount++;
+                    //Thêm vào danh sách nguyên vật liệu bị lỗi
+                    marterialNotValid.Add(materialForValidate);
                 }
             }
-            if (errorCount == 0)
-            {
-                var res = 0;
-                foreach (var materialValid in materialsIsValid)
-                {
-                    //Nếu thỏa mãn -> Thêm vào CSDL
-                    _materialRepository.Insert(materialValid);
-                    res++;
-                }
-                return res;
-            }
-            else
-            {
-                //Nếu vẫn còn lỗi -> Throw ra lỗi thông báo
-                //Trả về danh sách lỗi
-                throw new MISAException(MISAResource.VN_NotValidInput, _error);
-                return 0;
-            }
-            ////Danh sách Nguyên vật liệu để validate
-            //var materialsToValidate = new List<Material>();
-            ////Số nguyên vật liệu bị lỗi
-            //var errorCount = 0;
 
-            ////thực hiện validate dữ liệu
-            //materialsToValidate = ValidateMaterials(mateiralsFromClient);
-            ////Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
-            //_error = new Dictionary<string, string>();
-            //foreach (var material in materialsToValidate)
-            //{
-            //    if (material.IsValid == true)
-            //    {
-            //        //Thêm những đối tượng thỏa mãn
-            //        materialsIsValid.Add(material);
-            //    }
-            //    else
-            //    {
-            //        //Xuất hiện lỗi -> Bắt lỗi
-            //        errorCount++;
-            //        break;
-            //    }
-            //}
-            //if (errorCount == 0)
-            //{
-            //    var res = 0;
-            //    //Nếu thỏa mãn -> Thêm vào CSDL
-            //    foreach (var materialValid in materialsIsValid)
-            //    {
-            //        res = _materialRepository.Insert(materialValid);
-            //    }
-            //    return res;
-            //}
-            //else
-            //{
-            //    //Nếu vẫn còn lỗi -> Throw ra lỗi thông báo
-            //    //Trả về danh sách lỗi
-            //    throw new MISAException(MISAResource.VN_NotValidInput, _error);
-            //    return 0;
-            //}
-            //Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
+            //Thêm những danh sách nguyên vật thỏa mãn yêu cầu
+            foreach (var materialVaild in materialsIsValid)
+            {
+                _materialRepository.Insert(materialVaild);
+            }
+
+            //Trả về danh sách những nguyên vật liệu bị lỗi
+            return marterialNotValid;
         }
 
         /// <summary>
