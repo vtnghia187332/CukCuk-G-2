@@ -47,7 +47,7 @@ namespace MISA.Infrastructure.Repositories
             var procedureName = "Proc_GetMaterialFilterPaging";
 
             // 1.1 xử lý filter option thành string
-           var filterString = ConvertCommandFilter(filter);
+            var filterString = ConvertCommandFilter(filter);
 
             //2. Thêm tham số vào lệnh sql
             var parameters = new DynamicParameters();
@@ -109,7 +109,7 @@ namespace MISA.Infrastructure.Repositories
                 return command = null;
             }
             // Mặc định toán tử tìm kiếm là: Contain
-            
+
             //duyệt danh sách các filter
             foreach (var filter in filterCommands)
             {
@@ -120,12 +120,12 @@ namespace MISA.Infrastructure.Repositories
                     //Duyệt các phần từ -> Phân biệt operator - Column - Value -> Generate câu lệnh tìm kiếm
                     //Chứa keyword
                     case (int)MISAEnum.Operator.Contain:
-                         filterString = $"{filter.ColumnName} LIKE '%{filter.ColumnValue}%' AND ";
+                        filterString = $"{filter.ColumnName} LIKE '%{filter.ColumnValue}%' AND ";
                         command += filterString;
                         break;
                     //Không chứa keyword
                     case (int)MISAEnum.Operator.NotContain:
-                         filterString = $"{filter.ColumnName} NOT LIKE '%{filter.ColumnValue}%' AND ";
+                        filterString = $"{filter.ColumnName} NOT LIKE '%{filter.ColumnValue}%' AND ";
                         command += filterString;
                         break;
                     //Bắt đầu từ keyword
@@ -179,35 +179,50 @@ namespace MISA.Infrastructure.Repositories
             {
                 Insert(material);
             }
-             return materials;
+            return materials;
         }
-       
 
-    //    public async Task<IActionResult> Export()
-    //    {
-    //        // query data from database  
-    //        await Task.Yield();
 
-    //        var list = new List<Material>()
-    //{
-    //        new Material { MaterialCode = "M-19876", MaterialName = "catcher" },
-    //        new Material { MaterialCode = "M-19876", MaterialName = "james" },
-    //};
-    //        var stream = new MemoryStream();
+        //    public async Task<IActionResult> Export()
+        //    {
+        //        // query data from database  
+        //        await Task.Yield();
 
-    //        using (var package = new ExcelPackage(stream))
-    //        {
-    //            var workSheet = package.Workbook.Worksheets.Add("Sheet1");
-    //            workSheet.Cells.LoadFromCollection(list, true);
-    //            package.Save();
-    //        }
-    //        stream.Position = 0;
-    //        string excelName = $"UserList-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
+        //        var list = new List<Material>()
+        //{
+        //        new Material { MaterialCode = "M-19876", MaterialName = "catcher" },
+        //        new Material { MaterialCode = "M-19876", MaterialName = "james" },
+        //};
+        //        var stream = new MemoryStream();
 
-    //        return File(stream, "application/octet-stream", excelName);
-    //        //return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
-    //    }
+        //        using (var package = new ExcelPackage(stream))
+        //        {
+        //            var workSheet = package.Workbook.Worksheets.Add("Sheet1");
+        //            workSheet.Cells.LoadFromCollection(list, true);
+        //            package.Save();
+        //        }
+        //        stream.Position = 0;
+        //        string excelName = $"UserList-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
 
+        //        return File(stream, "application/octet-stream", excelName);
+        //        //return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+        //    }
+
+        /// <summary>
+        /// Tìm kiếm trong CSDL theo tên của ĐVT
+        /// </summary>
+        /// <param name="entityName">Tên gọi</param>
+        /// <returns>Đối tượng tìm kiếm</returns>
+        public Unit FindByUnitName(string entityName)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add($"@UnitName", entityName);
+            //3. Thực hiện lấy dữ liệu Dapper
+            var data = _sqlConnection.QueryFirstOrDefault<Unit>($"Proc_FindUnitByName", param: parameters, commandType: CommandType.StoredProcedure);
+            // Trả về kết quả
+            return data;
+        }
         #endregion
+
     }
 }

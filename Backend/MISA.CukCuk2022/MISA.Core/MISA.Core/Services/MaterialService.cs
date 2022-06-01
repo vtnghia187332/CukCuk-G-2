@@ -86,9 +86,23 @@ namespace MISA.Core.Services
             //Thực hiện đọc file excel và trả về danh sách nguyên vật liệu
             List<Material> materials = await _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
 
+
             //validate dữ liệu của file excel
             foreach (var materialToValidate in materials)
             {
+                //Mapping Đơn vị tính
+                if (_materialRepository.FindByUnitName(materialToValidate.UnitName) != null)
+                {
+                    //Nếu tồn tại giá trị UnitName trong CSDL -> Bind vào đối tượng đang được import
+                    materialToValidate.UnitName = _materialRepository.FindByUnitName(materialToValidate.UnitName).UnitName;
+                    materialToValidate.UnitId = _materialRepository.FindByUnitName(materialToValidate.UnitName).UnitId;
+                }
+                else
+                {
+                    //Thêm mới giá trị mà ĐVT KH nhập vào
+
+                    //bind vào đối tượng đang được import
+                }
                 materialsFile.Add(ValidateMaterials(materialToValidate, materials));
             }
             //trả về danh sách nguyên vật liệu từ file (Kèm theo validate)
@@ -151,15 +165,22 @@ namespace MISA.Core.Services
                 mateiralToValidate.IsValid = false;
                 mateiralToValidate.ErrorValidateNotValid = _error;
             }
+            //Check ĐVT (NOT NULL) trong file excel
+            if (mateiralToValidate.UnitName == null)
+            {
+                mateiralToValidate.IsValid = false;
+                _error.Add("UnitName", $"Đơn vị tính không được phép để trống");
+                mateiralToValidate.ErrorValidateNotValid = _error;
+            }
             //check code trùng lặp trong file excel
-            else if (CheckCodeExistInFile(mateiralToValidate.MaterialCode, mateiralToValidate.MaterialId, materialsFile))
+            if (CheckCodeExistInFile(mateiralToValidate.MaterialCode, mateiralToValidate.MaterialId, materialsFile))
             {
                 mateiralToValidate.IsValid = false;
                 _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");
                 mateiralToValidate.ErrorValidateNotValid = _error;
             }
             //Check code trùng lặp trong DB(Nếu không trùng tên trong file excel)
-            else if (_materialRepository.CheckCodeExist(mateiralToValidate.MaterialCode) == true)
+            if (_materialRepository.CheckCodeExist(mateiralToValidate.MaterialCode) == true)
             {
                 mateiralToValidate.IsValid = false;
                 _error.Add("MaterialCode", $"Mã nguyên vật liệu đã tồn tại");

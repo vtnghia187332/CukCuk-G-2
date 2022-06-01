@@ -204,6 +204,25 @@ namespace MISA.Infrastructure.Repositories
             return res;
         }
 
+        /// <summary>
+        /// Tìm kiếm trong CSDL theo tên gọi
+        /// </summary>
+        /// <param name="entityName">Tên gọi</param>
+        /// <returns>Đối tượng tìm kiếm</returns>
+        public T FindByName(string entityName)
+        {
+            //Khai báo tên ClassName
+            var className = typeof(T).Name;
+            //Khai báo parameters
+            DynamicParameters parameters = new DynamicParameters();
+            //Thêm vào đối tượng parameters
+            parameters.Add($"@{className}Name", entityName);
+            //3. Thực hiện lấy dữ liệu Dapper
+            var data = _sqlConnection.QueryFirstOrDefault<T>($"Proc_Find{className}ByName", param: parameters, commandType: CommandType.StoredProcedure);
+            // Trả về kết quả
+            return data;
+        }
+
 
         #endregion
     }

@@ -10,5 +10,6 @@ namespace MISA.Infrastructure.Repositories
 {
     public class UnitRepository : BaseRepository<Unit>, IUnitRepository
     {
+
     }
 }

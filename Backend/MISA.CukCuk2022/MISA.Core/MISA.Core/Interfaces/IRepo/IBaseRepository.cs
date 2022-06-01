@@ -71,8 +71,12 @@ namespace MISA.Core.Interfaces
         /// <returns>Số dòng bị ảnh hưởng trong DB</returns>
         public int DeleteMulti(List<Guid> entityIds);
 
-
-
+        /// <summary>
+        /// Tìm kiếm trong CSDL theo tên gọi
+        /// </summary>
+        /// <param name="entityName">Tên gọi</param>
+        /// <returns>Đối tượng tìm kiếm</returns>
+        T FindByName(string entityName);
 
     }
 }

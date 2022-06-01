@@ -1,9 +1,13 @@
-﻿using MISA.Core.Exceptions;
+﻿using Dapper;
+using MISA.Core.Entities;
+using MISA.Core.Exceptions;
 using MISA.Core.Interfaces;
 using MISA.Core.MISAAttribute;
 using MISA.Core.Resources;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -24,6 +28,7 @@ namespace MISA.Core.Services
         {
             _baseRepository = baseRepository;
             _error = new Dictionary<string, string>();
+
         }
         #endregion
 
@@ -45,6 +50,7 @@ namespace MISA.Core.Services
             {
                 throw new MISAException(MISAResource.VN_NotValidInput, errorList);
             }
+
 
             var entityCodeToCheck = typeof(T).GetProperty($"{className}Code").GetValue(entity, null).ToString();
 
@@ -176,7 +182,7 @@ namespace MISA.Core.Services
                     var length = (property.GetCustomAttributes(typeof(MaxLength), true).First() as MaxLength).Length;
                     if (propValue.ToString().Length > length)
                     {
-                        throw new MISAException($"Thông tin {propDisplayName} không vượt quá { length } kí tự");
+                        throw new MISAException($"Thông tin {propDisplayName} không vượt quá {length} kí tự");
                         _error.Add(propName, $"Thông tin {propDisplayName} không vượt quá {length} kí tự");
                     }
                 }
@@ -193,6 +199,9 @@ namespace MISA.Core.Services
         {
             return true;
         }
+
+       
+
 
     }
 }

@@ -42,5 +42,13 @@ namespace MISA.Core.Interfaces
         /// <param name="materials">Danh sách nguyên vật lị đã được validate dữ liệu (hợp lệ)</param>
         /// <returns>Danh sách những nhân viên đã được thêm vào database</returns>
         IEnumerable<Material> Import(List<Material> materials);
+
+
+        /// <summary>
+        /// Tìm kiếm trong CSDL theo tên của ĐVT
+        /// </summary>
+        /// <param name="entityName">Tên gọi</param>
+        /// <returns>Đối tượng tìm kiếm</returns>
+        Unit FindByUnitName(string entityName);
     }
 }

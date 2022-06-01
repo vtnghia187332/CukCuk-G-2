@@ -39,15 +39,16 @@ namespace MISA.Core.Lib
 
                         //Thêm Id mới cho từng đối tượng
                         material.MaterialId = Guid.NewGuid();
-                        //Gán mã ĐVT
-                        material.UnitId = Guid.Parse("153105e0-6702-29ed-7632-03c92da59c43");
+                        ////Gán mã ĐVT
+                        //material.UnitId = Guid.Parse("153105e0-6702-29ed-7632-03c92da59c43");
 
                         //Duyệt từng đối tượng(row) trong file excel
                         material.MaterialCode = worksheet.Cells[row, 1].Value?.ToString();
                         material.MaterialName = worksheet.Cells[row, 2].Value?.ToString();
                         material.MaterialFeature = worksheet.Cells[row, 3].Value?.ToString();
                         material.GroupMaterial = worksheet.Cells[row, 4].Value?.ToString();
-                        material.MaterialNote = worksheet.Cells[row, 5].Value?.ToString();
+                        material.UnitName = worksheet.Cells[row, 5].Value?.ToString();
+                        material.MaterialNote = worksheet.Cells[row, 6].Value?.ToString();
 
                         materials.Add(material);
                     }

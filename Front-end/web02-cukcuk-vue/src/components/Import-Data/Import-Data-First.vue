@@ -101,7 +101,7 @@
                           <BaseInput v-model="material.MaterialFeature" class="width-100" />
                         </td>
                         <td class="">
-                          <BaseInput v-model="material.UnitName" />
+                          <BaseInput ref="UnitName" v-model="material.UnitName" class="width-100" />
                         </td>
                         <td class="">
                           <div class="reason-error txt-error-table">
@@ -176,9 +176,9 @@ export default {
      * Created date: 09:46 31/05/2022
      */
     validateMaterials(arrayMaterials) {
-      debugger;
       if (arrayMaterials.length > 0) {
         for (let index = 0; index < arrayMaterials.length; index++) {
+          //Hứng đối tượng từ mảng dữ liệu
           let tempMaterial = arrayMaterials[index];
 
           let keyErrs = Object.keys(tempMaterial.ErrorValidateNotValid);
@@ -193,10 +193,51 @@ export default {
               this.$refs[key][index].setError();
             // Hiển thị thông tin lỗi
             this.listErrValidate[index] = object[key];
-            // continue;
           }
         }
       }
+    },
+    /**
+    * Mô tả : Thực hiện validate dữ liệu từ Client ở from drop data
+    * @param: Danh sách nguyên vật liệu từ Client
+    * Created by: Vũ Trọng Nghĩa - MF1108
+    * Created date: 15:30 01/06/2022
+    */
+    async validateDataFromClient(clientDatas) {
+      //Clear lỗi
+      this.listErrValidate = [];
+      for (let index = 0; index < clientDatas.length; index++) {
+        const data = clientDatas[index];
+        // Check NULL
+        if (!data.MaterialCode) {
+          //Focus vào ô bị lỗi
+          await this.$refs.MaterialCode[index].setError();
+          //Hiển thị lỗi trả về
+          this.listErrValidate[index] = "Mã nguyên vật liệu không được phép để trống";
+        }
+        if (!data.MaterialName) {
+          //Focus vào ô bị lỗi
+          await this.$refs.MaterialName[index].setError();
+          //Hiển thị lỗi trả về
+          this.listErrValidate[index] = "Tên nguyên vật liệu không được phép để trống";
+        }
+        if (!data.UnitName || (/\s/g.test(data.UnitName))) {
+          //Focus vào ô bị lỗi
+          await this.$refs.UnitName[index].setError();
+          //Hiển thị lỗi trả về
+          this.listErrValidate[index] = "Tên ĐVT không được phép để trống";
+        }
+        // Check Trùng MÃ nguyên vật liệu file
+
+        if (clientDatas.includes(data.MaterialCode) && clientDatas.includes(data.MaterialId) == false) {
+          //Focus vào ô bị lỗi
+          await this.$refs.MaterialCode[index].setError();
+          //Hiển thị lỗi trả về
+          this.listErrValidate[index] = "Mã nguyên vật liệu không được phép để trùng trong file";
+        }
+
+      }
+
     },
 
     /**
@@ -206,13 +247,15 @@ export default {
      */
     async saveMaterialsFromExcel() {
       // Validate trên Client
-      // Set biến isValid = true(Thỏa mãn yêu cầu)
-      for (const material of this.materialsToImport) {
-        material.ErrorValidateNotValid = {};
-        material.IsValid = true;
-      }
-      //gọi api để lưu data sau khi sửa trên Client
-      await this.ImportFileToServer();
+      this.validateDataFromClient(this.materialsToImport);
+
+      // // Set biến isValid = true(Thỏa mãn yêu cầu)
+      // for (const material of this.materialsToImport) {
+      //   material.ErrorValidateNotValid = {};
+      //   material.IsValid = true;
+      // }
+      // //gọi api để lưu data sau khi sửa trên Client
+      // await this.ImportFileToServer();
     },
 
     /**
@@ -229,7 +272,6 @@ export default {
         )
         .then(function (res) {
           if (res) {
-            debugger;
             console.log(res);
             //Nếu danh sách trả về rỗng -> Tắt form
             if (res.data.length == 0) {
