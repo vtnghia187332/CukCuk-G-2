@@ -49,6 +49,6 @@ namespace MISA.Core.Interfaces
         /// </summary>
         /// <param name="entityName">Tên gọi</param>
         /// <returns>Đối tượng tìm kiếm</returns>
-        Unit FindByUnitName(string entityName);
+        //Unit FindByUnitName(string entityName);
     }
 }

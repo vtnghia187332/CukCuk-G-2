@@ -20,15 +20,18 @@ namespace MISA.Infrastructure.Repositories
         string _connectionString;
         protected MySqlConnection _sqlConnection;
         private IConvertionRepository _convertionRepository;
+        private IUnitRepository _iUnitRepository;
         #endregion
 
         #region Constructor
 
-        public MaterialRepository(IConvertionRepository injection)
+        public MaterialRepository(IConvertionRepository injection, IUnitRepository iUnitRepository)
         {
-            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=12345678";
+            _connectionString = "Host=localhost; Port=3306; Database=misacukcukmaterial2022_dev; User Id = root; Password=123456";
             _sqlConnection = new MySqlConnection(_connectionString);
             _convertionRepository = injection;
+            _iUnitRepository = iUnitRepository;
+
         }
         #endregion
 
@@ -208,20 +211,7 @@ namespace MISA.Infrastructure.Repositories
         //        //return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
         //    }
 
-        /// <summary>
-        /// Tìm kiếm trong CSDL theo tên của ĐVT
-        /// </summary>
-        /// <param name="entityName">Tên gọi</param>
-        /// <returns>Đối tượng tìm kiếm</returns>
-        public Unit FindByUnitName(string entityName)
-        {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add($"@UnitName", entityName);
-            //3. Thực hiện lấy dữ liệu Dapper
-            var data = _sqlConnection.QueryFirstOrDefault<Unit>($"Proc_FindUnitByName", param: parameters, commandType: CommandType.StoredProcedure);
-            // Trả về kết quả
-            return data;
-        }
+
         #endregion
 
     }

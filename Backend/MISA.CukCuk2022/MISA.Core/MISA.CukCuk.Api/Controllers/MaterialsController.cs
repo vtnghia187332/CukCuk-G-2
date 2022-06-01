@@ -101,7 +101,7 @@ namespace MISA.CukCuk.Api.Controllers
                 var res = _materialService.InsertMaterialsFromFile(materialsFromClient);
                 return Ok(res);
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 return HandleException(ex);
             }

@@ -18,7 +18,7 @@ namespace MISA.Core.Entities
         /// Mã ĐVT
         /// created by: VTNghia - MF1108
         /// </summary>
-        public string UnitCode { get; set; }
+        public string? UnitCode { get; set; }
 
         /// <summary>
         /// Tên ĐVT

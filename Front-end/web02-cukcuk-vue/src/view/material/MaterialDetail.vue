@@ -500,6 +500,7 @@ export default {
       //   // load lại data convertion
       //    this.getConvertionByMaterialId();
       // } else {
+        
       // Nếu không tồn tại -> Xóa phần tử trong mảng
       this.convertions.splice(this.currentIndex, 1);
       // clear currentIndex của row bảng convertions

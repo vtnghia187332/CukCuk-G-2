@@ -31,6 +31,8 @@ builder.Services.AddScoped<IEPPLusAppService, EPPLusAppService>();
 builder.Services.AddScoped<IMaterialService, MaterialService>();
 
 
+
+
 builder.Services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 

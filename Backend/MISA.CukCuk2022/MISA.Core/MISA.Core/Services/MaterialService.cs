@@ -20,14 +20,17 @@ namespace MISA.Core.Services
         IMaterialRepository _materialRepository;
         IConvertionRepository _convertionRepository;
         IEPPLusAppService _iEPPLusAppService;
+        private IUnitRepository _iUnitRepository;
+
 
         #endregion
         #region Constructor
-        public MaterialService(IMaterialRepository materialRepository, IConvertionRepository convertionRepository, IEPPLusAppService iEPPLusAppService) : base(materialRepository)
+        public MaterialService(IUnitRepository iUnitRepository, IMaterialRepository materialRepository, IConvertionRepository convertionRepository, IEPPLusAppService iEPPLusAppService) : base(materialRepository)
         {
             _materialRepository = materialRepository;
             _convertionRepository = convertionRepository;
             _iEPPLusAppService = iEPPLusAppService;
+            _iUnitRepository = iUnitRepository;
         }
         #endregion
 
@@ -91,17 +94,24 @@ namespace MISA.Core.Services
             foreach (var materialToValidate in materials)
             {
                 //Mapping Đơn vị tính
-                if (_materialRepository.FindByUnitName(materialToValidate.UnitName) != null)
+                if (_iUnitRepository.FindByUnitName(materialToValidate.UnitName) != null)
                 {
                     //Nếu tồn tại giá trị UnitName trong CSDL -> Bind vào đối tượng đang được import
-                    materialToValidate.UnitName = _materialRepository.FindByUnitName(materialToValidate.UnitName).UnitName;
-                    materialToValidate.UnitId = _materialRepository.FindByUnitName(materialToValidate.UnitName).UnitId;
+                    materialToValidate.UnitName = _iUnitRepository.FindByUnitName(materialToValidate.UnitName).UnitName;
+                    materialToValidate.UnitId = _iUnitRepository.FindByUnitName(materialToValidate.UnitName).UnitId;
                 }
-                else
+                else if (materialToValidate.UnitName != null)
                 {
                     //Thêm mới giá trị mà ĐVT KH nhập vào
-
                     //bind vào đối tượng đang được import
+                    _iUnitRepository.InsertNewData(materialToValidate.UnitName);
+                    if (_iUnitRepository.FindByUnitName(materialToValidate.UnitName) != null)
+                    {
+                        //Nếu tồn tại giá trị UnitName trong CSDL -> Bind vào đối tượng đang được import
+                        materialToValidate.UnitName = _iUnitRepository.FindByUnitName(materialToValidate.UnitName).UnitName;
+                        materialToValidate.UnitId = _iUnitRepository.FindByUnitName(materialToValidate.UnitName).UnitId;
+                    }
+
                 }
                 materialsFile.Add(ValidateMaterials(materialToValidate, materials));
             }
@@ -123,6 +133,25 @@ namespace MISA.Core.Services
 
             foreach (var materialForValidate in mateiralsFromClient)
             {
+                //Mapping Đơn vị tính
+                if (_iUnitRepository.FindByUnitName(materialForValidate.UnitName) != null)
+                {
+                    //Nếu tồn tại giá trị UnitName trong CSDL -> Bind vào đối tượng đang được import
+                    materialForValidate.UnitName = _iUnitRepository.FindByUnitName(materialForValidate.UnitName).UnitName;
+                    materialForValidate.UnitId = _iUnitRepository.FindByUnitName(materialForValidate.UnitName).UnitId;
+                }
+                else if (materialForValidate.UnitName != null)
+                {
+                    //Thêm mới giá trị mà ĐVT KH nhập vào
+                    //bind vào đối tượng đang được import
+                    _iUnitRepository.InsertNewData(materialForValidate.UnitName);
+                    if (_iUnitRepository.FindByUnitName(materialForValidate.UnitName) != null)
+                    {
+                        //Nếu tồn tại giá trị UnitName trong CSDL -> Bind vào đối tượng đang được import
+                        materialForValidate.UnitName = _iUnitRepository.FindByUnitName(materialForValidate.UnitName).UnitName;
+                        materialForValidate.UnitId = _iUnitRepository.FindByUnitName(materialForValidate.UnitName).UnitId;
+                    }
+                }
                 //Validate dữ liệu
                 ValidateMaterials(materialForValidate, mateiralsFromClient);
                 if (materialForValidate.IsValid == true)
