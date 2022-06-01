@@ -20,6 +20,7 @@ namespace MISA.Core.Services
         IMaterialRepository _materialRepository;
         IConvertionRepository _convertionRepository;
         IEPPLusAppService _iEPPLusAppService;
+        //protected Dictionary<string, string> _errorFromClient = new Dictionary<string, string>();
 
         #endregion
         #region Constructor
@@ -81,16 +82,18 @@ namespace MISA.Core.Services
                 throw new MISAException("Tệp dữ liệu phải có định dạng là .xls hoặc .xlsx");
             }
 
-            //var materialsValid = new List<Material>();
+            var materialsFile = new List<Material>();
 
             //Thực hiện đọc file excel và trả về danh sách nguyên vật liệu
             List<Material> materials = await _iEPPLusAppService.ReadFileExcelToGetMaterials(formFile);
 
             //validate dữ liệu của file excel
-            materials = ValidateMaterialsFromFile(materials);
-
+            foreach (var materialToValidate in materials)
+            {
+                materialsFile.Add(ValidateMaterials(materialToValidate, materials));
+            }
             //trả về danh sách nguyên vật liệu từ file (Kèm theo validate)
-            return materials;
+            return materialsFile;
         }
 
         /// <summary>
@@ -100,21 +103,16 @@ namespace MISA.Core.Services
         /// <returns>Danh sách nguyên vật liệu sau khi validate</returns>
         public int InsertMaterialsFromFile(List<Material> mateiralsFromClient)
         {
-            //Danh sách Nguyên vật liệu để validate
-            var materialsToValidate = new List<Material>();
             //Danh sách nguyên vật liệu thỏa mãn yêu cầu
             var materialsIsValid = new List<Material>();
-            //Số nguyên vật liệu bị lỗi
             var errorCount = 0;
 
-            //thực hiện validate dữ liệu
-            materialsToValidate = ValidateMaterialsFromFile(mateiralsFromClient);
-            //Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
-            foreach (var material in materialsToValidate)
+            foreach (var materialForValidate in mateiralsFromClient)
             {
-                if (material.IsValid == true)
+                ValidateMaterials(materialForValidate, mateiralsFromClient);
+                if (materialForValidate.IsValid == true)
                 {
-                    materialsIsValid.Add(material);
+                    materialsIsValid.Add(materialForValidate);
                 }
                 else
                 {
@@ -123,57 +121,98 @@ namespace MISA.Core.Services
             }
             if (errorCount == 0)
             {
-                //Nếu thỏa mãn -> Thêm vào CSDL
+                var res = 0;
                 foreach (var materialValid in materialsIsValid)
                 {
+                    //Nếu thỏa mãn -> Thêm vào CSDL
                     _materialRepository.Insert(materialValid);
+                    res++;
                 }
-                return 1;
+                return res;
             }
             else
             {
                 //Nếu vẫn còn lỗi -> Throw ra lỗi thông báo
-                throw new MISAException("Gặp lỗi");
+                //Trả về danh sách lỗi
+                throw new MISAException(MISAResource.VN_NotValidInput, _error);
                 return 0;
             }
+            ////Danh sách Nguyên vật liệu để validate
+            //var materialsToValidate = new List<Material>();
+            ////Số nguyên vật liệu bị lỗi
+            //var errorCount = 0;
+
+            ////thực hiện validate dữ liệu
+            //materialsToValidate = ValidateMaterials(mateiralsFromClient);
+            ////Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
+            //_error = new Dictionary<string, string>();
+            //foreach (var material in materialsToValidate)
+            //{
+            //    if (material.IsValid == true)
+            //    {
+            //        //Thêm những đối tượng thỏa mãn
+            //        materialsIsValid.Add(material);
+            //    }
+            //    else
+            //    {
+            //        //Xuất hiện lỗi -> Bắt lỗi
+            //        errorCount++;
+            //        break;
+            //    }
+            //}
+            //if (errorCount == 0)
+            //{
+            //    var res = 0;
+            //    //Nếu thỏa mãn -> Thêm vào CSDL
+            //    foreach (var materialValid in materialsIsValid)
+            //    {
+            //        res = _materialRepository.Insert(materialValid);
+            //    }
+            //    return res;
+            //}
+            //else
+            //{
+            //    //Nếu vẫn còn lỗi -> Throw ra lỗi thông báo
+            //    //Trả về danh sách lỗi
+            //    throw new MISAException(MISAResource.VN_NotValidInput, _error);
+            //    return 0;
+            //}
             //Nếu danh sách chứa isValid = false->(danh sách thỏa mãn)
         }
 
         /// <summary>
-        /// Danh sách Nguyên vật liệu trả về sau khi validate
+        /// Nguyên vật liệu trả về sau khi validate
+        /// TODO: Hàm trả về đối tượng sau khi validate 
         /// </summary>
-        /// <param name="mateiralsToValidate">Danh sách nguyên vật liệu</param>
+        /// <param name="mateiralsToValidate"> nguyên vật liệu</param>
         /// <returns>Trả về danh sách nguyên vật liệu(Sau khi validate)</returns>
-        public List<Material> ValidateMaterialsFromFile(List<Material> mateiralsToValidate)
+        public Material ValidateMaterials(Material mateiralToValidate, List<Material> materialsFile)
         {
             //validate dữ liệu
-            foreach (var material in mateiralsToValidate)
+            _error = new Dictionary<string, string>();
+            //Validate thông tin file excel
+            base.ValidateObject(mateiralToValidate);
+            if (_error.Count() > 0)
             {
-                _error = new Dictionary<string, string>();
-                //Validate thông tin file excel
-                base.ValidateObject(material);
-                if (_error.Count() > 0)
-                {
-                    //Check điều kiện: để trống
-                    material.IsValid = false;
-                    material.ErrorValidateNotValid = _error;
-                }
-                //check code trùng lặp trong file excel
-                else if (CheckCodeExistInFile(material.MaterialCode, material.MaterialId, mateiralsToValidate))
-                {
-                    material.IsValid = false;
-                    _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");
-                    material.ErrorValidateNotValid = _error;
-                }
-                //Check code trùng lặp trong DB(Nếu không trùng tên trong file excel)
-                else if (_materialRepository.CheckCodeExist(material.MaterialCode) == true)
-                {
-                    material.IsValid = false;
-                    _error.Add("MaterialCode", $"Mã nguyên vật liệu đã tồn tại");
-                    material.ErrorValidateNotValid = _error;
-                }
+                //Check điều kiện: để trống
+                mateiralToValidate.IsValid = false;
+                mateiralToValidate.ErrorValidateNotValid = _error;
             }
-            return mateiralsToValidate;
+            //check code trùng lặp trong file excel
+            else if (CheckCodeExistInFile(mateiralToValidate.MaterialCode, mateiralToValidate.MaterialId, materialsFile))
+            {
+                mateiralToValidate.IsValid = false;
+                _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");
+                mateiralToValidate.ErrorValidateNotValid = _error;
+            }
+            //Check code trùng lặp trong DB(Nếu không trùng tên trong file excel)
+            else if (_materialRepository.CheckCodeExist(mateiralToValidate.MaterialCode) == true)
+            {
+                mateiralToValidate.IsValid = false;
+                _error.Add("MaterialCode", $"Mã nguyên vật liệu đã tồn tại");
+                mateiralToValidate.ErrorValidateNotValid = _error;
+            }
+            return mateiralToValidate;
         }
 
         /// <summary>

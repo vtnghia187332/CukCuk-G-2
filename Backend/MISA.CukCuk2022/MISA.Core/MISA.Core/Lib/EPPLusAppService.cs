@@ -39,6 +39,7 @@ namespace MISA.Core.Lib
 
                         //Thêm Id mới cho từng đối tượng
                         material.MaterialId = Guid.NewGuid();
+                        //Gán mã ĐVT
                         material.UnitId = Guid.Parse("153105e0-6702-29ed-7632-03c92da59c43");
 
                         //Duyệt từng đối tượng(row) trong file excel
