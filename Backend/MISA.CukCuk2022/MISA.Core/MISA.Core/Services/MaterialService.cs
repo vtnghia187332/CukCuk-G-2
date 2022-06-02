@@ -202,7 +202,7 @@ namespace MISA.Core.Services
                 mateiralToValidate.ErrorValidateNotValid = _error;
             }
             //check code trùng lặp trong file excel
-            if (CheckCodeExistInFile(mateiralToValidate.MaterialCode, mateiralToValidate.MaterialId, materialsFile))
+            if (mateiralToValidate.MaterialCode != null && CheckCodeExistInFile(mateiralToValidate.MaterialCode, mateiralToValidate.MaterialId, materialsFile))
             {
                 mateiralToValidate.IsValid = false;
                 _error.Add("MaterialCode", $"Mã nguyên vật liệu không được phép trùng lặp trong file");

@@ -118,7 +118,7 @@
                   <td class="m-row-list">{{ material.MaterialFeature }}</td>
                   <td class="m-row-list">{{ material.UnitName }}</td>
                   <td class="m-row-list">{{ material.GroupMaterial }}</td>
-                  <td class="m-500">{{ material.MaterialNote }}</td>
+                  <td class="m-500-txt">{{ material.MaterialNote }}</td>
                   <td class="td-checkbox m-40">
                     <input class="checkbox" type="checkbox" :checked="material.Following" />
                   </td>
@@ -179,7 +179,8 @@
       @handleAfterChangeOnClick="handleAfterChangeOnClick" />
     <AlertConfirm v-if="isShowAlertDlg" :txtAlertDlg="txtAlertDlg" @showAlertDlg="showAlertDlg"
       @agreeAlertOnClick="agreeAlertOnClick" />
-    <ImportDataFirst v-if="isShowImportDlgFirst" @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick" />
+    <ImportDataFirst v-if="isShowImportDlgFirst" @isShowDlgImportFirstOnClick="isShowDlgImportFirstOnClick"
+      @loadingData="loadData" />
   </div>
 </template>
 

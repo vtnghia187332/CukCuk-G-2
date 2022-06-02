@@ -6,3 +6,24 @@
   font-size: 13px;
   color: red;
 }
+.m-btn-upload-file label {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: black;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.m-btn-upload-file label:hover {
+  background-color: #e4f2ea;
+  border: 1px solid #0072bc;
+}
+.m-btn-upload-file label:active {
+  background-color: #e4f2ea;
+  border: 1px solid #0072bc;
+}
+.m-btn-upload-file label:disabled {
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  opacity: 30%;
+}

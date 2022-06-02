@@ -14,16 +14,9 @@
           <div class="m-popup-content-import">
             <div class="m-content-import">
               <div class="m-txt-content-import">
-                <DropZone
-                  v-show="dropzoneFile.name == null"
-                  @drop.prevent="drop"
-                  @change="selectedFile"
-                />
+                <DropZone v-show="dropzoneFile.name == null" @drop.prevent="drop" @change="selectedFile" />
 
-                <div
-                  class="frame-import-list"
-                  v-show="dropzoneFile.name != null"
-                >
+                <div class="frame-import-list" v-show="dropzoneFile.name != null">
                   <div class="m-frame-import-list">
                     <div class="import-list-left">
                       <div class="icon-import-list">
@@ -34,23 +27,9 @@
                       </div>
                     </div>
                     <div class="import-list-right">
-                      <!-- <button
-                        class="m-btn fit-center"
-                        @change="selectedFile"
-                      >
-                        <div class="m-btn-text m-btn-import">
-                          TẢI LÊN TỆP KHÁC
-                        </div>
-                      </button> -->
                       <div class="m-btn-upload-file">
                         <!--default html file upload button-->
-                        <input
-                          type="file"
-                          id="dropzoneFile"
-                          class="dropzoneFile"
-                          @change="selectedFile"
-                          hidden
-                        />
+                        <input type="file" id="dropzoneFile" class="dropzoneFile" @change="selectedFile" hidden />
                         <!--our custom file upload button-->
                         <label for="dropzoneFile">TẢI LÊN TỆP KHÁC</label>
                       </div>
@@ -70,10 +49,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="m-popup-content-footer"
-            v-show="dropzoneFile.name == null"
-          >
+          <div class="m-popup-content-footer" v-show="dropzoneFile.name == null">
             <div class="m-txt-footer">
               Để có kết quả nhập khẩu chính xác, hãy sử dụng tệp mẫu.
               <span>Tải xuống tệp mẫu</span>
@@ -85,16 +61,18 @@
           </div>
         </div>
         <div class="second-form-drop" v-show="isShowTableOnClick">
-          <div class="m-popup-title-content">Bước 2: Kiểm tra dữ liệu</div>
+          <div class="m-popup-title-content-second">
+            <div class="m-popup-title-content">Bước 2: Kiểm tra dữ liệu</div>
+            <div class="m-popup-title-content-right">
+              <div class="m-valid-row-preview">Hợp lệ: <span>{{ isValidObject }}</span></div>
+              <div class="m-inValid-row-preview">Không hợp lệ: <span>{{ isInValidObject }}</span></div>
+            </div>
+          </div>
           <div class="frame-import-table">
             <div class="m-grid m-grid-import">
               <div class="m-table-grid-flex">
                 <div class="m-frame-table m-frame-table-import">
-                  <table
-                    class="m-table m-table-import"
-                    cellspacing="0"
-                    cellpadding="0"
-                  >
+                  <table class="m-table m-table-import" cellspacing="0" cellpadding="0">
                     <thead>
                       <tr>
                         <th class="m-table-validate txt-left">
@@ -110,36 +88,22 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        v-for="(material, index) in materialsToImport"
-                        :key="index"
-                      >
+                      <tr v-for="(material, index) in materialsToImport" :key="index">
                         <td class="">
-                          <BaseInput
-                            ref="MaterialCode"
-                            v-model="material.MaterialCode"
-                            class="width-100"
-                          />
+                          <BaseInput @input="changeValue(material.MaterialCode, index)" ref="MaterialCode"
+                            v-model="material.MaterialCode" class="width-100" />
                         </td>
                         <td class="">
-                          <BaseInput
-                            ref="MaterialName"
-                            v-model="material.MaterialName"
-                            class="width-100"
-                          />
+                          <BaseInput @input="changeValue(material.MaterialName, index)" ref="MaterialName"
+                            v-model="material.MaterialName" class="width-100" />
                         </td>
                         <td class="">
-                          <BaseInput
-                            v-model="material.MaterialFeature"
-                            class="width-100"
-                          />
+                          <BaseInput @input="changeValue(material.MaterialFeature, index)"
+                            v-model="material.MaterialFeature" class="width-100" />
                         </td>
                         <td class="">
-                          <BaseInput
-                            ref="UnitName"
-                            v-model="material.UnitName"
-                            class="width-100"
-                          />
+                          <BaseInput @input="changeValue(material.UnitName, index)" ref="UnitName"
+                            v-model="material.UnitName" class="width-100" />
                         </td>
                         <td class="">
                           <div class="reason-error txt-error-table">
@@ -159,37 +123,29 @@
             <div class="m-import-footer-left">
               Hiển thị 1-10 trên 120 kết quả
             </div>
-            <div class="m-import-footer-right">2</div>
+            <div class="m-import-footer-right">
+              <!-- Pagination -->
+
+              <!-- Pagination -->
+            </div>
           </div>
         </div>
       </div>
       <div class="m-popup-footer dlg-footer-show">
         <div class="first-form-drop-footer" v-show="!isShowTableOnClick">
-          <button
-            class="m-btn m-btn-wicon fit-center m-btn-fotter"
-            @click="showAlertDlg"
-          >
+          <button class="m-btn m-btn-wicon fit-center m-btn-fotter" @click="showAlertDlg">
             <div class="m-btn-text">Hủy</div>
           </button>
-          <button
-            class="m-btn m-btn-wicon fit-center m-btn-fotter"
-            @click="handleTableForImportOnClick"
-            :disabled="dropzoneFile.name == null"
-          >
+          <button class="m-btn m-btn-wicon fit-center m-btn-fotter" @click="handleTableForImportOnClick"
+            :disabled="dropzoneFile.name == null">
             <div class="m-btn-text">Tiếp theo</div>
           </button>
         </div>
         <div class="second-form-drop-fotter" v-show="isShowTableOnClick">
-          <button
-            class="m-btn m-btn-wicon fit-center m-btn-fotter"
-            @click="turnbackChangeForm"
-          >
+          <button class="m-btn m-btn-wicon fit-center m-btn-fotter" @click="turnbackChangeForm">
             <div class="m-btn-text">Quay lại</div>
           </button>
-          <button
-            class="m-btn m-btn-wicon fit-center m-btn-fotter"
-            @click="saveMaterialsFromExcel"
-          >
+          <button class="m-btn m-btn-wicon fit-center m-btn-fotter" @click="saveMaterialsFromExcel">
             <div class="m-btn-text">Nhập khẩu</div>
           </button>
         </div>
@@ -203,24 +159,65 @@
 import { ref } from "vue";
 import DropZone from "@/components/Import-Data/Drop-zone.vue";
 import BaseInput from "@/components/base/BaseInput.vue";
+import BasePagination from "@/components/base/BasePagination.vue";
 import axios from "axios";
 
 export default {
-  components: { DropZone, BaseInput },
+  components: { DropZone, BaseInput, BasePagination },
   data() {
     return {
       // Hiển thị table trước khi import nguyên vật liệu
       isShowTableOnClick: false,
+
       //Danh sách nguyên vật liệu được thêm vào từ file excel
       materialsToImport: [],
+
       // chứa thông tin lỗi validate từ file excel
       listErrValidate: {},
+
       //Biến để check validate preview trên client
       isValidForInsert: true,
+
+      //Hiển thị số dòng hợp lệ trong bảng preview
+      isValidObject: 0,
+
+      //Hiển thị số dòng không hợp lệ trong bảng preview
+      isInValidObject: 0,
     };
   },
   props: [],
   methods: {
+    /**
+    * Mô tả : test input
+    * Created by: Vũ Trọng Nghĩa - MF1108
+    * Created date: 14:48 02/06/2022
+    */
+    changeValue(value, index) {
+      this.listErrValidate[index] = null;
+      if (!value) {
+        this.validateDataFromClient(this.materialsToImport)
+      }
+    },
+    /**
+    * Mô tả : Lọc dữ liệu, trả về số bản ghi hợp lệ và không hợp lệ
+    * Created by: Vũ Trọng Nghĩa - MF1108
+    * Created date: 10:49 02/06/2022
+    */
+    checkNumberOfValidObj() {
+      this.isValidObject = 0;
+      this.isInValidObject = 0;
+      //Lọc dữ liệu và hiển thị số dòng hợp lệ và không hợp lệ
+      for (const data of this.materialsToImport) {
+        if (data.IsValid == true) {
+          // Thêm vào tổng số dòng hợp lệ
+          this.isValidObject++;
+        }
+        else {
+          // Thêm vào tổng số dòng không hợp lệ
+          this.isInValidObject++;
+        }
+      }
+    },
     /**
      * Mô tả : xóa dòng trong bảng preview
      *  @param index:Địa chỉ của object
@@ -228,10 +225,11 @@ export default {
      * Created date: 21:52 01/06/2022
      */
     deleteObjectInPreview(index) {
-      debugger;
       this.materialsToImport.splice(index, 1);
-
+      //Validate Data
       this.validateDataFromClient(this.materialsToImport);
+      //check số lượng bản ghi hợp lệ
+      this.checkNumberOfValidObj();
     },
     /**
      * Mô tả : Thực hiện validate nguyên vật liệu
@@ -239,7 +237,8 @@ export default {
      * Created by: Vũ Trọng Nghĩa - MF1108
      * Created date: 09:46 31/05/2022
      */
-    validateMaterials(arrayMaterials) {
+    validateMaterialsFormServer(arrayMaterials) {
+      // Clear set error của refs
       this.clearErrorData();
       if (arrayMaterials.length > 0) {
         for (let index = 0; index < arrayMaterials.length; index++) {
@@ -256,6 +255,7 @@ export default {
               this.$refs[key][index].setError();
             // Hiển thị thông tin lỗi
             this.listErrValidate[index] = object[key];
+            //
           }
         }
       }
@@ -266,6 +266,7 @@ export default {
      * Created date: 22:24 01/06/2022
      */
     clearErrorData() {
+      this.listErrValidate = [];
       let tempRefs = Object.keys(this.$refs);
       for (const key of tempRefs) {
         for (let index = 0; index < this.$refs[key].length; index++) {
@@ -351,6 +352,7 @@ export default {
         }
         //gọi api để lưu data sau khi sửa trên Client
         await this.ImportFileToServer();
+
       }
     },
 
@@ -376,8 +378,9 @@ export default {
             // Nếu danh sách trả về có giá trị -> Hiển thị những nguyên vật liệu bị lỗi
             me.materialsToImport = [];
             me.materialsToImport = res.data;
+            me.loadingData();
             //Thực hiện validate và hiển thị dòng lỗi
-            me.validateMaterials(me.materialsToImport);
+            me.validateMaterialsFormServer(me.materialsToImport);
           }
         })
         .catch(function (res) {
@@ -400,15 +403,14 @@ export default {
      * Created date: 16:08 30/05/2022
      */
     async handleTableForImportOnClick() {
-      if (this.materialsToImport.length == 0) {
-        //Gọi Api để lấy về danh sách nguyên vật liệu trong file excel
-        await this.handleImportFileExcel();
-      }
+      //Gọi Api để lấy về danh sách nguyên vật liệu trong file excel
+      await this.handleImportFileExcel();
+
       if (this.materialsToImport.length > 0) {
         // Hiển thị form thay đổi lựa chọn file
         this.isShowTableOnClick = true;
         // Validate dữ liệu
-        this.validateMaterials(this.materialsToImport);
+        this.validateMaterialsFormServer(this.materialsToImport);
       }
     },
     /**
@@ -429,12 +431,21 @@ export default {
         .then(function (res) {
           // Lấy dữ liệu từ Api trả về
           me.materialsToImport = res.data.Result;
+          me.checkNumberOfValidObj();
+
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-
+    /**
+    * Mô tả : Load lại data trang danh sách nguyên vật liệu
+    * Created by: Vũ Trọng Nghĩa - MF1108
+    * Created date: 08:08 02/06/2022
+    */
+    loadingData() {
+      this.$emit("loadingData");
+    },
     /**
      * Mô tả : off dialog
      * Created by: Vũ Trọng Nghĩa - MF1108
@@ -442,6 +453,8 @@ export default {
      */
     showAlertDlg() {
       this.$emit("isShowDlgImportFirstOnClick", false);
+      this.materialsToImport = [];
+      this.dropzoneFile = null;
     },
   },
   setup() {
@@ -490,5 +503,32 @@ export default {
   min-width: 30px;
   max-width: 30px;
   box-sizing: border-box;
+}
+
+// pagination
+.m-paging {
+  display: flex;
+  position: sticky;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  // width: (100% - 32px);
+  padding: 16px;
+  font-size: 13px;
+}
+
+.m-paging .page-navigation {
+  display: flex;
+  align-items: center;
+}
+
+.page-navigation .page-index .page-num.selected {
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+}
+
+.page-navigation .page-index .page-num.hidden {
+  display: none !important;
 }
 </style>

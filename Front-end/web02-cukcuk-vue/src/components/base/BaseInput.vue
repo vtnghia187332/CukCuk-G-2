@@ -1,13 +1,7 @@
 <template>
   <div class="m-input-wrapper">
-    <input
-      class="m-input"
-      :type="inputType"
-      :placeholder="placeholder"
-      ref="input"
-      :value="modelValue"
-      @input="onChangeHandler"
-    />
+    <input class="m-input" :type="inputType" :placeholder="placeholder" ref="input" :value="modelValue"
+      @input="onChangeHandler" />
     <div :class="this.iconType" v-if="hasIcon"></div>
   </div>
 </template>
@@ -41,7 +35,11 @@ export default {
     onChangeHandler(e) {
       e.preventDefault();
       let value = e.target.value;
-      if (value) this.removeError();
+      if (value) {
+        this.removeError();
+        // Emit lên và xóa hiển thị thông báo lỗi//
+        
+      }
       this.$emit("update:modelValue", value);
     },
     /**
@@ -49,9 +47,9 @@ export default {
      * Created by: Nguyễn Hữu Lộc - MF1099
      * Created date: 23:39 23/04/2022
      */
-    setFocus() {
-      this.$refs.input.focus();
-    },
+    // setFocus() {
+    //   this.$refs.input.focus();
+    // },
     /**
      * Mô tả : Hàm set bỏ border lỗi input
      * Created by: Nguyễn Hữu Lộc - MF1099
@@ -71,7 +69,7 @@ export default {
       this.$refs.input.style.border = "1px solid red";
 
       // this.$refs.input.title = _content;
-      this.setFocus();
+      // this.setFocus();
     },
   },
   data() {
@@ -105,9 +103,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-position: -128px -312px;
 }
 
-/* input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  background-color: #e0e0e0;
-} */
 
 .m-input:focus {
   border: none;
@@ -116,6 +111,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 3px;
   height: 26px;
 }
+
 .m-input {
   height: 30px;
   font-size: 12px;

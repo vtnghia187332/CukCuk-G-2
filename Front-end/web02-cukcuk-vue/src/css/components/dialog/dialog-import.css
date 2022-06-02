@@ -8,6 +8,11 @@
   font-weight: 800;
   margin-bottom: 10px;
 }
+.m-popup-title-content-second {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .m-dlg-import {
   width: 1350px;
@@ -128,4 +133,14 @@ table.m-table-import thead tr th {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.m-popup-title-content-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.m-valid-row-preview {
+  margin-right: 30px;
+}
+.m-inValid-row-preview {
+  color: red;
 }
