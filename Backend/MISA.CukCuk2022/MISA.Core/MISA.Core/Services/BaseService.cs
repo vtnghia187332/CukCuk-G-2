@@ -141,6 +141,7 @@ namespace MISA.Core.Services
 
             //Lấy ra các property:
             var properties = typeof(T).GetProperties();
+
             foreach (var property in properties)
             {
                 var propName = property.Name;

@@ -192,11 +192,10 @@ export default {
     * Created by: Vũ Trọng Nghĩa - MF1108
     * Created date: 14:48 02/06/2022
     */
-    changeValue(value, index) {
+    changeValue(value, index) { // Input
+      // CLear lỗi
       this.listErrValidate[index] = null;
-      if (!value) {
-        this.validateDataFromClient(this.materialsToImport)
-      }
+      this.validateDataFromClient(this.materialsToImport)
     },
     /**
     * Mô tả : Lọc dữ liệu, trả về số bản ghi hợp lệ và không hợp lệ
@@ -227,8 +226,8 @@ export default {
     deleteObjectInPreview(index) {
       this.materialsToImport.splice(index, 1);
       //Validate Data
-      this.validateDataFromClient(this.materialsToImport);
       //check số lượng bản ghi hợp lệ
+      this.validateDataFromClient(this.materialsToImport);
       this.checkNumberOfValidObj();
     },
     /**
@@ -240,12 +239,17 @@ export default {
     validateMaterialsFormServer(arrayMaterials) {
       // Clear set error của refs
       this.clearErrorData();
+      debugger
       if (arrayMaterials.length > 0) {
         for (let index = 0; index < arrayMaterials.length; index++) {
           //Hứng đối tượng từ mảng dữ liệu
           let tempMaterial = arrayMaterials[index];
           let keyErrs = Object.keys(tempMaterial.ErrorValidateNotValid);
           let object = tempMaterial.ErrorValidateNotValid;
+
+          // this.listErrValidate[index] = []
+          let err = []
+
           for (const key of keyErrs) {
             if (
               tempMaterial.IsValid == false &&
@@ -254,9 +258,9 @@ export default {
               // focus vào ô lỗi
               this.$refs[key][index].setError();
             // Hiển thị thông tin lỗi
-            this.listErrValidate[index] = object[key];
-            //
+            err.push(object[key])
           }
+          this.listErrValidate[index] = err[0];
         }
       }
     },
@@ -288,6 +292,7 @@ export default {
       this.listErrValidate = [];
       for (let index = 0; index < clientDatas.length; index++) {
         const data = clientDatas[index];
+        let err = []
         // Check NULL
         if (!data.MaterialCode) {
           //Focus vào ô bị lỗi
@@ -295,8 +300,7 @@ export default {
             this.$refs.MaterialCode[index].setError();
           });
           //Hiển thị lỗi trả về
-          this.listErrValidate[index] =
-            "Mã nguyên vật liệu không được phép để trống";
+          err.push("Mã nguyên vật liệu không được phép để trống");
           this.isValidForInsert = false;
         }
         if (!data.MaterialName) {
@@ -305,8 +309,8 @@ export default {
             this.$refs.MaterialName[index].setError();
           });
           //Hiển thị lỗi trả về
-          this.listErrValidate[index] =
-            "Tên nguyên vật liệu không được phép để trống";
+          err.push("Tên nguyên vật liệu không được phép để trống")
+
           this.isValidForInsert = false;
         }
         if (!data.UnitName) {
@@ -315,7 +319,7 @@ export default {
             this.$refs.UnitName[index].setError();
           });
           //Hiển thị lỗi trả về
-          this.listErrValidate[index] = "Tên ĐVT không được phép để trống";
+          err.push("Tên ĐVT không được phép để trống")
           this.isValidForInsert = false;
         }
         //Kiểm tra mã code trùng trong bảng preview
@@ -327,11 +331,14 @@ export default {
             this.$nextTick(() => {
               this.$refs.MaterialCode[index].setError();
             });
-            this.listErrValidate[index] =
-              "Mã nguyên vật liệu không được phép để trùng trong file";
+            err.push("Mã nguyên vật liệu không được phép để trùng trong file")
             this.isValidForInsert = false;
           }
         });
+
+        if (!this.isValidForInsert) {
+          this.listErrValidate[index] = err[0]
+        }
       }
     },
 
@@ -342,8 +349,8 @@ export default {
      */
     async saveMaterialsFromExcel() {
       // Validate trên Client
-      this.validateDataFromClient(this.materialsToImport);
 
+      this.validateDataFromClient(this.materialsToImport);
       if (this.isValidForInsert == true) {
         for (const material of this.materialsToImport) {
           material.ErrorValidateNotValid = {};
@@ -457,17 +464,15 @@ export default {
       this.dropzoneFile = null;
     },
   },
+
   setup() {
     let dropzoneFile = ref("");
-
     const drop = (e) => {
       dropzoneFile.value = e.dataTransfer.files[0];
     };
-
     const selectedFile = () => {
       dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
     };
-
     return { dropzoneFile, drop, selectedFile };
   },
 };

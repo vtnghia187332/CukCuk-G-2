@@ -19,6 +19,7 @@ namespace MISA.Core.Entities
         public Guid MaterialId { get; set; }
 
         [NotEmpty]
+        [DisplayName("Mã nguyên vật liệu")]
         /// <summary>
         /// Mã nguyên liệu
         /// created by: VTNghia - MF1108
@@ -26,12 +27,15 @@ namespace MISA.Core.Entities
         public string MaterialCode { get; set; }
 
         [NotEmpty]
+        [DisplayName("Tên nguyên vật liệu")]
         /// <summary>
         /// Tên nguyên liệu
         /// created by: VTNghia - MF1108
         /// </summary>
         public string MaterialName { get; set; }
 
+
+        [DisplayName("Tính chất nguyên vật liệu")]
         /// <summary>
         /// Tính chất nguyên liệu
         /// created by: VTNghia - MF1108
@@ -80,6 +84,7 @@ namespace MISA.Core.Entities
         /// </summary>
         public Guid UnitId { get; set; }
 
+        [DisplayName("Tên ĐVT")]
         /// <summary>
         /// Tên đơn vị Tính
         /// created by: VTNghia - MF1108
